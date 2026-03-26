@@ -134,7 +134,7 @@
           <p class="text-xs text-gray-400 mt-0.5">Výpisy, potvrzení a odborné posudky</p>
         </div>
       </div>
-      <div class="divide-y divide-gray-50">
+      <div id="cenik-posudky-list" class="divide-y divide-gray-50">
         <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
           <span class="text-sm text-gray-700">Posudek pro pracovní účely</span>
           <span class="text-sm font-semibold text-gray-900 tabular-nums">900 Kč</span>
@@ -208,7 +208,7 @@
           <p class="text-xs text-gray-400 mt-0.5">Výpisy, kopie a administrativní úkony</p>
         </div>
       </div>
-      <div class="divide-y divide-gray-50">
+      <div id="cenik-administrativa-list" class="divide-y divide-gray-50">
         <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
           <span class="text-sm text-gray-700">Výpis ze zdravotní dokumentace</span>
           <span class="text-sm font-semibold text-gray-900 tabular-nums">400 Kč</span>
@@ -238,7 +238,7 @@
           <p class="text-xs text-gray-400 mt-0.5">Očkování a specializované testy</p>
         </div>
       </div>
-      <div class="divide-y divide-gray-50">
+      <div id="cenik-ostatni-list" class="divide-y divide-gray-50">
         <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
           <div>
             <span class="text-sm text-gray-700">Aplikace očkování</span>
@@ -287,6 +287,32 @@
       </div>
     </div>
   </footer>
+
+  <!-- ─── Admin localStorage reader ─── -->
+  <script>
+    (function() {
+      function lsLoad(key) {
+        try { return JSON.parse(localStorage.getItem('esmedica_' + key)); } catch { return null; }
+      }
+
+      const cenik = lsLoad('cenik');
+      if (!cenik) return;
+
+      function renderSection(id, items) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.innerHTML = items.map(item => `
+          <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+            <span class="text-sm text-gray-700">${item.name}</span>
+            <span class="text-sm font-semibold text-gray-900 tabular-nums">${item.price}</span>
+          </div>`).join('');
+      }
+
+      renderSection('cenik-posudky-list', cenik.posudky || []);
+      renderSection('cenik-administrativa-list', cenik.administrativa || []);
+      renderSection('cenik-ostatni-list', cenik.ostatni || []);
+    })();
+  </script>
 
 </body>
 </html>

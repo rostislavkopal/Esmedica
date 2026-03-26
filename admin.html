@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin | ESMEDICA</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: '#0891b2', 'brand-dark': '#0e7490' } } }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .sec { display: none; }
+    .sec.active { display: block; }
+    .tab-btn { color: #64748b; }
+    .tab-btn.active { background: #0891b2; color: #fff; }
+    input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+      color: #1e293b;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      width: 100%;
+      font-family: inherit;
+    }
+    input:focus {
+      border-color: #0891b2;
+      box-shadow: 0 0 0 3px rgba(8,145,178,0.15);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen antialiased text-gray-800">
+
+  <!-- ─── Login Screen ─── -->
+  <div id="login-wrap" class="min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 w-full max-w-sm">
+      <div class="flex justify-center mb-6">
+        <img src="logo/Gemini_Generated_Image_nzqnpnnzqnpnnzqn.png" alt="ESMEDICA" class="h-12 w-auto">
+      </div>
+      <h1 class="text-xl font-bold text-gray-900 text-center mb-1">Správa webu</h1>
+      <p class="text-sm text-gray-400 text-center mb-6">ESMEDICA Litvínov</p>
+      <div class="space-y-3">
+        <input type="password" id="pw-input" placeholder="Heslo" autocomplete="current-password">
+        <p id="pw-err" class="hidden text-xs text-red-500 text-center">Nesprávné heslo. Zkuste to znovu.</p>
+        <button id="login-btn"
+          class="w-full bg-brand text-white font-semibold rounded-xl px-4 py-2.5 text-sm hover:bg-brand-dark transition-colors">
+          Přihlásit se
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Admin Panel ─── -->
+  <div id="admin-wrap" class="hidden min-h-screen">
+
+    <!-- Top nav -->
+    <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
+        <div class="flex items-center gap-3">
+          <img src="logo/Gemini_Generated_Image_nzqnpnnzqnpnnzqn.png" alt="ESMEDICA" class="h-8 w-auto">
+          <span class="hidden sm:block text-xs font-semibold text-gray-400 uppercase tracking-widest">Správa webu</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="mapa.html" target="_blank" class="text-xs text-brand hover:underline font-medium">Zobrazit web ↗</a>
+          <button id="logout-btn" class="text-xs text-gray-400 hover:text-gray-600 transition-colors">Odhlásit se</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 pt-5 pb-10">
+
+      <!-- Tab bar -->
+      <div class="flex gap-1 bg-white border border-gray-100 rounded-2xl p-1.5 shadow-sm mb-5 overflow-x-auto">
+        <button class="tab-btn active flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="hours">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          Ordinační hodiny
+        </button>
+        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="cenik">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+          </svg>
+          Ceník
+        </button>
+        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="pojistovny">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          Pojišťovny
+        </button>
+        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="kontakt">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          Kontakt
+        </button>
+      </div>
+
+      <!-- ─── Ordinační hodiny ─── -->
+      <div class="sec active" id="sec-hours">
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+          <div class="flex items-start justify-between mb-5 gap-4">
+            <div>
+              <h2 class="text-lg font-bold text-gray-900">Ordinační hodiny</h2>
+              <p class="text-xs text-gray-400 mt-0.5">Prázdné pole = zavřeno (zobrazí se „—")</p>
+            </div>
+            <button class="save-btn bg-brand text-white text-sm font-semibold px-5 py-2 rounded-xl hover:bg-brand-dark transition-colors flex-shrink-0" data-target="hours">
+              Uložit
+            </button>
+          </div>
+          <div class="overflow-x-auto">
+            <table class="w-full text-sm border-collapse">
+              <thead>
+                <tr>
+                  <th class="text-left pb-3 text-xs font-semibold text-gray-400 uppercase tracking-wide w-28">Den</th>
+                  <th class="text-left pb-3 px-2 text-xs font-semibold text-gray-400 uppercase tracking-wide w-44">Dopoledne</th>
+                  <th class="text-left pb-3 px-2 text-xs font-semibold text-gray-400 uppercase tracking-wide w-44">Odpoledne</th>
+                </tr>
+              </thead>
+              <tbody id="hours-tbody"></tbody>
+            </table>
+          </div>
+          <p id="hours-saved" class="hidden mt-4 text-xs text-green-600 font-medium flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            Uloženo — změny se projeví na webu po obnovení stránky
+          </p>
+        </div>
+      </div>
+
+      <!-- ─── Ceník ─── -->
+      <div class="sec" id="sec-cenik">
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 space-y-6">
+          <div class="flex items-start justify-between gap-4">
+            <div>
+              <h2 class="text-lg font-bold text-gray-900">Ceník</h2>
+              <p class="text-xs text-gray-400 mt-0.5">Upravte názvy a ceny, přidávejte nebo odebírejte položky</p>
+            </div>
+            <button class="save-btn bg-brand text-white text-sm font-semibold px-5 py-2 rounded-xl hover:bg-brand-dark transition-colors flex-shrink-0" data-target="cenik">
+              Uložit
+            </button>
+          </div>
+
+          <!-- Posudky -->
+          <div>
+            <h3 class="text-sm font-semibold text-gray-600 mb-3">Posudky a lékařská vyšetření</h3>
+            <div id="cenik-posudky-rows" class="space-y-2"></div>
+            <button class="add-row-btn mt-3 text-xs text-brand hover:text-brand-dark font-semibold flex items-center gap-1 transition-colors" data-section="posudky">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
+              </svg>
+              Přidat položku
+            </button>
+          </div>
+
+          <hr class="border-gray-100">
+
+          <!-- Administrativa -->
+          <div>
+            <h3 class="text-sm font-semibold text-gray-600 mb-3">Administrativa a dokumentace</h3>
+            <div id="cenik-administrativa-rows" class="space-y-2"></div>
+            <button class="add-row-btn mt-3 text-xs text-brand hover:text-brand-dark font-semibold flex items-center gap-1 transition-colors" data-section="administrativa">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
+              </svg>
+              Přidat položku
+            </button>
+          </div>
+
+          <hr class="border-gray-100">
+
+          <!-- Ostatní -->
+          <div>
+            <h3 class="text-sm font-semibold text-gray-600 mb-3">Ostatní výkony</h3>
+            <div id="cenik-ostatni-rows" class="space-y-2"></div>
+            <button class="add-row-btn mt-3 text-xs text-brand hover:text-brand-dark font-semibold flex items-center gap-1 transition-colors" data-section="ostatni">
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
+              </svg>
+              Přidat položku
+            </button>
+          </div>
+
+          <p id="cenik-saved" class="hidden text-xs text-green-600 font-medium flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            Uloženo — změny se projeví na webu po obnovení stránky
+          </p>
+        </div>
+      </div>
+
+      <!-- ─── Pojišťovny ─── -->
+      <div class="sec" id="sec-pojistovny">
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+          <div class="flex items-start justify-between mb-5 gap-4">
+            <div>
+              <h2 class="text-lg font-bold text-gray-900">Smluvní pojišťovny</h2>
+              <p class="text-xs text-gray-400 mt-0.5">Zaškrtněte pojišťovny zobrazené v tickeru na hlavní stránce</p>
+            </div>
+            <button class="save-btn bg-brand text-white text-sm font-semibold px-5 py-2 rounded-xl hover:bg-brand-dark transition-colors flex-shrink-0" data-target="pojistovny">
+              Uložit
+            </button>
+          </div>
+          <div id="pojistovny-list" class="space-y-2"></div>
+          <p id="pojistovny-saved" class="hidden mt-4 text-xs text-green-600 font-medium flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            Uloženo — změny se projeví na webu po obnovení stránky
+          </p>
+        </div>
+      </div>
+
+      <!-- ─── Kontakt ─── -->
+      <div class="sec" id="sec-kontakt">
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+          <div class="flex items-start justify-between mb-6 gap-4">
+            <div>
+              <h2 class="text-lg font-bold text-gray-900">Kontaktní údaje</h2>
+              <p class="text-xs text-gray-400 mt-0.5">Adresa, telefon a e-mail zobrazené na hlavní stránce</p>
+            </div>
+            <button class="save-btn bg-brand text-white text-sm font-semibold px-5 py-2 rounded-xl hover:bg-brand-dark transition-colors flex-shrink-0" data-target="kontakt">
+              Uložit
+            </button>
+          </div>
+          <div class="space-y-4 max-w-md">
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Adresa</label>
+              <input type="text" id="kontakt-address" placeholder="Studentská 758, 436 01 Litvínov">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Telefon</label>
+              <input type="tel" id="kontakt-phone" placeholder="+420 770 696 990">
+            </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">E-mail</label>
+              <input type="email" id="kontakt-email" placeholder="esmedica.litvinov@gmail.com">
+            </div>
+          </div>
+          <p id="kontakt-saved" class="hidden mt-5 text-xs text-green-600 font-medium flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            Uloženo — změny se projeví na webu po obnovení stránky
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /admin-wrap -->
+
+  <script>
+    // ⚠️ Změňte heslo před sdílením souboru!
+    const ADMIN_PASSWORD = 'esmedica2024';
+
+    // ─── Výchozí data ───
+    const DEFAULTS = {
+      hours: [
+        { day: 'Pondělí', morning: '07:00 – 12:00', afternoon: '12:30 – 14:30' },
+        { day: 'Úterý',   morning: '',               afternoon: '12:00 – 18:00' },
+        { day: 'Středa',  morning: '07:00 – 12:00', afternoon: ''               },
+        { day: 'Čtvrtek', morning: '07:00 – 12:00', afternoon: '12:30 – 14:30' },
+        { day: 'Pátek',   morning: '07:00 – 12:00', afternoon: ''               },
+      ],
+      cenik: {
+        posudky: [
+          { name: 'Posudek pro pracovní účely',                   price: '900 Kč'        },
+          { name: 'Posudek o zdravotní způsobilosti k řízení',    price: '1 000 Kč'      },
+          { name: 'Posudek k řízení vozidla (65+ let)',           price: '500 Kč'        },
+          { name: 'Posudek pro zbrojní průkaz',                   price: '1 100 Kč'      },
+          { name: 'Hodnocení sociálních dopadů pracovního úrazu', price: '700 Kč'        },
+          { name: 'Hodnocení bolestného při pracovním úrazu',     price: '700 Kč'        },
+          { name: 'Hodnocení bolestného (nepracovní úraz)',       price: '700 Kč'        },
+          { name: 'Zpráva o pracovním omezení pro úřad práce',    price: '500 Kč'        },
+          { name: 'Posudek pro přijetí do sociálního zařízení',  price: '300 Kč'        },
+          { name: 'Způsobilost k výletu / rekreační aktivitě',    price: '300 Kč'        },
+          { name: 'Způsobilost ke studiu / vzdělávací aktivitě',  price: '300 Kč'        },
+          { name: 'Ostatní zdravotní posudky',                    price: '500 Kč'        },
+          { name: 'Předoperační vyšetření + EKG',                 price: '350 + 250 Kč'  },
+          { name: 'Vyšetření osoby bez zdravotního pojištění',    price: '700 Kč'        },
+        ],
+        administrativa: [
+          { name: 'Výpis ze zdravotní dokumentace',               price: '400 Kč' },
+          { name: 'Administrativní úkony (za každých 10 minut)',  price: '150 Kč' },
+          { name: 'Kopie zdravotní dokumentace (za stranu)',      price: '5 Kč'   },
+        ],
+        ostatni: [
+          { name: 'Aplikace očkování',           price: '300 Kč' },
+          { name: 'FOB test (okultní krvácení)', price: '400 Kč' },
+          { name: 'Záloha na FOB test',          price: '200 Kč' },
+        ],
+      },
+      pojistovny: [
+        { name: 'VZP',  url: 'http://www.vzp.cz',    img: 'https://jk1.cz/template/pojistovny/vzp.jpg',  active: true },
+        { name: 'ZPMV', url: 'http://www.zpmvcr.cz', img: 'https://jk1.cz/template/pojistovny/ZPMV.jpg', active: true },
+        { name: 'OZP',  url: 'http://www.ozp.cz',    img: 'https://jk1.cz/template/pojistovny/OZP.jpg',  active: true },
+        { name: 'ČPZP', url: 'http://www.cpzp.cz',   img: 'https://jk1.cz/template/pojistovny/CPZP.jpg', active: true },
+        { name: 'RBP',  url: 'http://www.rbp-zp.cz', img: 'https://jk1.cz/template/pojistovny/RVP.jpg',  active: true },
+        { name: 'VoZP', url: 'https://www.vozp.cz',  img: 'https://jk1.cz/template/pojistovny/VoZP.jpg', active: true },
+      ],
+      kontakt: {
+        address: 'Studentská 758, 436 01 Litvínov',
+        phone:   '+420 770 696 990',
+        email:   'esmedica.litvinov@gmail.com',
+      },
+    };
+
+    // ─── Helpers ───
+    function lsLoad(key) {
+      try { return JSON.parse(localStorage.getItem('esmedica_' + key)); } catch { return null; }
+    }
+    function lsSave(key, val) {
+      localStorage.setItem('esmedica_' + key, JSON.stringify(val));
+    }
+    function esc(s) {
+      return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function showSaved(id) {
+      const el = document.getElementById(id);
+      el.classList.remove('hidden');
+      clearTimeout(el._t);
+      el._t = setTimeout(() => el.classList.add('hidden'), 3500);
+    }
+
+    // ─── Login ───
+    const loginWrap = document.getElementById('login-wrap');
+    const adminWrap = document.getElementById('admin-wrap');
+
+    function doLogin(pw) {
+      if (pw === ADMIN_PASSWORD) {
+        sessionStorage.setItem('esmedica_admin', '1');
+        loginWrap.classList.add('hidden');
+        adminWrap.classList.remove('hidden');
+        initAdmin();
+      } else {
+        document.getElementById('pw-err').classList.remove('hidden');
+        document.getElementById('pw-input').value = '';
+        document.getElementById('pw-input').focus();
+      }
+    }
+
+    if (sessionStorage.getItem('esmedica_admin') === '1') {
+      loginWrap.classList.add('hidden');
+      adminWrap.classList.remove('hidden');
+      initAdmin();
+    }
+
+    document.getElementById('login-btn').addEventListener('click', () =>
+      doLogin(document.getElementById('pw-input').value));
+    document.getElementById('pw-input').addEventListener('keydown', e => {
+      if (e.key === 'Enter') doLogin(e.target.value);
+    });
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      sessionStorage.removeItem('esmedica_admin');
+      adminWrap.classList.add('hidden');
+      loginWrap.classList.remove('hidden');
+      document.getElementById('pw-input').value = '';
+    });
+
+    // ─── Tabs ───
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+        document.getElementById('sec-' + btn.dataset.tab).classList.add('active');
+      });
+    });
+
+    // ─── Init ───
+    function initAdmin() {
+      renderHours();
+      renderCenik();
+      renderPojistovny();
+      renderKontakt();
+
+      // Save buttons
+      document.querySelectorAll('.save-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const t = btn.dataset.target;
+          if (t === 'hours')      saveHours();
+          if (t === 'cenik')      saveCenik();
+          if (t === 'pojistovny') savePojistovny();
+          if (t === 'kontakt')    saveKontakt();
+        });
+      });
+
+      // Add-row buttons
+      document.querySelectorAll('.add-row-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const sec = btn.dataset.section;
+          const data = lsLoad('cenik') || DEFAULTS.cenik;
+          data[sec].push({ name: '', price: '' });
+          lsSave('cenik', data);
+          renderCenikSection(sec, data[sec]);
+          // Focus new input
+          const rows = document.getElementById('cenik-' + sec + '-rows');
+          rows.querySelectorAll('[data-field="name"]').item(
+            rows.querySelectorAll('[data-field="name"]').length - 1
+          )?.focus();
+        });
+      });
+    }
+
+    // ─── HOURS ───
+    function renderHours() {
+      const data = lsLoad('hours') || DEFAULTS.hours;
+      document.getElementById('hours-tbody').innerHTML = data.map((row, i) => `
+        <tr>
+          <td class="py-2 pr-3 ${i > 0 ? 'border-t border-gray-50' : ''}">
+            <span class="text-sm font-semibold text-gray-700">${esc(row.day)}</span>
+          </td>
+          <td class="py-2 px-2 ${i > 0 ? 'border-t border-gray-50' : ''}">
+            <input type="text" value="${esc(row.morning)}" placeholder="—"
+              data-day="${i}" data-field="morning">
+          </td>
+          <td class="py-2 px-2 ${i > 0 ? 'border-t border-gray-50' : ''}">
+            <input type="text" value="${esc(row.afternoon)}" placeholder="—"
+              data-day="${i}" data-field="afternoon">
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function saveHours() {
+      const data = lsLoad('hours') || DEFAULTS.hours;
+      document.querySelectorAll('#hours-tbody input').forEach(inp => {
+        data[inp.dataset.day][inp.dataset.field] = inp.value.trim();
+      });
+      lsSave('hours', data);
+      showSaved('hours-saved');
+    }
+
+    // ─── CENÍK ───
+    function renderCenikSection(sec, items) {
+      document.getElementById('cenik-' + sec + '-rows').innerHTML = items.map((item, i) => `
+        <div class="flex items-center gap-2">
+          <input type="text" value="${esc(item.name)}" placeholder="Název položky"
+            class="flex-1" style="flex:1"
+            data-section="${sec}" data-idx="${i}" data-field="name">
+          <input type="text" value="${esc(item.price)}" placeholder="Cena"
+            style="width:7rem;text-align:right"
+            data-section="${sec}" data-idx="${i}" data-field="price">
+          <button class="del-row-btn w-8 h-8 flex items-center justify-center rounded-lg text-gray-300 hover:text-red-400 hover:bg-red-50 transition-colors flex-shrink-0"
+            data-section="${sec}" data-idx="${i}" title="Odebrat">
+            <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+          </button>
+        </div>
+      `).join('');
+
+      // Bind delete buttons
+      document.querySelectorAll('#cenik-' + sec + '-rows .del-row-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const s = btn.dataset.section;
+          const data = lsLoad('cenik') || DEFAULTS.cenik;
+          data[s].splice(parseInt(btn.dataset.idx), 1);
+          lsSave('cenik', data);
+          renderCenikSection(s, data[s]);
+        });
+      });
+    }
+
+    function renderCenik() {
+      const data = lsLoad('cenik') || DEFAULTS.cenik;
+      renderCenikSection('posudky', data.posudky);
+      renderCenikSection('administrativa', data.administrativa);
+      renderCenikSection('ostatni', data.ostatni);
+    }
+
+    function saveCenik() {
+      const data = { posudky: [], administrativa: [], ostatni: [] };
+      ['posudky', 'administrativa', 'ostatni'].forEach(sec => {
+        document.querySelectorAll(`#cenik-${sec}-rows [data-field="name"]`).forEach((inp, i) => {
+          const price = document.querySelector(`#cenik-${sec}-rows [data-idx="${i}"][data-field="price"]`);
+          if (inp.value.trim()) {
+            data[sec].push({ name: inp.value.trim(), price: price?.value.trim() ?? '' });
+          }
+        });
+      });
+      lsSave('cenik', data);
+      showSaved('cenik-saved');
+    }
+
+    // ─── POJIŠŤOVNY ───
+    function renderPojistovny() {
+      const data = lsLoad('pojistovny') || DEFAULTS.pojistovny;
+      document.getElementById('pojistovny-list').innerHTML = data.map((p, i) => `
+        <label class="flex items-center gap-4 p-3 rounded-xl border border-gray-100 hover:bg-gray-50 transition-colors cursor-pointer">
+          <input type="checkbox" class="w-4 h-4 accent-[#0891b2]" data-idx="${i}" ${p.active ? 'checked' : ''}>
+          <img src="${esc(p.img)}" alt="${esc(p.name)}" class="h-8 w-auto object-contain flex-shrink-0">
+          <span class="text-sm font-semibold text-gray-700 flex-1">${esc(p.name)}</span>
+          <span class="text-xs text-gray-300">${esc(p.url)}</span>
+        </label>
+      `).join('');
+    }
+
+    function savePojistovny() {
+      const data = lsLoad('pojistovny') || DEFAULTS.pojistovny;
+      document.querySelectorAll('#pojistovny-list input[type="checkbox"]').forEach(cb => {
+        data[parseInt(cb.dataset.idx)].active = cb.checked;
+      });
+      lsSave('pojistovny', data);
+      showSaved('pojistovny-saved');
+    }
+
+    // ─── KONTAKT ───
+    function renderKontakt() {
+      const data = lsLoad('kontakt') || DEFAULTS.kontakt;
+      document.getElementById('kontakt-address').value = data.address;
+      document.getElementById('kontakt-phone').value   = data.phone;
+      document.getElementById('kontakt-email').value   = data.email;
+    }
+
+    function saveKontakt() {
+      lsSave('kontakt', {
+        address: document.getElementById('kontakt-address').value.trim(),
+        phone:   document.getElementById('kontakt-phone').value.trim(),
+        email:   document.getElementById('kontakt-email').value.trim(),
+      });
+      showSaved('kontakt-saved');
+    }
+  </script>
+</body>
+</html>
