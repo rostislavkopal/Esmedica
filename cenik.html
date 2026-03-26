@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Ceník služeb ESMEDICA Litvínov — MUDr. Šárka Salačová. Platný od 1. 3. 2024.">
+  <title>Ceník | ESMEDICA Litvínov</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: '#0891b2',
+            'brand-dark': '#0e7490',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+
+    /* Dark mode */
+    html.dark body            { background-color: #0f172a; color: #e2e8f0; }
+    html.dark nav             { background-color: #1e293b !important; border-color: #334155 !important; }
+    html.dark .bg-white       { background-color: #1e293b !important; }
+    html.dark .bg-gray-50     { background-color: #0f172a !important; }
+    html.dark .border-gray-100{ border-color: #334155 !important; }
+    html.dark .text-gray-900  { color: #f1f5f9 !important; }
+    html.dark .text-gray-800  { color: #e2e8f0 !important; }
+    html.dark .text-gray-700  { color: #cbd5e1 !important; }
+    html.dark .text-gray-600  { color: #94a3b8 !important; }
+    html.dark .text-gray-500  { color: #64748b !important; }
+    html.dark .text-gray-400  { color: #64748b !important; }
+    html.dark .text-gray-300  { color: #475569 !important; }
+    html.dark .bg-gray-100    { background-color: #334155 !important; }
+    html.dark .hover\:bg-gray-50:hover { background-color: #334155 !important; }
+    html.dark .shadow-sm      { box-shadow: 0 1px 3px rgba(0,0,0,0.5) !important; }
+    html.dark .bg-amber-50    { background-color: rgba(120,53,15,0.25) !important; }
+    html.dark .border-amber-200{ border-color: rgba(146,64,14,0.4) !important; }
+    html.dark .text-amber-800 { color: #fbbf24 !important; }
+    html.dark .text-gray-800.font-bold { color: #f1f5f9 !important; }
+    html.dark .divide-gray-100 > * + * { border-color: #334155 !important; }
+    html.dark .divide-gray-50 > * + *  { border-color: #1e293b !important; }
+    html.dark .border-gray-50  { border-color: #1e293b !important; }
+    html.dark .text-brand      { color: #22d3ee !important; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+  <!-- Navbar -->
+  <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
+      <a href="mapa.html" class="flex items-center">
+        <img src="logo/Gemini_Generated_Image_nzqnpnnzqnpnnzqn.png" alt="ESMEDICA" class="h-10 sm:h-12 w-auto">
+      </a>
+      <div class="hidden sm:flex items-center gap-0.5 text-sm font-medium">
+        <a href="mapa.html" class="px-4 py-2 rounded-lg text-gray-500 hover:text-gray-800 hover:bg-gray-50 tracking-wide transition-colors">Domů</a>
+        <a href="poskytujeme.html" class="px-4 py-2 rounded-lg text-gray-500 hover:text-gray-800 hover:bg-gray-50 tracking-wide transition-colors">Poskytujeme</a>
+        <a href="cenik.html" class="px-4 py-2 rounded-lg bg-brand text-white tracking-wide">Ceník</a>
+      </div>
+      <div class="flex items-center gap-2">
+        <button id="theme-toggle" aria-label="Přepnout tmavý režim"
+          class="w-9 h-9 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 transition-colors">
+          <svg id="icon-sun" class="hidden w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+          </svg>
+          <svg id="icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+          </svg>
+        </button>
+        <a href="mapa.html" class="sm:hidden text-brand text-sm font-medium">← Domů</a>
+      </div>
+    </div>
+  </nav>
+
+  <script>
+    const html = document.documentElement;
+    const btn = document.getElementById('theme-toggle');
+    const sun = document.getElementById('icon-sun');
+    const moon = document.getElementById('icon-moon');
+    function setTheme(dark) {
+      html.classList.toggle('dark', dark);
+      sun.classList.toggle('hidden', !dark);
+      moon.classList.toggle('hidden', dark);
+      localStorage.setItem('theme', dark ? 'dark' : 'light');
+    }
+    const saved = localStorage.getItem('theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(saved ? saved === 'dark' : prefersDark);
+    btn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
+  </script>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-5 pb-10 space-y-5">
+
+    <!-- Nadpis -->
+    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+      <div class="flex flex-col sm:flex-row">
+        <div class="w-full sm:w-1.5 h-1.5 sm:h-auto bg-brand flex-shrink-0"></div>
+        <div class="flex-1 px-6 sm:px-10 py-7 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+          <div>
+            <p class="text-brand text-xs font-semibold uppercase tracking-widest mb-1">MUDr. Šárka Salačová</p>
+            <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Ceník služeb</h1>
+            <p class="mt-2 text-sm text-gray-500">Ceny platné od 1. 3. 2024</p>
+          </div>
+          <div class="flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-xl px-4 py-3 text-sm text-amber-800 flex-shrink-0">
+            <svg class="w-4 h-4 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+            </svg>
+            <span class="font-medium">Platba pouze v hotovosti</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Posudky a lékařská vyšetření -->
+    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-11 h-11 bg-brand rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-gray-900">Posudky a lékařská vyšetření</h2>
+          <p class="text-xs text-gray-400 mt-0.5">Výpisy, potvrzení a odborné posudky</p>
+        </div>
+      </div>
+      <div class="divide-y divide-gray-50">
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Posudek pro pracovní účely</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">900 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Posudek o zdravotní způsobilosti k řízení</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">1 000 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Posudek k řízení vozidla (65+ let)</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">500 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Posudek pro zbrojní průkaz</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">1 100 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Hodnocení sociálních dopadů pracovního úrazu</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">700 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Hodnocení bolestného při pracovním úrazu</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">700 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Hodnocení bolestného (nepracovní úraz)</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">700 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Zpráva o pracovním omezení pro úřad práce</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">500 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Posudek pro přijetí do sociálního zařízení</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">300 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Způsobilost k výletu / rekreační aktivitě</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">300 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Způsobilost ke studiu / vzdělávací aktivitě</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">300 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Ostatní zdravotní posudky</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">500 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Předoperační vyšetření + EKG</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">350 + 250 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Vyšetření osoby bez zdravotního pojištění</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">700 Kč</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Administrativa a dokumentace -->
+    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-11 h-11 bg-brand rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M8 7v8a2 2 0 002 2h6M8 7V5a2 2 0 012-2h4.586a1 1 0 01.707.293l4.414 4.414a1 1 0 01.293.707V15a2 2 0 01-2 2h-2M8 7H6a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2v-2"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-gray-900">Administrativa a dokumentace</h2>
+          <p class="text-xs text-gray-400 mt-0.5">Výpisy, kopie a administrativní úkony</p>
+        </div>
+      </div>
+      <div class="divide-y divide-gray-50">
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Výpis ze zdravotní dokumentace</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">400 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Administrativní úkony (za každých 10 minut)</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">150 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <span class="text-sm text-gray-700">Kopie zdravotní dokumentace (za stranu)</span>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">5 Kč</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Ostatní výkony -->
+    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="w-11 h-11 bg-brand rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">
+          <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+          </svg>
+        </div>
+        <div>
+          <h2 class="text-lg font-bold text-gray-900">Ostatní výkony</h2>
+          <p class="text-xs text-gray-400 mt-0.5">Očkování a specializované testy</p>
+        </div>
+      </div>
+      <div class="divide-y divide-gray-50">
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <div>
+            <span class="text-sm text-gray-700">Aplikace očkování</span>
+            <span class="text-xs text-gray-400 block mt-0.5">Cena nezahrnuje vakcínu</span>
+          </div>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">300 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <div>
+            <span class="text-sm text-gray-700">FOB test (okultní krvácení)</span>
+          </div>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">400 Kč</span>
+        </div>
+        <div class="flex items-center justify-between py-3 px-2 rounded-lg hover:bg-gray-50 transition-colors">
+          <div>
+            <span class="text-sm text-gray-700">Záloha na FOB test</span>
+            <span class="text-xs text-gray-400 block mt-0.5">Vratná záloha</span>
+          </div>
+          <span class="text-sm font-semibold text-gray-900 tabular-nums">200 Kč</span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-2.5 border-t border-gray-100 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm text-gray-500">
+        <div>
+          <p class="font-bold text-gray-800 text-base mb-1">MUDr. Šárka Salačová</p>
+          <p class="text-xs">praktický lékař pro dospělé · Litvínov</p>
+          <p class="mt-2">Studentská 758, 436 01 Litvínov</p>
+          <a href="tel:+420770696990" class="mt-1.5 flex items-center gap-2 text-brand font-medium hover:underline py-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            770 69 69 90
+          </a>
+        </div>
+        <div class="sm:text-right text-xs text-gray-400 flex flex-col justify-end">
+          <p>ESMEDICA Litvínov s.r.o.</p>
+          <a href="#" class="hover:underline mt-1">Ochrana osobních údajů</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
