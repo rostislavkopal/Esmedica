@@ -94,43 +94,46 @@
 
   <!-- Navbar -->
   <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-      <a href="mapa2.html" class="flex items-center">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center h-16">
+      <a href="mapa.html" class="flex items-center flex-shrink-0">
         <img src="logo/Gemini_Generated_Image_nzqnpnnzqnpnnzqn.png" alt="ESMEDICA" class="h-10 sm:h-12 w-auto">
       </a>
-      <div class="hidden sm:flex items-center gap-0.5 text-sm font-medium">
-        <a href="mapa2.html" class="px-4 py-2 rounded-lg text-gray-500 hover:text-gray-800 hover:bg-gray-50 tracking-wide transition-colors">Domů</a>
-        <a href="medevio.html" class="px-4 py-2 rounded-lg bg-brand text-white tracking-wide">Objednání</a>
-        <a href="poskytujeme.html" class="px-4 py-2 rounded-lg text-gray-500 hover:text-gray-800 hover:bg-gray-50 tracking-wide transition-colors">Poskytujeme</a>
-        <a href="cenik.html" class="px-4 py-2 rounded-lg text-gray-500 hover:text-gray-800 hover:bg-gray-50 tracking-wide transition-colors">Ceník</a>
-      </div>
-      <div class="flex items-center gap-2">
-        <!-- Dark mode toggle -->
-        <button id="theme-toggle" aria-label="Přepnout tmavý režim"
-          class="w-9 h-9 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 transition-colors">
-          <svg id="icon-sun" class="hidden w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"/>
-          </svg>
-          <svg id="icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-          </svg>
-        </button>
+      <div class="hidden sm:flex items-center gap-1 text-sm font-medium ml-auto">
+        <a href="mapa.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 tracking-wide transition-colors">Domů</a>
+        <a href="poskytujeme.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 tracking-wide transition-colors">Poskytujeme</a>
+        <a href="cenik.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 tracking-wide transition-colors">Ceník</a>
+        <a href="medevio.html" class="px-4 py-2 rounded-lg bg-brand/10 hover:bg-brand/15 transition-colors flex items-center medevio-logo-bg">
+          <img src="https://umsousercontent.com/lib_VIqzMBqtfUYwExIq/vgWNiFkBtjVmMJug.svg?w=180&dpr=2" alt="Medevio" class="h-4 w-auto">
+        </a>
       </div>
     </div>
   </nav>
 
+  <!-- Plovoucí panel (dočasný) -->
+  <div class="fixed bottom-4 right-4 z-50 bg-white border border-gray-200 rounded-xl shadow-lg p-2 min-w-max">
+    <button id="theme-toggle" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-100 transition-colors w-full text-left">
+      <svg id="icon-sun" class="hidden w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+      </svg>
+      <svg id="icon-moon" class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+      </svg>
+      <span id="theme-label">Tmavý režim</span>
+    </button>
+  </div>
+
   <script>
     const html = document.documentElement;
-    const btn = document.getElementById('theme-toggle');
-    const sun = document.getElementById('icon-sun');
-    const moon = document.getElementById('icon-moon');
+    const themeBtn = document.getElementById('theme-toggle');
+    const iconSun = document.getElementById('icon-sun');
+    const iconMoon = document.getElementById('icon-moon');
+    const themeLabel = document.getElementById('theme-label');
 
     function setTheme(dark) {
       html.classList.toggle('dark', dark);
-      sun.classList.toggle('hidden', !dark);
-      moon.classList.toggle('hidden', dark);
+      iconSun.classList.toggle('hidden', !dark);
+      iconMoon.classList.toggle('hidden', dark);
+      themeLabel.textContent = dark ? 'Světlý režim' : 'Tmavý režim';
       localStorage.setItem('theme', dark ? 'dark' : 'light');
     }
 
@@ -138,7 +141,7 @@
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setTheme(saved ? saved === 'dark' : prefersDark);
 
-    btn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
+    themeBtn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
   </script>
 
   <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
@@ -278,27 +281,11 @@
       <div class="mt-8 pt-6 border-t border-brand/15">
         <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Aplikace je zdarma</p>
         <div class="flex items-center justify-center gap-3 flex-wrap">
-          <!-- TODO: Replace href with actual App Store URL -->
-          <a href="https://apps.apple.com/TODO" target="_blank" rel="noopener"
-            class="flex items-center gap-2 bg-gray-900 text-white rounded-xl px-4 py-2.5 hover:bg-gray-800 transition-colors">
-            <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-            </svg>
-            <div class="text-left">
-              <div style="font-size:9px" class="opacity-70 leading-none mb-0.5">Stáhnout v</div>
-              <div class="text-sm font-semibold leading-none">App Store</div>
-            </div>
+          <a href="https://apps.apple.com/cz/app/medevio/id1514781228" target="_blank" rel="noopener">
+            <img src="Logo/apple-en.png" alt="Stáhnout na App Store" class="h-10 w-auto">
           </a>
-          <!-- TODO: Replace href with actual Google Play URL -->
-          <a href="https://play.google.com/store/TODO" target="_blank" rel="noopener"
-            class="flex items-center gap-2 bg-gray-900 text-white rounded-xl px-4 py-2.5 hover:bg-gray-800 transition-colors">
-            <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3.18 23.76c.3.17.64.24.99.2l12.35-12.35L13.06 8.2 3.18 23.76zM20.7 10.26l-2.87-1.62L14.46 12l3.37 3.37 2.88-1.62c.82-.46.82-1.93-.01-2.49zM2.2 1.14C2.08 1.4 2 1.69 2 2.02v19.96c0 .33.08.62.2.87l.1.09 11.18-11.18v-.26L2.3 1.05l-.1.09zM13.06 15.8l3.46-3.46-12.34 6.95 8.88-3.49z"/>
-            </svg>
-            <div class="text-left">
-              <div style="font-size:9px" class="opacity-70 leading-none mb-0.5">Získat na</div>
-              <div class="text-sm font-semibold leading-none">Google Play</div>
-            </div>
+          <a href="https://play.google.com/store/apps/details?id=com.medevio.gateway" target="_blank" rel="noopener">
+            <img src="Logo/google.png" alt="Získat na Google Play" class="h-10 w-auto">
           </a>
         </div>
         <p class="text-xs text-gray-400 mt-3">Jde to i bez appky — přes prohlížeč v telefonu nebo počítači.</p>

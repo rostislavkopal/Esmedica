@@ -13,10 +13,10 @@
       theme: {
         extend: {
           colors: {
-            brand: '#0891b2',
-            'brand-dark': '#0e7490',
-            'brand-light': '#ecfeff',
-            'brand-mid': '#cffafe',
+            brand: '#1B67BF',
+            'brand-dark': '#1552A6',
+            'brand-light': '#eff6ff',
+            'brand-mid': '#dbeafe',
           }
         }
       }
@@ -46,8 +46,10 @@
     html.dark .bg-amber-50    { background-color: rgba(120,53,15,0.25) !important; }
     html.dark .border-amber-200{ border-color: rgba(146,64,14,0.4) !important; }
     html.dark .text-amber-800 { color: #fbbf24 !important; }
-    html.dark .bg-brand\/8    { background-color: rgba(8,145,178,0.2) !important; }
-    html.dark .border-brand\/20{ border-color: rgba(8,145,178,0.35) !important; }
+    html.dark .bg-brand\/8    { background-color: rgba(27,103,191,0.2) !important; }
+    html.dark .border-brand\/20{ border-color: rgba(27,103,191,0.35) !important; }
+    html.dark .medevio-logo-bg { background-color: #ffffff !important; }
+    html.dark .bg-brand\/10   { background-color: rgba(27,103,191,0.25) !important; }
     html.dark .text-gray-800.font-bold { color: #f1f5f9 !important; }
     html.dark .divide-gray-100 > * + * { border-color: #334155 !important; }
     html.dark .border-gray-50  { border-color: #1e293b !important; }
@@ -57,47 +59,54 @@
 
   <!-- Navbar -->
   <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-      <a href="mapa.html" class="flex items-center">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center h-16">
+      <a href="mapa.html" class="flex items-center flex-shrink-0">
         <img src="logo/Gemini_Generated_Image_nzqnpnnzqnpnnzqn.png" alt="ESMEDICA" class="h-10 sm:h-12 w-auto">
       </a>
-      <div class="hidden sm:flex items-center gap-0.5 text-sm font-medium">
-        <a href="mapa.html" class="px-4 py-2 rounded-lg text-gray-500 hover:text-gray-800 hover:bg-gray-50 tracking-wide transition-colors">Domů</a>
-        <a href="poskytujeme.html" class="px-4 py-2 rounded-lg bg-brand text-white tracking-wide">Poskytujeme</a>
-        <a href="cenik.html" class="px-4 py-2 rounded-lg text-gray-500 hover:text-gray-800 hover:bg-gray-50 tracking-wide transition-colors">Ceník</a>
-      </div>
-      <div class="flex items-center gap-2">
-        <button id="theme-toggle" aria-label="Přepnout tmavý režim"
-          class="w-9 h-9 flex items-center justify-center rounded-lg text-gray-500 hover:bg-gray-100 transition-colors">
-          <svg id="icon-sun" class="hidden w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"/>
-          </svg>
-          <svg id="icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-              d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-          </svg>
-        </button>
-        <a href="mapa.html" class="sm:hidden text-brand text-sm font-medium">← Domů</a>
+      <div class="hidden sm:flex items-center gap-1 text-sm font-medium ml-auto">
+        <a href="mapa.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 tracking-wide transition-colors">Domů</a>
+        <a href="poskytujeme.html" class="px-4 py-2 rounded-lg bg-brand/10 text-brand tracking-wide transition-colors">Poskytujeme</a>
+        <a href="cenik.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 tracking-wide transition-colors">Ceník</a>
+        <a href="medevio.html" class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors flex items-center medevio-logo-bg">
+          <img src="https://umsousercontent.com/lib_VIqzMBqtfUYwExIq/vgWNiFkBtjVmMJug.svg?w=180&dpr=2" alt="Medevio" class="h-4 w-auto">
+        </a>
       </div>
     </div>
   </nav>
 
+  <!-- Plovoucí panel (dočasný) -->
+  <div class="fixed bottom-4 right-4 z-50 bg-white border border-gray-200 rounded-xl shadow-lg p-2 min-w-max">
+    <button id="theme-toggle" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-100 transition-colors w-full text-left">
+      <svg id="icon-sun" class="hidden w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+      </svg>
+      <svg id="icon-moon" class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+      </svg>
+      <span id="theme-label">Tmavý režim</span>
+    </button>
+  </div>
+
   <script>
     const html = document.documentElement;
-    const btn = document.getElementById('theme-toggle');
-    const sun = document.getElementById('icon-sun');
-    const moon = document.getElementById('icon-moon');
+    const themeBtn = document.getElementById('theme-toggle');
+    const iconSun = document.getElementById('icon-sun');
+    const iconMoon = document.getElementById('icon-moon');
+    const themeLabel = document.getElementById('theme-label');
+
     function setTheme(dark) {
       html.classList.toggle('dark', dark);
-      sun.classList.toggle('hidden', !dark);
-      moon.classList.toggle('hidden', dark);
+      iconSun.classList.toggle('hidden', !dark);
+      iconMoon.classList.toggle('hidden', dark);
+      themeLabel.textContent = dark ? 'Světlý režim' : 'Tmavý režim';
       localStorage.setItem('theme', dark ? 'dark' : 'light');
     }
+
     const saved = localStorage.getItem('theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     setTheme(saved ? saved === 'dark' : prefersDark);
-    btn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
+
+    themeBtn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
   </script>
 
   <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-5 pb-10 space-y-5">
