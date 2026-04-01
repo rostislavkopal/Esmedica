@@ -53,12 +53,12 @@ const DataService = (() => {
     ],
 
     pojistovny: [
-      { name: 'VZP',  url: 'http://www.vzp.cz',    img: './assets/images/pojistovny/vzp.jpg',  active: true },
-      { name: 'ZPMV', url: 'http://www.zpmvcr.cz', img: './assets/images/pojistovny/ZPMV.jpg', active: true },
-      { name: 'OZP',  url: 'http://www.ozp.cz',    img: './assets/images/pojistovny/OZP.jpg',  active: true },
-      { name: 'ČPZP', url: 'http://www.cpzp.cz',   img: './assets/images/pojistovny/CPZP.jpg', active: true },
-      { name: 'RBP',  url: 'http://www.rbp-zp.cz', img: './assets/images/pojistovny/RVP.jpg',  active: true },
-      { name: 'VoZP', url: 'https://www.vozp.cz',  img: './assets/images/pojistovny/VoZP.jpg', active: true },
+      { name: 'VZP',  url: 'http://www.vzp.cz',    img: './assets/images/pojistovny/vzp.png',  active: true },
+      { name: 'ZPMV', url: 'http://www.zpmvcr.cz', img: './assets/images/pojistovny/ZPMV.png', active: true },
+      { name: 'OZP',  url: 'http://www.ozp.cz',    img: './assets/images/pojistovny/OZP.png',  active: true },
+      { name: 'ČPZP', url: 'http://www.cpzp.cz',   img: './assets/images/pojistovny/CPZP.png', active: true },
+      { name: 'RBP',  url: 'http://www.rbp-zp.cz', img: './assets/images/pojistovny/RVP.png',  active: true },
+      { name: 'VoZP', url: 'https://www.vozp.cz',  img: './assets/images/pojistovny/VoZP.png', active: true },
     ],
 
     kontakt: {
