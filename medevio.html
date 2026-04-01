@@ -103,46 +103,12 @@
         <a href="poskytujeme.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 tracking-wide transition-colors">Poskytujeme</a>
         <a href="cenik.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 tracking-wide transition-colors">Ceník</a>
         <a href="medevio.html" class="px-4 py-2 rounded-lg bg-brand/10 hover:bg-brand/15 transition-colors flex items-center medevio-logo-bg">
-          <img src="https://umsousercontent.com/lib_VIqzMBqtfUYwExIq/vgWNiFkBtjVmMJug.svg?w=180&dpr=2" alt="Medevio" class="h-4 w-auto">
+          <img src="./assets/images/medevio-logo.svg" alt="Medevio" class="h-4 w-auto">
         </a>
       </div>
     </div>
   </nav>
 
-  <!-- Plovoucí panel (dočasný) -->
-  <div class="fixed bottom-4 right-4 z-50 bg-white border border-gray-200 rounded-xl shadow-lg p-2 min-w-max">
-    <button id="theme-toggle" class="flex items-center gap-2 px-3 py-2 rounded-lg text-sm text-gray-600 hover:bg-gray-100 transition-colors w-full text-left">
-      <svg id="icon-sun" class="hidden w-4 h-4 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"/>
-      </svg>
-      <svg id="icon-moon" class="w-4 h-4 text-gray-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-      </svg>
-      <span id="theme-label">Tmavý režim</span>
-    </button>
-  </div>
-
-  <script>
-    const html = document.documentElement;
-    const themeBtn = document.getElementById('theme-toggle');
-    const iconSun = document.getElementById('icon-sun');
-    const iconMoon = document.getElementById('icon-moon');
-    const themeLabel = document.getElementById('theme-label');
-
-    function setTheme(dark) {
-      html.classList.toggle('dark', dark);
-      iconSun.classList.toggle('hidden', !dark);
-      iconMoon.classList.toggle('hidden', dark);
-      themeLabel.textContent = dark ? 'Světlý režim' : 'Tmavý režim';
-      localStorage.setItem('theme', dark ? 'dark' : 'light');
-    }
-
-    const saved = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    setTheme(saved ? saved === 'dark' : prefersDark);
-
-    themeBtn.addEventListener('click', () => setTheme(!html.classList.contains('dark')));
-  </script>
 
   <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-8 pb-16 space-y-8">
 
@@ -152,13 +118,30 @@
         <div class="w-1.5 bg-brand flex-shrink-0"></div>
         <div class="px-8 py-8 flex-1">
           <div class="mb-4">
-            <img src="https://umsousercontent.com/lib_VIqzMBqtfUYwExIq/vgWNiFkBtjVmMJug.svg?w=180&dpr=2"
+            <img src="./assets/images/medevio-logo.svg"
                  alt="Medevio" class="h-7 w-auto">
           </div>
           <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-2">
             Proč jsme zavedli Medevio
           </h1>
-          <p class="text-brand text-xs font-semibold uppercase tracking-widest">Online objednání a komunikace s ordinací</p>
+          <p class="text-brand text-xs font-semibold uppercase tracking-widest mb-5">Online objednání a komunikace s ordinací</p>
+          <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener"
+            class="book-pulse inline-flex items-center text-white rounded-xl overflow-hidden ring-1 ring-white/30 mt-1">
+            <div class="flex items-center justify-center self-stretch bg-white/10 px-4">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 14l2 2 4-4"/>
+              </svg>
+            </div>
+            <div class="py-3 px-4 flex items-center justify-center">
+              <span class="text-sm font-bold leading-tight">Objednejte se online</span>
+            </div>
+            <div class="flex items-center self-stretch bg-white px-3 medevio-logo-bg">
+              <img src="./assets/images/medevio-logo.svg"
+                alt="Medevio" class="h-4 w-auto">
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -263,18 +246,28 @@
     <div class="rounded-2xl border border-brand/15 shadow-sm p-8 text-center"
          style="background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 40%, #ffffff 100%)">
       <div class="mb-4">
-        <img src="https://umsousercontent.com/lib_VIqzMBqtfUYwExIq/vgWNiFkBtjVmMJug.svg?w=180&dpr=2"
+        <img src="./assets/images/medevio-logo.svg"
              alt="Medevio" class="h-6 w-auto mx-auto">
       </div>
       <h2 class="text-xl font-bold text-gray-900 mb-2">Připraveni napsat?</h2>
       <p class="text-sm text-gray-500 mb-6 max-w-sm mx-auto">Přihlaste se nebo si vytvořte účet — je to zdarma a zabere to minutu.</p>
       <!-- TODO: Replace href with actual Medevio profile URL, e.g. https://my.medevio.cz/esmedica-litvinov -->
       <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener"
-        class="book-pulse inline-flex items-center gap-2 text-white text-sm font-semibold px-8 py-3 rounded-xl">
-        Napsat nám přes Medevio
-        <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-        </svg>
+        class="book-pulse flex items-center text-white rounded-xl overflow-hidden ring-1 ring-white/30 max-w-sm mx-auto">
+        <div class="flex items-center justify-center self-stretch bg-white/10 px-5">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 14l2 2 4-4"/>
+          </svg>
+        </div>
+        <div class="flex-1 py-4 px-4 flex items-center justify-center">
+          <span class="text-lg font-bold leading-tight">Objednejte se online</span>
+        </div>
+        <div class="flex items-center self-stretch bg-white px-4 medevio-logo-bg">
+          <img src="./assets/images/medevio-logo.svg"
+            alt="Medevio" class="h-5 w-auto">
+        </div>
       </a>
 
       <!-- App download -->
