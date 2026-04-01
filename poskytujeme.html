@@ -26,48 +26,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body { font-family: 'Inter', system-ui, sans-serif; }
-
-    /* Dark mode */
-    html.dark body            { background-color: #0f172a; color: #e2e8f0; }
-    html.dark nav             { background-color: #1e293b !important; border-color: #334155 !important; }
-    html.dark .bg-white       { background-color: #1e293b !important; }
-    html.dark .bg-gray-50     { background-color: #0f172a !important; }
-    html.dark .border-gray-100{ border-color: #334155 !important; }
-    html.dark .text-gray-900  { color: #f1f5f9 !important; }
-    html.dark .text-gray-800  { color: #e2e8f0 !important; }
-    html.dark .text-gray-700  { color: #cbd5e1 !important; }
-    html.dark .text-gray-600  { color: #94a3b8 !important; }
-    html.dark .text-gray-500  { color: #64748b !important; }
-    html.dark .text-gray-400  { color: #64748b !important; }
-    html.dark .text-gray-300  { color: #475569 !important; }
-    html.dark .bg-gray-100    { background-color: #334155 !important; }
-    html.dark .hover\:bg-gray-50:hover { background-color: #334155 !important; }
-    html.dark .shadow-sm      { box-shadow: 0 1px 3px rgba(0,0,0,0.5) !important; }
-    html.dark .bg-amber-50    { background-color: rgba(120,53,15,0.25) !important; }
-    html.dark .border-amber-200{ border-color: rgba(146,64,14,0.4) !important; }
-    html.dark .text-amber-800 { color: #fbbf24 !important; }
-    html.dark .bg-brand\/8    { background-color: rgba(27,103,191,0.2) !important; }
-    html.dark .border-brand\/20{ border-color: rgba(27,103,191,0.35) !important; }
-    html.dark .medevio-logo-bg { background-color: #ffffff !important; }
-    html.dark .bg-brand\/10   { background-color: rgba(27,103,191,0.25) !important; }
-    html.dark .text-gray-800.font-bold { color: #f1f5f9 !important; }
-    html.dark .divide-gray-100 > * + * { border-color: #334155 !important; }
-    html.dark .border-gray-50  { border-color: #1e293b !important; }
   </style>
 </head>
-<body class="bg-gray-50 text-gray-800 antialiased">
+<body class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-slate-200 antialiased">
 
   <!-- Navbar -->
-  <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+  <nav class="bg-white dark:bg-slate-800 border-b border-gray-100 dark:border-slate-700 sticky top-0 z-50">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center h-16">
       <a href="mapa.html" class="flex items-center flex-shrink-0">
         <img src="logo/Gemini_Generated_Image_nzqnpnnzqnpnnzqn.png" alt="ESMEDICA" class="h-10 sm:h-12 w-auto">
       </a>
       <div class="hidden sm:flex items-center gap-1 text-sm font-medium ml-auto">
-        <a href="mapa.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 tracking-wide transition-colors">Domů</a>
-        <a href="poskytujeme.html" class="px-4 py-2 rounded-lg bg-brand/10 text-brand tracking-wide transition-colors">Poskytujeme</a>
-        <a href="cenik.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 tracking-wide transition-colors">Ceník</a>
-        <a href="medevio.html" class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors flex items-center medevio-logo-bg">
+        <a href="mapa.html" class="px-4 py-2 rounded-lg text-gray-600 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700 tracking-wide transition-colors">Domů</a>
+        <a href="poskytujeme.html" class="px-4 py-2 rounded-lg bg-brand/10 dark:bg-brand/20 text-brand tracking-wide transition-colors">Poskytujeme</a>
+        <a href="cenik.html" class="px-4 py-2 rounded-lg text-gray-600 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700 tracking-wide transition-colors">Ceník</a>
+        <a href="medevio.html" class="px-4 py-2 rounded-lg text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex items-center bg-white dark:bg-white">
           <img src="https://umsousercontent.com/lib_VIqzMBqtfUYwExIq/vgWNiFkBtjVmMJug.svg?w=180&dpr=2" alt="Medevio" class="h-4 w-auto">
         </a>
       </div>
@@ -78,13 +51,13 @@
   <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-5 pb-10 space-y-5">
 
     <!-- Nadpis stránky -->
-    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+    <div class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm overflow-hidden">
       <div class="flex flex-col sm:flex-row">
         <div class="w-full sm:w-1.5 h-1.5 sm:h-auto bg-brand flex-shrink-0"></div>
         <div class="flex-1 px-6 sm:px-10 py-7">
           <p class="text-brand text-xs font-semibold uppercase tracking-widest mb-1">MUDr. Šárka Salačová</p>
-          <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">Poskytované služby</h1>
-          <p class="mt-2 text-sm text-gray-500">Komplex léčebně-preventivní péče pro dospělé pacienty v Litvínově.</p>
+          <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-slate-100 tracking-tight">Poskytované služby</h1>
+          <p class="mt-2 text-sm text-gray-500 dark:text-slate-400">Komplex léčebně-preventivní péče pro dospělé pacienty v Litvínově.</p>
         </div>
       </div>
     </div>
@@ -92,25 +65,25 @@
     <div id="poskytujeme-sections"></div>
 
     <!-- Info pruh -->
-    <div class="bg-brand/8 border border-brand/20 rounded-2xl p-5 flex items-center gap-4">
-      <div class="w-10 h-10 bg-brand/15 rounded-xl flex items-center justify-center flex-shrink-0">
+    <div class="bg-brand/8 dark:bg-brand/15 border border-brand/20 dark:border-brand/30 rounded-2xl p-5 flex items-center gap-4">
+      <div class="w-10 h-10 bg-brand/15 dark:bg-brand/25 rounded-xl flex items-center justify-center flex-shrink-0">
         <img src="logo/2537947561530272907-128.png" alt="Bezbariérový přístup" class="w-6 h-6"
           style="filter: brightness(0) saturate(100%) invert(42%) sepia(95%) saturate(400%) hue-rotate(162deg) brightness(92%) contrast(100%);">
       </div>
       <div>
-        <p class="text-sm font-semibold text-gray-800">Bezbariérový přístup</p>
-        <p class="text-xs text-gray-500 mt-0.5">Ordinace je plně přístupná pro vozíčkáře a pacienty se sníženou pohyblivostí.</p>
+        <p class="text-sm font-semibold text-gray-800 dark:text-slate-200">Bezbariérový přístup</p>
+        <p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">Ordinace je plně přístupná pro vozíčkáře a pacienty se sníženou pohyblivostí.</p>
       </div>
     </div>
 
   </main>
 
   <!-- Footer -->
-  <footer class="mt-2.5 border-t border-gray-100 bg-white">
+  <footer class="mt-2.5 border-t border-gray-100 dark:border-slate-700 bg-white dark:bg-slate-800">
     <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm text-gray-500">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm text-gray-500 dark:text-slate-400">
         <div>
-          <p class="font-bold text-gray-800 text-base mb-1">MUDr. Šárka Salačová</p>
+          <p class="font-bold text-gray-800 dark:text-slate-200 text-base mb-1">MUDr. Šárka Salačová</p>
           <p class="text-xs">praktický lékař pro dospělé · Litvínov</p>
           <p class="mt-2">Studentská 758, 436 01 Litvínov</p>
           <a href="tel:+420770696990" class="mt-1.5 flex items-center gap-2 text-brand font-medium hover:underline py-1">
@@ -121,7 +94,7 @@
             770 69 69 90
           </a>
         </div>
-        <div class="sm:text-right text-xs text-gray-400 flex flex-col justify-end">
+        <div class="sm:text-right text-xs text-gray-400 dark:text-slate-500 flex flex-col justify-end">
           <p>ESMEDICA Litvínov s.r.o.</p>
           <a href="#" class="hover:underline mt-1">Ochrana osobních údajů</a>
         </div>
@@ -164,24 +137,24 @@
       container.innerHTML = data.map(function(sec) {
         var iconSvg = SEKCE_IKONY[sec.icon] || SEKCE_IKONY['shield'];
         var items   = (sec.items || []).map(function(item) {
-          return '<div class="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 transition-colors">' +
+          return '<div class="flex items-start gap-3 px-3 py-3 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-700/50 transition-colors">' +
             '<svg class="w-4 h-4 text-brand flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">' +
               '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>' +
             '</svg>' +
             '<div>' +
-              '<p class="text-sm font-semibold text-gray-800">' + esc(item.name) + '</p>' +
-              (item.subtitle ? '<p class="text-xs text-gray-500 mt-0.5">' + esc(item.subtitle) + '</p>' : '') +
+              '<p class="text-sm font-semibold text-gray-800 dark:text-slate-200">' + esc(item.name) + '</p>' +
+              (item.subtitle ? '<p class="text-xs text-gray-500 dark:text-slate-400 mt-0.5">' + esc(item.subtitle) + '</p>' : '') +
             '</div>' +
           '</div>';
         }).join('');
-        return '<div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">' +
+        return '<div class="bg-white dark:bg-slate-800 rounded-2xl border border-gray-100 dark:border-slate-700 shadow-sm p-6">' +
           '<div class="flex items-center gap-3 mb-6">' +
             '<div class="w-11 h-11 bg-brand rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm">' +
               '<svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">' + iconSvg + '</svg>' +
             '</div>' +
             '<div>' +
-              '<h2 class="text-lg font-bold text-gray-900">' + esc(sec.name) + '</h2>' +
-              (sec.subtitle ? '<p class="text-xs text-gray-400 mt-0.5">' + esc(sec.subtitle) + '</p>' : '') +
+              '<h2 class="text-lg font-bold text-gray-900 dark:text-slate-100">' + esc(sec.name) + '</h2>' +
+              (sec.subtitle ? '<p class="text-xs text-gray-400 dark:text-slate-500 mt-0.5">' + esc(sec.subtitle) + '</p>' : '') +
             '</div>' +
           '</div>' +
           '<div class="grid grid-cols-1 sm:grid-cols-2 gap-2">' + items + '</div>' +
