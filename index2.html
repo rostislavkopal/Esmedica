@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ESMEDICA Litvínov s.r.o. praktická lékařka pro dospělé. Ordinační hodiny, objednání.">
+  <title>MUDr. Šárka Salačová | praktická lékařka Litvínov</title>
+  <link rel="shortcut icon" href="favicon.ico">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: '#1B67BF',
+            'brand-dark': '#1552A6',
+            'brand-light': '#eff6ff',
+            'brand-mid': '#dbeafe',
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .book-btn {
+      background: #1B67BF;
+      transition: background 0.15s ease, transform 0.15s ease;
+    }
+    .book-btn:hover { background: #1552A6; transform: translateY(-1px); }
+    .book-btn:active { transform: translateY(0); }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-track { animation: ticker 20s linear infinite; }
+    .ticker-track:hover { animation-play-state: paused; }
+    .book-pulse {
+      background: #1B67BF;
+      animation: glow 1.4s ease-in-out infinite;
+      transition: transform 0.15s;
+    }
+    .book-pulse:hover { transform: translateY(-1px); animation-play-state: paused; background: #1552A6; }
+    @keyframes glow {
+      0%, 100% { background: #1B67BF; box-shadow: 0 0 4px 2px rgba(27,103,191,0.2); }
+      50%       { background: #2475CC; box-shadow: 0 0 12px 5px rgba(27,103,191,0.45); }
+    }
+
+    /* Hero foto */
+    /* Dark mode */
+    html.dark body            { background-color: #0f172a; color: #e2e8f0; }
+    html.dark nav             { background-color: #1e293b !important; border-color: #334155 !important; }
+    html.dark .bg-white       { background-color: #1e293b !important; }
+    html.dark .bg-gray-50     { background-color: #0f172a !important; }
+    html.dark .border-gray-100{ border-color: #334155 !important; }
+    html.dark .text-gray-900  { color: #f1f5f9 !important; }
+    html.dark .text-gray-800  { color: #e2e8f0 !important; }
+    html.dark .text-gray-700  { color: #cbd5e1 !important; }
+    html.dark .text-gray-600  { color: #94a3b8 !important; }
+    html.dark .text-gray-500  { color: #64748b !important; }
+    html.dark .text-gray-400  { color: #64748b !important; }
+    html.dark .text-gray-300  { color: #475569 !important; }
+    html.dark .bg-gray-100    { background-color: #334155 !important; }
+    html.dark .bg-gray-50\/50 { background-color: rgba(51,65,85,0.4) !important; }
+    html.dark .hover\:bg-gray-50:hover { background-color: #334155 !important; }
+    html.dark .shadow-sm      { box-shadow: 0 1px 3px rgba(0,0,0,0.5) !important; }
+    html.dark .bg-amber-50    { background-color: rgba(120,53,15,0.25) !important; }
+    html.dark .border-amber-100{ border-color: rgba(146,64,14,0.4) !important; }
+    html.dark .text-amber-800 { color: #fbbf24 !important; }
+    html.dark .bg-rose-50     { background-color: rgba(190,18,60,0.15) !important; }
+    html.dark .border-rose-200{ border-color: rgba(190,18,60,0.3) !important; }
+    html.dark .text-rose-600  { color: #fb7185 !important; }
+    html.dark .bg-brand\/8    { background-color: rgba(27,103,191,0.2) !important; }
+    html.dark .border-brand\/20{ border-color: rgba(27,103,191,0.35) !important; }
+    html.dark .bg-brand\/10   { background-color: rgba(27,103,191,0.25) !important; }
+    html.dark .bg-brand\/15   { background-color: rgba(27,103,191,0.3) !important; }
+    html.dark .text-gray-800.font-bold { color: #f1f5f9 !important; }
+    html.dark .divide-gray-100 > * + * { border-color: #334155 !important; }
+    html.dark .border-gray-50  { border-color: #1e293b !important; }
+    html.dark .bg-white\/10   { background-color: rgba(255,255,255,0.08) !important; }
+    html.dark .medevio-logo-bg { background-color: #ffffff !important; }
+    html.dark .hero-photo { filter: brightness(0.4); }
+    html.dark .hero-overlay { background: linear-gradient(to right, rgba(15,23,42,0.97) 0%, rgba(15,23,42,0.93) 45%, rgba(15,23,42,0.6) 75%, rgba(15,23,42,0.15) 100%) !important; }
+    @keyframes glow-dark {
+      0%, 100% { background: #1249A0; box-shadow: 0 0 4px 2px rgba(27,103,191,0.15); }
+      50%       { background: #1554A8; box-shadow: 0 0 10px 4px rgba(27,103,191,0.3); }
+    }
+    html.dark .book-pulse { animation-name: glow-dark; }
+  </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+  <!-- Navbar -->
+  <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center h-16">
+      <a href="mapa2.html" class="flex items-center flex-shrink-0">
+        <img src="logo/Gemini_Generated_Image_nzqnpnnzqnpnnzqn.png" alt="ESMEDICA" class="h-10 sm:h-12 w-auto">
+      </a>
+      <div class="hidden sm:flex items-center gap-1 text-sm font-medium ml-auto">
+        <a href="mapa2.html" class="px-4 py-2 rounded-lg bg-brand/10 text-brand tracking-wide transition-colors">Domů</a>
+        <a href="poskytujeme.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 tracking-wide transition-colors">Poskytujeme</a>
+        <a href="cenik.html" class="px-4 py-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 tracking-wide transition-colors">Ceník</a>
+        <a href="medevio.html" class="px-4 py-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors flex items-center medevio-logo-bg">
+          <img src="https://umsousercontent.com/lib_VIqzMBqtfUYwExIq/vgWNiFkBtjVmMJug.svg?w=180&dpr=2" alt="Medevio" class="h-4 w-auto">
+        </a>
+      </div>
+      <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener" class="sm:hidden book-btn text-white text-xs font-semibold px-4 py-2 rounded-lg">Objednat se</a>
+    </div>
+  </nav>
+
+  <!-- Plovoucí panel (dočasný) -->
+  <div class="fixed bottom-4 right-4 z-50 bg-white border border-gray-200 rounded-xl shadow-lg p-2 min-w-max">
+    <p class="text-xs text-gray-400 px-3 py-1">Varianta</p>
+    <div class="flex gap-1 px-2 pb-1">
+      <a href="mapa.html" class="text-xs text-gray-400 hover:text-brand px-2.5 py-1 rounded-md hover:bg-gray-50 transition-colors">A</a>
+      <span class="text-xs font-semibold text-white bg-brand px-2.5 py-1 rounded-md">B</span>
+      <a href="mapa3.html" class="text-xs text-gray-400 hover:text-brand px-2.5 py-1 rounded-md hover:bg-gray-50 transition-colors">C</a>
+    </div>
+  </div>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 pt-5 pb-10 space-y-5">
+
+    <!-- Hero s fotografií -->
+    <div class="relative rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+
+      <!-- Pozadí: zrcadlový obrázek -->
+      <img src="doktorka (2).jpg" alt=""
+           aria-hidden="true"
+           class="hero-photo absolute inset-0 w-full h-full object-cover object-center pointer-events-none"
+           style="transform: scaleX(-1)">
+      <!-- Overlay: silný bílý vlevo (text), průhledný vpravo (foto) -->
+      <div class="hero-overlay absolute inset-0 pointer-events-none"
+           style="background: linear-gradient(to right, rgba(255,255,255,0.97) 0%, rgba(255,255,255,0.92) 45%, rgba(255,255,255,0.55) 75%, rgba(255,255,255,0.15) 100%)"></div>
+
+      <!-- Horní část: accent pruh + text -->
+      <div class="relative flex">
+        <div class="w-1.5 bg-brand flex-shrink-0"></div>
+        <div class="flex-1 px-6 sm:px-10 py-7 sm:py-8 flex flex-col justify-center">
+          <p class="text-brand text-xs font-semibold uppercase tracking-widest mb-1">Praktická lékařka pro dospělé</p>
+          <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight">
+            MUDr. Šárka Salačová
+          </h1>
+          <div class="flex items-center gap-2 mt-3 mb-5">
+            <div class="w-6 h-6 bg-brand/10 rounded-full flex items-center justify-center flex-shrink-0">
+              <svg class="w-3.5 h-3.5 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2 12h3l2-3 2 6 2-4 1.5 1.5H22"/>
+              </svg>
+            </div>
+            <span class="text-sm text-gray-500">
+              <span class="font-semibold text-gray-700">Lenka Hoffmannová</span> · zdravotní sestra
+            </span>
+          </div>
+
+          <div class="flex flex-col gap-2">
+            <a href="https://maps.google.com/maps?q=50.5979244,13.6085848" target="_blank"
+              class="flex items-center gap-2 text-sm text-gray-500 hover:text-brand transition-colors group w-fit">
+              <svg class="w-4 h-4 text-brand flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+              </svg>
+              <span id="hdr-address" class="group-hover:underline">Studentská 758, 436 01 Litvínov</span>
+            </a>
+            <a id="hdr-phone-link" href="tel:+420770696990"
+              class="flex items-center gap-2 text-sm text-gray-500 hover:text-brand transition-colors w-fit">
+              <svg class="w-4 h-4 text-brand flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+              </svg>
+              <span id="hdr-phone">770 69 69 90</span>
+            </a>
+          </div>
+
+          <div class="mt-5 sm:hidden">
+            <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener" class="book-btn inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-2.5 rounded-xl">
+              Objednat se online
+              <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Ordinační hodiny + Objednání -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+      <!-- Ordinační hodiny -->
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+        <div class="flex items-center gap-2.5 mb-5">
+          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+          </div>
+          <div class="flex items-center gap-2 flex-wrap">
+            <h2 class="text-base font-bold text-gray-800">Ordinační hodiny</h2>
+            <span class="inline-flex items-center gap-1 bg-amber-50 text-amber-800 border border-amber-200 text-[10px] font-semibold rounded-full px-2.5 py-0.5 leading-none">
+              <svg class="w-3 h-3 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+              jen pro objednané
+            </span>
+          </div>
+        </div>
+
+        <div class="rounded-xl overflow-hidden border border-gray-100">
+          <div class="grid grid-cols-[6rem_1fr_1fr] bg-brand/8 px-4 py-2 gap-3">
+            <span class="text-xs font-semibold text-brand-dark uppercase tracking-wide">Den</span>
+            <span class="text-xs font-semibold text-brand-dark uppercase tracking-wide text-center">Dopoledne</span>
+            <span class="text-xs font-semibold text-brand-dark uppercase tracking-wide text-center">Odpoledne</span>
+          </div>
+          <div id="hours-rows">
+          <div class="grid grid-cols-[6rem_1fr_1fr] px-4 py-3 border-t border-gray-100 items-center gap-3">
+            <span class="text-sm font-semibold text-gray-800">Pondělí</span>
+            <span class="text-xs font-medium text-gray-800 bg-white border border-brand/25 rounded-lg px-3 py-1.5 w-fit justify-self-center">07:00 – 12:00</span>
+            <span class="text-xs font-medium text-gray-800 bg-white border border-brand/25 rounded-lg px-3 py-1.5 w-fit justify-self-center">12:30 – 14:30</span>
+          </div>
+          <div class="grid grid-cols-[6rem_1fr_1fr] px-4 py-3 border-t border-gray-100 items-center gap-3 bg-gray-50/50">
+            <span class="text-sm font-semibold text-gray-800">Úterý</span>
+            <span class="text-xs text-gray-300 justify-self-center">—</span>
+            <span class="text-xs font-medium text-gray-800 bg-white border border-brand/25 rounded-lg px-3 py-1.5 w-fit justify-self-center">12:00 – 18:00</span>
+          </div>
+          <div class="grid grid-cols-[6rem_1fr_1fr] px-4 py-3 border-t border-gray-100 items-center gap-3">
+            <span class="text-sm font-semibold text-gray-800">Středa</span>
+            <span class="text-xs font-medium text-gray-800 bg-white border border-brand/25 rounded-lg px-3 py-1.5 w-fit justify-self-center">07:00 – 12:00</span>
+            <span class="text-xs text-gray-300 justify-self-center">—</span>
+          </div>
+          <div class="grid grid-cols-[6rem_1fr_1fr] px-4 py-3 border-t border-gray-100 items-center gap-3 bg-gray-50/50">
+            <span class="text-sm font-semibold text-gray-800">Čtvrtek</span>
+            <span class="text-xs font-medium text-gray-800 bg-white border border-brand/25 rounded-lg px-3 py-1.5 w-fit justify-self-center">07:00 – 12:00</span>
+            <span class="text-xs font-medium text-gray-800 bg-white border border-brand/25 rounded-lg px-3 py-1.5 w-fit justify-self-center">12:30 – 14:30</span>
+          </div>
+          <div class="grid grid-cols-[6rem_1fr_1fr] px-4 py-3 border-t border-gray-100 items-center gap-3">
+            <span class="text-sm font-semibold text-gray-800">Pátek</span>
+            <span class="text-xs font-medium text-gray-800 bg-white border border-brand/25 rounded-lg px-3 py-1.5 w-fit justify-self-center">07:00 – 12:00</span>
+            <span class="text-xs text-gray-300 justify-self-center">—</span>
+          </div>
+          </div><!-- /hours-rows -->
+        </div>
+
+        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center gap-2 text-sm">
+          <svg class="w-3.5 h-3.5 text-rose-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C12 2 5 10.5 5 15a7 7 0 0014 0C19 10.5 12 2 12 2z"/>
+          </svg>
+          <span class="text-gray-500 text-xs">
+            <strong class="text-gray-700">Odběry krve:</strong> Po, St, Čt, Pá —
+            <span class="text-xs font-medium text-brand bg-brand/8 border border-brand/25 rounded-lg px-3 py-1.5 w-fit ml-0.5">07:00 – 08:00</span>
+          </span>
+        </div>
+
+        <!-- Poznámka k objednání -->
+        <div class="mt-5 flex items-center gap-2 bg-amber-50 border border-amber-200 rounded-lg px-3 py-2">
+          <svg class="w-3.5 h-3.5 text-amber-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <span class="text-xs text-amber-800">Čas objednání je čas, od kterého pacient <strong>čeká</strong> na vyšetření.</span>
+        </div>
+      </div>
+
+      <!-- Aktuality (dynamické) -->
+      <div id="aktuality-col" class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+        <div class="flex items-center gap-2.5 mb-4">
+          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+            </svg>
+          </div>
+          <h2 class="text-base font-bold text-gray-800">Důležité informace</h2>
+        </div>
+        <div id="aktuality-cards" class="space-y-3">
+          <div class="rounded-xl bg-brand-light border border-brand-mid p-3.5">
+            <p class="font-semibold text-brand-dark text-sm mb-1">Očkování 50+ proti klíšťové encefalitidě zdarma</p>
+            <p class="text-gray-800 text-xs leading-relaxed">Od 1. 1. 2022 pojišťovna hradí pacientům nad 50 let očkování proti klíšťové encefalitidě. Nutno se předem objednat.</p>
+          </div>
+          <div class="rounded-xl bg-red-50 border border-red-100 p-3.5">
+            <p class="font-semibold text-red-600 text-sm">Z kapacitních důvodů nové pacienty neregistrujeme.</p>
+            <p class="text-red-400 text-xs mt-0.5">Děkujeme za pochopení.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Aktuality + Mapa -->
+    <div id="aktuality-map-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+      <!-- Kontaktujte nás -->
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex flex-col gap-5">
+
+        <!-- Nadpis sekce -->
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+          </div>
+          <h2 class="text-base font-bold text-gray-800">Kontaktujte nás</h2>
+        </div>
+
+        <!-- headline + popis -->
+        <div>
+          <p class="text-sm text-gray-500 mb-4">
+            Objednání přes&nbsp;<span class="medevio-logo-bg rounded px-1 inline-flex items-center align-middle mx-0.5"><img src="https://umsousercontent.com/lib_VIqzMBqtfUYwExIq/vgWNiFkBtjVmMJug.svg?w=180&dpr=2"
+              alt="Medevio" class="h-4 w-auto"></span>
+            — napište nám online bez čekání na telefonu.
+          </p>
+
+          <!-- Use-case chips (decorative, not clickable) -->
+          <div class="flex flex-wrap gap-1.5">
+            <span class="text-xs font-medium text-brand bg-brand/8 border border-brand/20 rounded-full px-3 py-1">Objednání vyšetření</span>
+            <span class="text-xs font-medium text-brand bg-brand/8 border border-brand/20 rounded-full px-3 py-1">Zdravotní obtíže</span>
+            <span class="text-xs font-medium text-brand bg-brand/8 border border-brand/20 rounded-full px-3 py-1">Odběry</span>
+            <span class="text-xs font-medium text-brand bg-brand/8 border border-brand/20 rounded-full px-3 py-1">Očkování</span>
+            <span class="text-xs font-medium text-brand bg-brand/8 border border-brand/20 rounded-full px-3 py-1">Změny termínů</span>
+            <span class="text-xs font-medium text-brand bg-brand/8 border border-brand/20 rounded-full px-3 py-1">Pracovní neschopnost</span>
+            <span class="text-xs font-medium text-brand bg-brand/8 border border-brand/20 rounded-full px-3 py-1">Neschopenky</span>
+            <span class="text-xs font-medium text-brand bg-brand/8 border border-brand/20 rounded-full px-3 py-1">Potvrzení, posudky, výpisy</span>
+            <span class="text-xs font-medium text-brand bg-brand/8 border border-brand/20 rounded-full px-3 py-1">Předpis na pomůcky</span>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="space-y-2.5">
+          <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener"
+            class="book-pulse flex items-center text-white rounded-xl w-full overflow-hidden ring-1 ring-white/30">
+            <div class="flex items-center justify-center self-stretch bg-white/10 px-5">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                  d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 14l2 2 4-4"/>
+              </svg>
+            </div>
+            <div class="flex-1 py-4 px-4 flex items-center justify-center">
+              <span class="text-lg font-bold leading-tight">Objednejte se online</span>
+            </div>
+            <div class="flex items-center self-stretch bg-white px-4 medevio-logo-bg">
+              <img src="https://umsousercontent.com/lib_VIqzMBqtfUYwExIq/vgWNiFkBtjVmMJug.svg?w=180&dpr=2"
+                alt="Medevio" class="h-5 w-auto">
+            </div>
+          </a>
+          <a href="medevio.html"
+            class="flex items-center justify-center gap-1 text-sm text-brand hover:text-brand-dark font-medium transition-colors">
+            Jak to funguje
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+
+      <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-sm min-h-52">
+        <iframe
+          src="https://maps.google.com/maps?q=50.5979244,13.6085848&output=embed&z=17&hl=cs"
+          class="w-full h-full min-h-52"
+          style="border:0; display:block;"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+
+    <!-- Pojišťovny banner -->
+    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden">
+      <div class="px-6 pt-5 pb-2 flex items-center gap-2.5">
+        <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+          <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+        </div>
+        <h2 class="text-base font-bold text-gray-800">Smluvní pojišťovny</h2>
+      </div>
+      <div class="relative overflow-hidden pb-4"
+        style="mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+               -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);">
+        <div id="ticker-track" class="flex items-center gap-10 ticker-track" style="width: max-content;">
+          <a href="http://www.vzp.cz" target="_blank" rel="noopener" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/vzp.jpg" alt="VZP" class="h-[90px] w-auto object-contain">
+          </a>
+          <a href="http://www.zpmvcr.cz" target="_blank" rel="noopener" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/ZPMV.jpg" alt="ZPMV" class="h-[90px] w-auto object-contain">
+          </a>
+          <a href="http://www.ozp.cz" target="_blank" rel="noopener" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/OZP.jpg" alt="OZP" class="h-[90px] w-auto object-contain">
+          </a>
+          <a href="http://www.cpzp.cz" target="_blank" rel="noopener" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/CPZP.jpg" alt="ČPZP" class="h-[90px] w-auto object-contain">
+          </a>
+          <a href="http://www.rbp-zp.cz" target="_blank" rel="noopener" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/RVP.jpg" alt="RBP" class="h-[90px] w-auto object-contain">
+          </a>
+          <a href="https://www.vozp.cz" target="_blank" rel="noopener" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/VoZP.jpg" alt="VoZP" class="h-[90px] w-auto object-contain">
+          </a>
+          <!-- Duplikát -->
+          <a href="http://www.vzp.cz" target="_blank" rel="noopener" aria-hidden="true" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/vzp.jpg" alt="" class="h-[90px] w-auto object-contain">
+          </a>
+          <a href="http://www.zpmvcr.cz" target="_blank" rel="noopener" aria-hidden="true" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/ZPMV.jpg" alt="" class="h-[90px] w-auto object-contain">
+          </a>
+          <a href="http://www.ozp.cz" target="_blank" rel="noopener" aria-hidden="true" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/OZP.jpg" alt="" class="h-[90px] w-auto object-contain">
+          </a>
+          <a href="http://www.cpzp.cz" target="_blank" rel="noopener" aria-hidden="true" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/CPZP.jpg" alt="" class="h-[90px] w-auto object-contain">
+          </a>
+          <a href="http://www.rbp-zp.cz" target="_blank" rel="noopener" aria-hidden="true" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/RVP.jpg" alt="" class="h-[90px] w-auto object-contain">
+          </a>
+          <a href="https://www.vozp.cz" target="_blank" rel="noopener" aria-hidden="true" class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="https://jk1.cz/template/pojistovny/VoZP.jpg" alt="" class="h-[90px] w-auto object-contain">
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-2.5 border-t border-gray-100 bg-white">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-8">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 text-sm text-gray-500">
+        <div>
+          <p class="font-bold text-gray-800 text-base mb-1">MUDr. Šárka Salačová</p>
+          <p class="text-xs">praktický lékař pro dospělé · Litvínov</p>
+          <p id="ftr-address" class="mt-2">Studentská 758, 436 01 Litvínov</p>
+          <a id="ftr-phone-link" href="tel:+420770696990" class="mt-1.5 flex items-center gap-2 text-brand font-medium hover:underline py-1">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span id="ftr-phone">770 69 69 90</span>
+          </a>
+          <a id="ftr-email-link" href="mailto:esmedica.litvinov@gmail.com" class="flex items-center gap-2 text-brand font-medium hover:underline py-1 text-xs break-all">
+            <svg class="w-3.5 h-3.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            <span id="ftr-email">esmedica.litvinov@gmail.com</span>
+          </a>
+        </div>
+        <div class="sm:text-right">
+          <p class="text-gray-400 text-xs">ESMEDICA Litvínov s.r.o.</p>
+          <p class="text-gray-400 text-xs">IČO 07228201</p>
+          <p class="text-gray-400 text-xs mt-1 leading-relaxed">
+            Spisová značka C 41881<br>Krajský soud v Ústí nad Labem
+          </p>
+          <a href="../data/GDPR_Esmedica_Litvinov.pdf" target="_blank"
+            class="inline-flex items-center gap-1 mt-3 text-gray-400 hover:text-brand text-xs hover:underline">
+            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+            </svg>
+            Zpracování osobních údajů (GDPR)
+          </a>
+        </div>
+      </div>
+      <div class="mt-6 pt-4 border-t border-gray-100 text-xs text-gray-300 text-center">
+        &copy; 2013 – 2026 ESMEDICA Litvínov s.r.o.
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── Admin localStorage reader ─── -->
+  <script src="./js/dataService.js"></script>
+  <script>
+    (async function() {
+      if (DataService.hasCustom('hours')) {
+      const hours = await DataService.getHours();
+        function timeCell(val) {
+          return val
+            ? `<span class="text-xs font-medium text-gray-800 bg-white border border-brand/25 rounded-lg px-3 py-1.5 w-fit justify-self-center">${val}</span>`
+            : '<span class="text-xs text-gray-300 justify-self-center">—</span>';
+        }
+        document.getElementById('hours-rows').innerHTML = hours.map((row, i) => `
+          <div class="grid grid-cols-[6rem_1fr_1fr] px-4 py-3 border-t border-gray-100 items-center gap-3 ${i % 2 === 1 ? 'bg-gray-50/50' : ''}">
+            <span class="text-sm font-semibold text-gray-800">${row.day}</span>
+            ${timeCell(row.morning)}
+            ${timeCell(row.afternoon)}
+          </div>`).join('');
+      }
+
+      if (DataService.hasCustom('kontakt')) {
+      const kontakt = await DataService.getKontakt();
+        const hdrAddr = document.getElementById('hdr-address');
+        if (hdrAddr) hdrAddr.textContent = kontakt.address;
+        const ftrAddr = document.getElementById('ftr-address');
+        if (ftrAddr) ftrAddr.textContent = kontakt.address;
+
+        const rawPhone = kontakt.phone.replace(/\s/g, '');
+        const dispPhone = kontakt.phone;
+        const hdrPhoneLink = document.getElementById('hdr-phone-link');
+        const hdrPhone = document.getElementById('hdr-phone');
+        if (hdrPhoneLink) hdrPhoneLink.href = 'tel:' + rawPhone;
+        if (hdrPhone) hdrPhone.textContent = dispPhone;
+        const ftrPhoneLink = document.getElementById('ftr-phone-link');
+        const ftrPhone = document.getElementById('ftr-phone');
+        if (ftrPhoneLink) ftrPhoneLink.href = 'tel:' + rawPhone;
+        if (ftrPhone) ftrPhone.textContent = dispPhone;
+
+        const ftrEmailLink = document.getElementById('ftr-email-link');
+        const ftrEmail = document.getElementById('ftr-email');
+        if (ftrEmailLink) ftrEmailLink.href = 'mailto:' + kontakt.email;
+        if (ftrEmail) ftrEmail.textContent = kontakt.email;
+      }
+
+      if (DataService.hasCustom('pojistovny')) {
+      const pojistovny = await DataService.getPojistovny();
+        const active = pojistovny.filter(p => p.active);
+        const doubled = [...active, ...active];
+        document.getElementById('ticker-track').innerHTML = doubled.map((p, i) => `
+          <a href="${p.url}" target="_blank" rel="noopener" ${i >= active.length ? 'aria-hidden="true"' : ''}
+            class="flex-shrink-0 h-[108px] flex items-center px-6">
+            <img src="${p.img}" alt="${i < active.length ? p.name : ''}" class="h-[90px] w-auto object-contain">
+          </a>`).join('');
+      }
+
+      // Aktuality
+      const ICON_SVGS = {
+        bell:     '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>',
+        info:     '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+        warning:  '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>',
+        calendar: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>',
+        clock:    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+        heart:    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>',
+        syringe:  '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>',
+        check:    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>',
+        ban:      '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/>',
+        star:     '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>',
+        sun:      '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"/>',
+        snow:     '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v18M3 12h18M5.636 5.636l12.728 12.728M18.364 5.636L5.636 18.364"/>',
+        phone:    '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>',
+        document: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>',
+        vaccine:  '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2M3 12l6.414 6.414a2 2 0 002.828 0L21 9M5 5l1 1"/>',
+        home:     '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>',
+      };
+      const TYPE_COLORS_FE = { info:'#0891b2', warning:'#f59e0b', danger:'#ef4444', success:'#10b981' };
+      function feHexToRgb(hex) { const h=hex.replace('#',''); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
+      const aktData = await DataService.getAktuality();
+      const aktActive = aktData.filter(a => a.active);
+      const aktCol = document.getElementById('aktuality-col');
+      const aktCards = document.getElementById('aktuality-cards');
+      if (!aktActive.length) {
+        if (aktCol) aktCol.style.display = 'none';
+        const grid = document.getElementById('aktuality-map-grid');
+        if (grid) grid.classList.replace('md:grid-cols-2', 'md:grid-cols-1');
+      } else if (aktCards) {
+        aktCards.innerHTML = aktActive.map(item => {
+          const hex = item.color || TYPE_COLORS_FE[item.type] || TYPE_COLORS_FE.info;
+          const [r,g,b] = feHexToRgb(hex);
+          const svg = ICON_SVGS[item.icon] || ICON_SVGS.bell;
+          return `<div class="rounded-xl border p-3.5 flex items-start gap-3"
+            style="background:rgba(${r},${g},${b},0.10); border-color:rgba(${r},${g},${b},0.30)">
+            <div class="flex-shrink-0 mt-0.5">
+              <svg class="w-4 h-4" style="color:rgba(${r},${g},${b},0.85)" fill="none" stroke="currentColor" viewBox="0 0 24 24">${svg}</svg>
+            </div>
+            <div>
+              <p class="font-semibold text-sm" style="color:rgba(${r},${g},${b},1)">${item.title}</p>
+              ${item.text ? `<p class="text-gray-800 text-xs mt-0.5 leading-relaxed">${item.text}</p>` : ''}
+            </div>
+          </div>`;
+        }).join('');
+      }
+    })();
+  </script>
+
+</body>
+</html>
