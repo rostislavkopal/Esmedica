@@ -135,12 +135,12 @@ const DataService = (() => {
 
   function _migrateCenik(data) {
     if (!data) return null;
+    if (!Array.isArray(data)) return null;
     return data.map(sec => ({
       ...sec,
-      items: sec.items.map(it => typeof it === 'string'
-        ? { name: it, price: '' }
-        : it
-      ),
+      items: Array.isArray(sec.items)
+        ? sec.items.map(it => typeof it === 'string' ? { name: it, price: '' } : it)
+        : [],
     }));
   }
 

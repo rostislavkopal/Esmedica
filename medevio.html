@@ -6,6 +6,7 @@
   <meta name="description" content="ESMEDICA Litvínov s.r.o. – Objednání přes Medevio. Online komunikace s ordinací bez čekání na telefonu.">
   <title>Objednání přes Medevio | MUDr. Šárka Salačová</title>
   <link rel="shortcut icon" href="favicon.ico">
+  <script>if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark');</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -83,11 +84,27 @@
     html.dark .medevio-logo-bg { background-color: #ffffff !important; }
     html.dark .bg-red-50      { background-color: rgba(190,18,60,0.15) !important; }
     html.dark .border-red-100 { border-color: rgba(190,18,60,0.3) !important; }
+    html.dark .bg-red-100     { background-color: rgba(190,18,60,0.28) !important; }
+    html.dark .border-red-200 { border-color: rgba(190,18,60,0.45) !important; }
+    html.dark .text-red-400   { color: #fca5a5 !important; }
+    html.dark .text-red-500   { color: #fca5a5 !important; }
+    html.dark .text-red-600   { color: #f87171 !important; }
+    html.dark .text-red-700   { color: #f87171 !important; }
+    html.dark .hover\:bg-red-50:hover { background-color: rgba(190,18,60,0.22) !important; }
     @keyframes glow-dark {
       0%, 100% { background: #1249A0; box-shadow: 0 0 4px 2px rgba(27,103,191,0.15); }
       50%       { background: #1554A8; box-shadow: 0 0 10px 4px rgba(27,103,191,0.3); }
     }
     html.dark .book-pulse { animation-name: glow-dark; }
+
+    /* CTA card gradient */
+    .cta-card {
+      background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 50%, #ffffff 100%);
+    }
+    html.dark .cta-card {
+      background: linear-gradient(135deg, rgba(27,103,191,0.22) 0%, rgba(27,103,191,0.07) 55%, #1e293b 100%) !important;
+    }
+    html.dark .border-brand\/15 { border-color: rgba(27,103,191,0.38) !important; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800 antialiased">
@@ -103,12 +120,12 @@
       <div class="flex">
         <div class="w-1.5 bg-brand flex-shrink-0"></div>
         <div class="px-8 py-8 flex-1">
-          <div class="mb-4">
-            <img src="./assets/images/medevio-logo.svg"
-                 alt="Medevio" class="h-7 w-auto">
-          </div>
-          <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-2">
-            Proč jsme zavedli Medevio
+
+          <h1 class="text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight mb-2 flex items-center flex-wrap gap-x-3 gap-y-1">
+            Proč jsme zavedli
+            <span class="inline-flex items-center align-middle rounded-xl px-4 py-2 shadow-sm" style="background-color: white; border: 1px solid #e5e7eb;">
+              <img src="./assets/images/medevio-logo.svg" alt="Medevio" class="h-6 w-auto">
+            </span>
           </h1>
           <p class="text-brand text-xs font-semibold uppercase tracking-widest mb-5">Online objednání a komunikace s ordinací</p>
           <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener"
@@ -140,148 +157,144 @@
       </div>
     </div>
 
-    <!-- Section 3 — Use cases grid -->
-    <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
-      <h2 class="text-base font-bold text-gray-800 mb-5">Co přes Medevio vyřídíte</h2>
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3">
-        <!-- Objednání vyšetření -->
-        <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            </svg>
+    <!-- Section 3 + CTA — 2-column grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+      <!-- Use cases card -->
+      <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-8">
+        <h2 class="text-base font-bold text-gray-800 mb-5">Co přes Medevio vyřídíte</h2>
+        <div class="grid grid-cols-2 gap-3">
+          <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
+            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-gray-800">Objednání vyšetření</span>
           </div>
-          <span class="text-sm font-medium text-gray-800">Objednání vyšetření</span>
-        </div>
-        <!-- Zdravotní obtíže -->
-        <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
-            </svg>
+          <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
+            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-gray-800">Zdravotní obtíže</span>
           </div>
-          <span class="text-sm font-medium text-gray-800">Zdravotní obtíže</span>
-        </div>
-        <!-- Objednání na odběr -->
-        <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
-            </svg>
+          <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
+            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-gray-800">Objednání na odběr</span>
           </div>
-          <span class="text-sm font-medium text-gray-800">Objednání na odběr</span>
-        </div>
-        <!-- Očkování -->
-        <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21a48.309 48.309 0 01-8.135-.687c-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/>
-            </svg>
+          <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
+            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21a48.309 48.309 0 01-8.135-.687c-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-gray-800">Očkování</span>
           </div>
-          <span class="text-sm font-medium text-gray-800">Očkování</span>
-        </div>
-        <!-- Potvrzení, posudky, výpisy -->
-        <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-            </svg>
+          <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
+            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-gray-800">Potvrzení, posudky, výpisy</span>
           </div>
-          <span class="text-sm font-medium text-gray-800">Potvrzení, posudky, výpisy</span>
-        </div>
-        <!-- Předpis na kompenzační pomůcky -->
-        <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-            </svg>
+          <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
+            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-gray-800">Předpis na pomůcky</span>
           </div>
-          <span class="text-sm font-medium text-gray-800">Předpis na pomůcky</span>
-        </div>
-        <!-- Změnit termín návštěvy -->
-        <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2zM9 14l2-2 2 2"/>
-            </svg>
+          <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
+            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2zM9 14l2-2 2 2"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-gray-800">Změnit termín návštěvy</span>
           </div>
-          <span class="text-sm font-medium text-gray-800">Změnit termín návštěvy</span>
-        </div>
-        <!-- Pracovní neschopnost -->
-        <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
-            </svg>
+          <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
+            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-gray-800">Pracovní neschopnost</span>
           </div>
-          <span class="text-sm font-medium text-gray-800">Pracovní neschopnost</span>
-        </div>
-        <!-- Ukončení neschopenky -->
-        <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-          <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-            <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
-            </svg>
+          <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
+            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+              </svg>
+            </div>
+            <span class="text-sm font-medium text-gray-800">Ukončení neschopenky</span>
           </div>
-          <span class="text-sm font-medium text-gray-800">Ukončení neschopenky</span>
         </div>
       </div>
+
+      <!-- CTA card -->
+      <div class="cta-card rounded-2xl border border-brand/15 shadow-sm p-8 text-center flex flex-col">
+        <div class="mb-5 flex justify-center">
+          <div class="inline-flex items-center px-4 py-2 rounded-xl border border-gray-100 shadow-sm" style="background:white">
+            <img src="./assets/images/medevio-logo.svg" alt="Medevio" class="h-5 w-auto">
+          </div>
+        </div>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">Připraveni napsat?</h2>
+        <p class="text-sm text-gray-500 mb-6 max-w-sm mx-auto">Přihlaste se nebo si vytvořte účet — je to zdarma a zabere to minutu.</p>
+        <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener"
+          class="book-pulse flex items-center text-white rounded-xl overflow-hidden ring-1 ring-white/30 w-full">
+          <div class="flex items-center justify-center self-stretch bg-white/10 px-5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 14l2 2 4-4"/>
+            </svg>
+          </div>
+          <div class="flex-1 py-4 px-4 flex items-center justify-center">
+            <span class="text-base font-bold leading-tight">Objednejte se online</span>
+          </div>
+          <div class="flex items-center self-stretch medevio-logo-bg px-4" style="background:white">
+            <img src="./assets/images/medevio-logo.svg" alt="Medevio" class="h-4 w-auto">
+          </div>
+        </a>
+
+        <!-- App download -->
+        <div class="mt-auto pt-6 border-t border-brand/15">
+          <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Aplikace je zdarma</p>
+          <div class="flex items-center justify-center gap-3 flex-wrap">
+            <a href="https://apps.apple.com/cz/app/medevio/id1514781228" target="_blank" rel="noopener">
+              <img src="Logo/apple-en.png" alt="Stáhnout na App Store" class="h-10 w-auto">
+            </a>
+            <a href="https://play.google.com/store/apps/details?id=com.medevio.gateway" target="_blank" rel="noopener">
+              <img src="Logo/google.png" alt="Získat na Google Play" class="h-10 w-auto">
+            </a>
+          </div>
+          <p class="text-xs text-gray-400 mt-3">Jde to i bez appky — přes prohlížeč v telefonu nebo počítači.</p>
+        </div>
+      </div>
+
     </div>
 
-    <!-- Section 4 — Primary CTA card -->
-    <div class="rounded-2xl border border-brand/15 shadow-sm p-8 text-center"
-         style="background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 40%, #ffffff 100%)">
-      <div class="mb-4">
-        <img src="./assets/images/medevio-logo.svg"
-             alt="Medevio" class="h-6 w-auto mx-auto">
-      </div>
-      <h2 class="text-xl font-bold text-gray-900 mb-2">Připraveni napsat?</h2>
-      <p class="text-sm text-gray-500 mb-6 max-w-sm mx-auto">Přihlaste se nebo si vytvořte účet — je to zdarma a zabere to minutu.</p>
-      <!-- TODO: Replace href with actual Medevio profile URL, e.g. https://my.medevio.cz/esmedica-litvinov -->
-      <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener"
-        class="book-pulse flex items-center text-white rounded-xl overflow-hidden ring-1 ring-white/30 max-w-sm mx-auto">
-        <div class="flex items-center justify-center self-stretch bg-white/10 px-5">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
-              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 14l2 2 4-4"/>
-          </svg>
-        </div>
-        <div class="flex-1 py-4 px-4 flex items-center justify-center">
-          <span class="text-lg font-bold leading-tight">Objednejte se online</span>
-        </div>
-        <div class="flex items-center self-stretch bg-white px-4 medevio-logo-bg">
-          <img src="./assets/images/medevio-logo.svg"
-            alt="Medevio" class="h-5 w-auto">
-        </div>
-      </a>
-
-      <!-- App download -->
-      <div class="mt-8 pt-6 border-t border-brand/15">
-        <p class="text-xs font-semibold text-gray-500 uppercase tracking-widest mb-4">Aplikace je zdarma</p>
-        <div class="flex items-center justify-center gap-3 flex-wrap">
-          <a href="https://apps.apple.com/cz/app/medevio/id1514781228" target="_blank" rel="noopener">
-            <img src="Logo/apple-en.png" alt="Stáhnout na App Store" class="h-10 w-auto">
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=com.medevio.gateway" target="_blank" rel="noopener">
-            <img src="Logo/google.png" alt="Získat na Google Play" class="h-10 w-auto">
-          </a>
-        </div>
-        <p class="text-xs text-gray-400 mt-3">Jde to i bez appky — přes prohlížeč v telefonu nebo počítači.</p>
-      </div>
-    </div>
-
-    <!-- Section 5 — Reassurance note -->
-    <div class="flex items-start gap-3 bg-red-50 border border-red-100 rounded-2xl px-5 py-4">
-      <svg class="w-5 h-5 text-red-400 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+    <!-- Urgent call — compact banner -->
+    <div class="flex items-center gap-3 bg-red-50 border border-red-100 rounded-2xl px-5 py-4">
+      <svg class="w-5 h-5 text-red-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
       </svg>
       <p class="text-sm text-gray-600">
-        <!-- TODO: Replace with actual phone number -->
-        <strong class="text-gray-800">Akutní stavy vždy volejte na <a href="tel:+420770696990" class="text-red-600 font-bold hover:underline">770 69 69 90</a>.</strong>
+        <strong class="text-gray-800">Akutní stavy vždy volejte na
+          <a href="tel:+420770696990" class="text-red-600 font-bold hover:underline">770 69 69 90</a>.</strong>
         Medevio slouží pro neakutní požadavky.
       </p>
     </div>
+
 
   </main>
 

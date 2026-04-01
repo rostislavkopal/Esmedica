@@ -1,8 +1,13 @@
-<nav class="bg-white dark:bg-slate-800 border-b border-gray-100 dark:border-slate-700 sticky top-0 z-50">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center h-16">
-    <a href="./index.html" class="flex items-center flex-shrink-0" id="nav-home-logo">
+<nav style="background:white;border-bottom:1px solid #f3f4f6;position:sticky;top:0;z-index:50"
+  class="bg-white dark:bg-slate-800 border-b border-gray-100 dark:border-slate-700 sticky top-0 z-50">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center h-16 gap-1">
+
+    <!-- Logo -->
+    <a href="./index.html" class="flex items-center flex-shrink-0 mr-2" id="nav-home-logo">
       <img src="./logo/Gemini_Generated_Image_nzqnpnnzqnpnnzqn.png" alt="ESMEDICA" class="h-10 sm:h-12 w-auto">
     </a>
+
+    <!-- Desktop links -->
     <div class="hidden sm:flex items-center gap-1 text-sm font-medium ml-auto">
       <a href="./index.html" data-nav="home"
         class="px-4 py-2 rounded-lg text-gray-600 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700 tracking-wide transition-colors">Domů</a>
@@ -11,11 +16,63 @@
       <a href="./cenik.html" data-nav="cenik"
         class="px-4 py-2 rounded-lg text-gray-600 dark:text-slate-400 hover:text-gray-800 dark:hover:text-slate-200 hover:bg-gray-100 dark:hover:bg-slate-700 tracking-wide transition-colors">Ceník</a>
       <a href="./medevio.html" data-nav="medevio"
-        class="px-4 py-2 rounded-lg text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex items-center bg-white dark:bg-white">
+        class="px-4 py-2 rounded-lg text-gray-600 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex items-center medevio-logo-bg">
         <img src="./assets/images/medevio-logo.svg" alt="Medevio" class="h-4 w-auto">
       </a>
     </div>
-    <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener"
-      class="sm:hidden book-btn text-white text-xs font-semibold px-4 py-2 rounded-lg">Objednat se</a>
+
+    <!-- Dark mode toggle -->
+    <button id="nav-dark-toggle"
+      class="ml-auto sm:ml-2 p-2 rounded-lg text-gray-500 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex-shrink-0"
+      aria-label="Přepnout tmavý režim">
+      <!-- Moon — shown in light mode -->
+      <svg id="nav-icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+      </svg>
+      <!-- Sun — shown in dark mode -->
+      <svg id="nav-icon-sun" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+      </svg>
+    </button>
+
+    <!-- Hamburger (mobile only) -->
+    <button id="nav-menu-btn"
+      class="sm:hidden p-2 rounded-lg text-gray-500 dark:text-slate-400 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors flex-shrink-0"
+      aria-label="Otevřít menu" aria-expanded="false">
+      <svg id="nav-hamburger" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+      </svg>
+      <svg id="nav-close" class="w-5 h-5 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+  <div id="nav-mobile-menu" class="hidden sm:hidden border-t border-gray-100 dark:border-slate-700 bg-white dark:bg-slate-800">
+    <div class="max-w-5xl mx-auto px-4 pt-2 pb-4 flex flex-col gap-0.5">
+      <a href="./index.html" data-nav-m="home"
+        class="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Domů</a>
+      <a href="./poskytujeme.html" data-nav-m="poskytujeme"
+        class="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Poskytujeme</a>
+      <a href="./cenik.html" data-nav-m="cenik"
+        class="flex items-center px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">Ceník</a>
+      <a href="./medevio.html" data-nav-m="medevio"
+        class="flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium text-gray-700 dark:text-slate-300 hover:bg-gray-100 dark:hover:bg-slate-700 transition-colors">
+        <img src="./assets/images/medevio-logo.svg" alt="" class="h-3.5 w-auto">
+        <span>Medevio</span>
+      </a>
+      <div class="pt-2">
+        <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener"
+          class="book-btn flex items-center justify-center gap-2 text-white text-sm font-semibold px-5 py-2.5 rounded-xl">
+          Objednat se online
+          <svg class="w-4 h-4 opacity-70" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+          </svg>
+        </a>
+      </div>
+    </div>
   </div>
 </nav>

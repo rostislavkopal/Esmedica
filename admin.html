@@ -542,13 +542,25 @@
     });
 
     // ─── Init ───
+    async function safeRender(fn, fallbackKey) {
+      try {
+        await fn();
+      } catch (e) {
+        console.error('Chyba při renderování, resetuji data pro klíč:', fallbackKey, e);
+        if (fallbackKey) {
+          localStorage.removeItem('esmedica_' + fallbackKey);
+          try { await fn(); } catch (e2) { console.error('Reset nepomohl:', e2); }
+        }
+      }
+    }
+
     async function initAdmin() {
-      await renderHours();
-      await renderCenik();
-      await renderPojistovny();
-      await renderKontakt();
-      await renderAktuality();
-      await renderPoskytujeme();
+      await safeRender(renderHours,      'hours');
+      await safeRender(renderCenik,      'cenik');
+      await safeRender(renderPojistovny, 'pojistovny');
+      await safeRender(renderKontakt,    'kontakt');
+      await safeRender(renderAktuality,  'aktuality');
+      await safeRender(renderPoskytujeme,'poskytujeme');
 
       // Save buttons
       document.querySelectorAll('.save-btn').forEach(btn => {
