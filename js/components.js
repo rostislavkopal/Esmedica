@@ -120,15 +120,10 @@
     const isDark = document.documentElement.classList.contains('dark');
     if (sunIcon)  sunIcon.style.display  = isDark ? '' : 'none';
     if (moonIcon) moonIcon.style.display = isDark ? 'none' : '';
-  }
-  syncDarkIcons();
-
-  if (darkToggle) {
-    darkToggle.addEventListener('click', function () {
-      const nowDark = document.documentElement.classList.toggle('dark');
-      localStorage.setItem('theme', nowDark ? 'dark' : 'light');
-      syncDarkIcons();
-    });
+    const panelSun  = document.getElementById('panel-icon-sun');
+    const panelMoon = document.getElementById('panel-icon-moon');
+    if (panelSun)  panelSun.style.display  = isDark ? '' : 'none';
+    if (panelMoon) panelMoon.style.display = isDark ? 'none' : '';
   }
 
   // ─── Dark mode: nav styl ──────────────────────────────────────────────────
@@ -141,11 +136,21 @@
     const mobileMenu = document.getElementById('nav-mobile-menu');
     if (mobileMenu) mobileMenu.style.background = isDark ? '#1e293b' : 'white';
   }
+
+  function toggleDark() {
+    const nowDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', nowDark ? 'dark' : 'light');
+    syncDarkIcons();
+    applyNavDark();
+  }
+
+  syncDarkIcons();
   applyNavDark();
 
-  if (darkToggle) {
-    darkToggle.addEventListener('click', applyNavDark);
-  }
+  if (darkToggle) darkToggle.addEventListener('click', toggleDark);
+
+  const panelToggle = document.getElementById('panel-dark-toggle');
+  if (panelToggle) panelToggle.addEventListener('click', toggleDark);
 
   // ─── Hamburger menu ───────────────────────────────────────────────────────
   const menuBtn    = document.getElementById('nav-menu-btn');

@@ -64,6 +64,23 @@
     }
     .fmt-btn:hover { background:#f3f4f6; border-color:#9ca3af; }
 
+    /* WYSIWYG contenteditable pole */
+    .akt-editable {
+      border: 1px solid #e2e8f0;
+      border-radius: 0.5rem;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.875rem;
+      color: #1e293b;
+      outline: none;
+      min-height: 8rem;
+      line-height: 1.6;
+      font-family: inherit;
+      overflow-y: auto;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .akt-editable:focus { border-color: #0891b2; box-shadow: 0 0 0 3px rgba(8,145,178,0.15); }
+    .akt-editable:empty:before { content: attr(data-placeholder); color: #9ca3af; pointer-events: none; display: block; }
+
     /* Drag & drop */
     .drag-handle { cursor: grab; }
     .drag-handle:active { cursor: grabbing; }
@@ -118,7 +135,7 @@
           <span class="hidden sm:block text-xs font-semibold text-gray-400 uppercase tracking-widest">Správa webu</span>
         </div>
         <div class="flex items-center gap-4">
-          <a href="mapa.html" target="_blank" class="text-xs text-brand hover:underline font-medium">Zobrazit web ↗</a>
+          <a href="index.html" target="_blank" class="text-xs text-brand hover:underline font-medium">Zobrazit web ↗</a>
           <button id="logout-btn" class="text-xs text-gray-400 hover:text-gray-600 transition-colors">Odhlásit se</button>
         </div>
       </div>
@@ -128,7 +145,13 @@
 
       <!-- Tab bar -->
       <div class="flex gap-1 bg-white border border-gray-100 rounded-2xl p-1.5 shadow-sm mb-5 overflow-x-auto">
-        <button class="tab-btn active flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="hours">
+        <button class="tab-btn active flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="aktuality">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+          </svg>
+          Aktuality
+        </button>
+        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="hours">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
@@ -140,23 +163,17 @@
           </svg>
           Ceník
         </button>
-        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="pojistovny">
-          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
-          </svg>
-          Pojišťovny
-        </button>
-        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="aktuality">
-          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-          </svg>
-          Aktuality
-        </button>
         <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="poskytujeme">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
           </svg>
           Poskytujeme
+        </button>
+        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="pojistovny">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          Pojišťovny
         </button>
         <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="kontakt">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -167,7 +184,7 @@
       </div>
 
       <!-- ─── Ordinační hodiny ─── -->
-      <div class="sec active" id="sec-hours">
+      <div class="sec" id="sec-hours">
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
           <div class="flex items-start justify-between mb-5 gap-4">
             <div>
@@ -253,7 +270,7 @@
       </div>
 
       <!-- ─── Aktuality ─── -->
-      <div class="sec" id="sec-aktuality">
+      <div class="sec active" id="sec-aktuality">
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
 
           <!-- Hlavička -->
@@ -360,12 +377,11 @@
             <div>
               <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Text (nepovinný)</label>
               <div class="fmt-toolbar">
-                <button type="button" class="fmt-btn" onclick="formatField('akt-text','strong')" title="Tučně"><b>B</b></button>
-                <button type="button" class="fmt-btn" onclick="formatField('akt-text','u')" title="Podtržení"><u>U</u></button>
+                <button type="button" class="fmt-btn" onclick="fmtExec('akt-text','bold')" title="Tučně"><b>B</b></button>
+                <button type="button" class="fmt-btn" onclick="fmtExec('akt-text','underline')" title="Podtržení"><u>U</u></button>
               </div>
-              <textarea id="akt-text" placeholder="Podrobnější popis..."
-                class="w-full max-w-lg border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-800 outline-none focus:border-brand resize-none"
-                style="font-family:inherit; min-height:4rem"></textarea>
+              <div id="akt-text" contenteditable="true" class="akt-editable w-full max-w-lg"
+                data-placeholder="Podrobnější popis..."></div>
             </div>
 
             <div class="flex gap-3 pt-1">
@@ -471,11 +487,12 @@
     function esc(s) {
       return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
-    // Propustí pouze <strong> a <u> tagy, zbytek escapuje
+    // Propustí pouze <strong>, <u> a <br> tagy, zbytek escapuje
     function safeHtml(s) {
       return esc(s)
         .replace(/&lt;strong&gt;/g,'<strong>').replace(/&lt;\/strong&gt;/g,'</strong>')
-        .replace(/&lt;u&gt;/g,'<u>').replace(/&lt;\/u&gt;/g,'</u>');
+        .replace(/&lt;u&gt;/g,'<u>').replace(/&lt;\/u&gt;/g,'</u>')
+        .replace(/&lt;br&gt;/g,'<br>');
     }
     // Obalí označený text v input/textarea do HTML tagu
     function formatField(id, tag) {
@@ -488,6 +505,31 @@
       el.selectionStart = start + open.length;
       el.selectionEnd   = end   + open.length;
       el.focus();
+    }
+    function fmtExec(id, cmd) {
+      document.getElementById(id).focus();
+      document.execCommand(cmd, false, null);
+    }
+    function getEditableHtml(id) {
+      return document.getElementById(id).innerHTML
+        .replace(/<b(\s[^>]*)?>/gi, '<strong>').replace(/<\/b>/gi, '</strong>')
+        .replace(/<div[^>]*>/gi, '<br>').replace(/<\/div>/gi, '')
+        .replace(/<p[^>]*>/gi, '<br>').replace(/<\/p>/gi, '')
+        .replace(/<\/li>/gi, '<br>').replace(/<li[^>]*>/gi, '')
+        .replace(/<\/?(ul|ol)[^>]*>/gi, '')
+        .replace(/(<br\s*\/?>){3,}/gi, '<br><br>')
+        .replace(/^<br>|<br>$/gi, '')
+        .replace(/<(?!\/?(?:strong|u)(?:\s|>)|br[\s\/>])[^>]*>/gi, '')
+        .replace(/&nbsp;/g, ' ')
+        .trim();
+    }
+    function sanitizeStoredHtml(s) {
+      const tmp = document.createElement('div');
+      tmp.innerHTML = s;
+      tmp.querySelectorAll('*:not(strong):not(u):not(br)').forEach(el => {
+        el.replaceWith(...el.childNodes);
+      });
+      return tmp.innerHTML;
     }
     function showSaved(id) {
       const el = document.getElementById(id);
@@ -919,25 +961,25 @@
         const hex = resolveColor(item);
         const cs = colorStyle(hex, 0.10, 0.30, 0.85);
         return `
-        <div class="akt-item flex items-start gap-3 p-4 rounded-xl border ${item.active ? '' : 'opacity-50'}"
+        <div class="akt-item flex items-start gap-3 p-4 rounded-xl border"
           draggable="true" data-idx="${i}"
-          style="${cs.bg}; ${cs.border}">
+          style="${item.active ? `${cs.bg}; ${cs.border}` : 'background:rgba(0,0,0,0.02); border-color:#e5e7eb'}">
 
           <!-- Drag handle -->
-          <div class="drag-handle flex-shrink-0 text-gray-300 hover:text-gray-500 self-center transition-colors" title="Přetáhnout">
+          <div class="drag-handle flex-shrink-0 text-gray-300 hover:text-gray-500 self-center transition-colors${item.active ? '' : ' opacity-30'}" title="Přetáhnout">
             ${DRAG_HANDLE_SVG}
           </div>
 
           <!-- Ikona -->
-          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style="background:rgba(255,255,255,0.6)">
+          <div class="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0${item.active ? '' : ' opacity-30'}" style="background:rgba(255,255,255,0.6)">
             <svg class="w-5 h-5" style="${cs.icon}" fill="none" stroke="currentColor" viewBox="0 0 24 24">${iconSvg(item.icon)}</svg>
           </div>
 
           <!-- Obsah -->
           <div class="flex-1 min-w-0">
             <p class="font-semibold text-sm" style="${cs.title}">${safeHtml(item.title)}</p>
-            ${item.text ? `<p class="text-xs text-gray-500 mt-0.5 leading-relaxed">${safeHtml(item.text)}</p>` : ''}
-            <div class="flex items-center gap-1.5 mt-2">
+            ${item.text ? `<p class="text-xs ${item.active ? 'text-gray-800' : 'text-gray-400'} mt-0.5 leading-relaxed">${safeHtml(item.text)}</p>` : ''}
+            <div class="flex items-center gap-1.5 mt-2${item.active ? '' : ' opacity-40'}">
               <span class="text-xs px-2 py-0.5 rounded-full border font-medium" style="${cs.badge}">${item.type}${item.color ? ` · <span style="display:inline-block;width:0.6rem;height:0.6rem;border-radius:50%;background:${esc(item.color)};vertical-align:middle;margin-left:2px"></span>` : ''}</span>
             </div>
           </div>
@@ -1044,7 +1086,7 @@
         document.querySelector(`input[name="akt-type"][value="${item.type}"]`).checked = true;
         document.getElementById('akt-icon').value = item.icon;
         document.getElementById('akt-title').value = item.title;
-        document.getElementById('akt-text').value = item.text || '';
+        document.getElementById('akt-text').innerHTML = sanitizeStoredHtml(item.text || '');
         document.getElementById('akt-color').value = item.color || '';
         renderIconPalette(item.icon);
         renderColorPalette(item.color || '');
@@ -1053,7 +1095,7 @@
         document.querySelector('input[name="akt-type"][value="info"]').checked = true;
         document.getElementById('akt-icon').value = 'bell';
         document.getElementById('akt-title').value = '';
-        document.getElementById('akt-text').value = '';
+        document.getElementById('akt-text').innerHTML = '';
         document.getElementById('akt-color').value = '';
         renderIconPalette('bell');
         renderColorPalette('');
@@ -1079,7 +1121,7 @@
         icon:  document.getElementById('akt-icon').value,
         color: document.getElementById('akt-color').value || '',
         title,
-        text:  document.getElementById('akt-text').value.trim(),
+        text:  getEditableHtml('akt-text'),
       };
       if (editingIdx !== null) {
         data[editingIdx] = item;
@@ -1093,6 +1135,13 @@
     }
 
     // Bind form buttons (once, not in initAdmin loop)
+    // Vkládání do editovatelného pole — pouze čistý text (bez cizích fontů/stylů)
+    document.getElementById('akt-text').addEventListener('paste', e => {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+      document.execCommand('insertText', false, text);
+    });
+
     document.getElementById('aktuality-add-btn').addEventListener('click', () => openForm(null));
     document.getElementById('aktuality-form-cancel').addEventListener('click', closeForm);
     document.getElementById('aktuality-form-cancel2').addEventListener('click', closeForm);
@@ -1161,7 +1210,7 @@
         header.innerHTML = `
           <input type="text" class="posk-sec-name font-semibold text-gray-700 text-sm" style="flex:1"
             value="${esc(sec.name)}" placeholder="Název sekce">
-          <input type="text" class="posk-sec-subtitle text-xs text-gray-400" style="width:13rem"
+          <input type="text" class="posk-sec-subtitle text-xs text-gray-400" style="flex:1"
             value="${esc(sec.subtitle || '')}" placeholder="Podtitulek">
           <button class="del-posk-sec-btn w-8 h-8 flex items-center justify-center rounded-lg text-gray-300 hover:text-red-400 hover:bg-red-50 transition-colors flex-shrink-0" title="Smazat sekci">
             <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -1206,17 +1255,24 @@
         // Items
         const rowsContainer = document.createElement('div');
         rowsContainer.className = 'space-y-2';
+        let dragSrc = null;
         sec.items.forEach((item, ri) => {
           const rowEl = document.createElement('div');
           rowEl.className = 'posk-item-row flex items-center gap-2';
+          rowEl.draggable = true;
           rowEl.innerHTML = `
+            <span class="drag-handle flex-shrink-0 text-gray-300 hover:text-gray-400 px-0.5" title="Přetáhni pro změnu pořadí">
+              <svg class="w-3.5 h-3.5 pointer-events-none" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M8 6a2 2 0 110-4 2 2 0 010 4zm8 0a2 2 0 110-4 2 2 0 010 4zM8 14a2 2 0 110-4 2 2 0 010 4zm8 0a2 2 0 110-4 2 2 0 010 4zM8 22a2 2 0 110-4 2 2 0 010 4zm8 0a2 2 0 110-4 2 2 0 010 4z"/>
+              </svg>
+            </span>
             <svg class="w-3.5 h-3.5 text-brand flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
             </svg>
             <input type="text" class="posk-item-name" value="${esc(item.name)}" placeholder="Název položky" style="flex:1"
               data-section="${si}" data-idx="${ri}">
             <input type="text" class="posk-item-subtitle" value="${esc(item.subtitle || '')}" placeholder="Podtitulek (nepovinný)"
-              style="width:13rem" data-section="${si}" data-idx="${ri}">
+              style="flex:1" data-section="${si}" data-idx="${ri}">
             <button class="del-posk-item-btn w-8 h-8 flex items-center justify-center rounded-lg text-gray-300 hover:text-red-400 hover:bg-red-50 transition-colors flex-shrink-0" title="Odebrat">
               <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
@@ -1227,6 +1283,35 @@
             d[si].items.splice(ri, 1);
             await DataService.savePoskytujeme(d);
             await renderPoskytujemeSections();
+          });
+          rowEl.addEventListener('dragstart', e => {
+            dragSrc = rowEl;
+            e.dataTransfer.effectAllowed = 'move';
+            setTimeout(() => { rowEl.style.opacity = '0.4'; }, 0);
+          });
+          rowEl.addEventListener('dragend', () => {
+            rowEl.style.opacity = '';
+            rowsContainer.querySelectorAll('.posk-item-row').forEach(r => r.classList.remove('drag-over'));
+          });
+          rowEl.addEventListener('dragover', e => {
+            if (!dragSrc || dragSrc === rowEl) return;
+            e.preventDefault();
+            e.dataTransfer.dropEffect = 'move';
+            rowsContainer.querySelectorAll('.posk-item-row').forEach(r => r.classList.remove('drag-over'));
+            rowEl.classList.add('drag-over');
+          });
+          rowEl.addEventListener('dragleave', () => rowEl.classList.remove('drag-over'));
+          rowEl.addEventListener('drop', e => {
+            e.preventDefault();
+            if (!dragSrc || dragSrc === rowEl) return;
+            rowEl.classList.remove('drag-over');
+            const rect = rowEl.getBoundingClientRect();
+            if (e.clientY < rect.top + rect.height / 2) {
+              rowsContainer.insertBefore(dragSrc, rowEl);
+            } else {
+              rowsContainer.insertBefore(dragSrc, rowEl.nextSibling);
+            }
+            dragSrc = null;
           });
           rowsContainer.appendChild(rowEl);
         });

@@ -96,13 +96,11 @@
       50%       { background: #1554A8; box-shadow: 0 0 10px 4px rgba(27,103,191,0.3); }
     }
     html.dark .book-pulse { animation-name: glow-dark; }
+    html.dark .text-brand { color: #60a5fa !important; }
 
-    /* CTA card gradient */
+    /* CTA card */
     .cta-card {
-      background: linear-gradient(135deg, #dbeafe 0%, #eff6ff 50%, #ffffff 100%);
-    }
-    html.dark .cta-card {
-      background: linear-gradient(135deg, rgba(27,103,191,0.22) 0%, rgba(27,103,191,0.07) 55%, #1e293b 100%) !important;
+      background: #ffffff;
     }
     html.dark .border-brand\/15 { border-color: rgba(27,103,191,0.38) !important; }
   </style>
@@ -165,72 +163,72 @@
         <h2 class="text-base font-bold text-gray-800 mb-5">Co přes Medevio vyřídíte</h2>
         <div class="grid grid-cols-2 gap-3">
           <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
               </svg>
             </div>
             <span class="text-sm font-medium text-gray-800">Objednání vyšetření</span>
           </div>
           <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
               </svg>
             </div>
             <span class="text-sm font-medium text-gray-800">Zdravotní obtíže</span>
           </div>
           <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/>
               </svg>
             </div>
             <span class="text-sm font-medium text-gray-800">Objednání na odběr</span>
           </div>
           <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21a48.309 48.309 0 01-8.135-.687c-1.718-.293-2.3-2.379-1.067-3.61L5 14.5"/>
               </svg>
             </div>
             <span class="text-sm font-medium text-gray-800">Očkování</span>
           </div>
           <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
               </svg>
             </div>
             <span class="text-sm font-medium text-gray-800">Potvrzení, posudky, výpisy</span>
           </div>
           <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
               </svg>
             </div>
             <span class="text-sm font-medium text-gray-800">Předpis na pomůcky</span>
           </div>
           <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2zM9 14l2-2 2 2"/>
               </svg>
             </div>
             <span class="text-sm font-medium text-gray-800">Změnit termín návštěvy</span>
           </div>
           <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
               </svg>
             </div>
             <span class="text-sm font-medium text-gray-800">Pracovní neschopnost</span>
           </div>
           <div class="flex items-center gap-3 bg-brand/5 rounded-xl px-4 py-3">
-            <div class="w-8 h-8 bg-brand/10 rounded-lg flex items-center justify-center flex-shrink-0">
-              <svg class="w-4 h-4 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+              <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
               </svg>
             </div>
@@ -240,7 +238,7 @@
       </div>
 
       <!-- CTA card -->
-      <div class="cta-card rounded-2xl border border-brand/15 shadow-sm p-8 text-center flex flex-col">
+      <div class="cta-card bg-white rounded-2xl border border-gray-100 shadow-sm p-8 text-center flex flex-col">
         <div class="mb-5 flex justify-center">
           <div class="inline-flex items-center px-4 py-2 rounded-xl border border-gray-100 shadow-sm" style="background:white">
             <img src="./assets/images/medevio-logo.svg" alt="Medevio" class="h-5 w-auto">
