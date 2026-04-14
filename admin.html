@@ -86,6 +86,8 @@
     .drag-handle:active { cursor: grabbing; }
     [draggable].drag-over { outline: 2px solid #0891b2; outline-offset: 1px; border-radius: 0.625rem; background: rgba(8,145,178,0.04) !important; }
 
+    textarea, select { font-family: 'Inter', system-ui, sans-serif; }
+
     input[type="text"], input[type="password"], input[type="email"], input[type="tel"] {
       border: 1px solid #e2e8f0;
       border-radius: 0.5rem;
@@ -109,7 +111,7 @@
   <div id="login-wrap" class="min-h-screen flex items-center justify-center p-4">
     <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 w-full max-w-sm">
       <div class="flex justify-center mb-6">
-        <img src="logo/Gemini_Generated_Image_nzqnpnnzqnpnnzqn.png" alt="ESMEDICA" class="h-12 w-auto">
+        <img src="Logo/Logo_Esmedica_transparent (2).png" alt="ESMEDICA" class="h-12 w-auto">
       </div>
       <h1 class="text-xl font-bold text-gray-900 text-center mb-1">Správa webu</h1>
       <p class="text-sm text-gray-400 text-center mb-6">ESMEDICA Litvínov</p>
@@ -131,7 +133,7 @@
     <nav class="bg-white border-b border-gray-100 sticky top-0 z-50">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center justify-between h-14">
         <div class="flex items-center gap-3">
-          <img src="logo/Gemini_Generated_Image_nzqnpnnzqnpnnzqn.png" alt="ESMEDICA" class="h-8 w-auto">
+          <img src="Logo/Logo_Esmedica_transparent (2).png" alt="ESMEDICA" class="h-8 w-auto">
           <span class="hidden sm:block text-xs font-semibold text-gray-400 uppercase tracking-widest">Správa webu</span>
         </div>
         <div class="flex items-center gap-4">
@@ -145,23 +147,29 @@
 
       <!-- Tab bar -->
       <div class="flex gap-1 bg-white border border-gray-100 rounded-2xl p-1.5 shadow-sm mb-5 overflow-x-auto">
-        <button class="tab-btn active flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="aktuality">
-          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
-          </svg>
-          Aktuality
-        </button>
-        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="hours">
+        <button class="tab-btn active flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="hours">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
           </svg>
           Ordinační hodiny
         </button>
-        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="cenik">
+        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="dostupnost">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
           </svg>
-          Ceník
+          Dostupnost
+        </button>
+        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="faq">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          Časté dotazy
+        </button>
+        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="aktuality">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+          </svg>
+          Aktuality
         </button>
         <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="poskytujeme">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -169,17 +177,29 @@
           </svg>
           Poskytujeme
         </button>
-        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="pojistovny">
+        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="cenik">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
           </svg>
-          Pojišťovny
+          Ceník
         </button>
         <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="kontakt">
           <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
           </svg>
           Kontakt
+        </button>
+        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="pojistovny">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
+          </svg>
+          Pojišťovny
+        </button>
+        <button class="tab-btn flex-1 min-w-max flex items-center justify-center gap-2 px-4 py-2 rounded-xl text-sm font-semibold transition-colors" data-tab="upozorneni">
+          <svg class="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
+          </svg>
+          Upozornění
         </button>
       </div>
 
@@ -465,12 +485,409 @@
               <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">E-mail</label>
               <input type="email" id="kontakt-email" placeholder="esmedica.litvinov@gmail.com">
             </div>
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Jméno zdravotní sestry</label>
+              <input type="text" id="kontakt-nurse" placeholder="např. Jana Nováková">
+            </div>
           </div>
           <p id="kontakt-saved" class="hidden mt-5 text-xs text-green-600 font-medium flex items-center gap-1.5">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
             </svg>
             Uloženo — změny se projeví na webu po obnovení stránky
+          </p>
+        </div>
+      </div>
+
+      <!-- ─── Dostupnost lékaře ─── -->
+      <div class="sec" id="sec-dostupnost">
+
+        <!-- Calendar card -->
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 mb-4">
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <h2 class="text-lg font-bold text-gray-900">Dostupnost lékaře</h2>
+              <p class="text-xs text-gray-400 mt-0.5">Klikněte na datum a nastavte stav (Ordinuje / Zavřeno / Zástup)</p>
+            </div>
+            <div class="flex items-center gap-2">
+              <button id="avail-prev-btn" class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 hover:border-brand hover:text-brand text-gray-400 transition-colors">
+                <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+              </button>
+              <span id="avail-month-label" class="text-sm font-semibold text-gray-700 min-w-[130px] text-center"></span>
+              <button id="avail-next-btn" class="w-8 h-8 flex items-center justify-center rounded-lg border border-gray-200 hover:border-brand hover:text-brand text-gray-400 transition-colors">
+                <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Calendar grid -->
+          <div id="avail-calendar" class="select-none">
+            <div class="grid grid-cols-7 gap-1 mb-1">
+              <div class="text-center text-xs font-semibold text-gray-400 py-1">Po</div>
+              <div class="text-center text-xs font-semibold text-gray-400 py-1">Út</div>
+              <div class="text-center text-xs font-semibold text-gray-400 py-1">St</div>
+              <div class="text-center text-xs font-semibold text-gray-400 py-1">Čt</div>
+              <div class="text-center text-xs font-semibold text-gray-400 py-1">Pá</div>
+              <div class="text-center text-xs font-semibold text-gray-500 py-1">So</div>
+              <div class="text-center text-xs font-semibold text-gray-500 py-1">Ne</div>
+            </div>
+            <div id="avail-days-grid" class="grid grid-cols-7 gap-1"></div>
+          </div>
+
+          <!-- Admin calendar tooltip -->
+          <div id="admin-cal-tooltip" style="
+            position:fixed;z-index:9000;
+            background:#fff;border:1px solid #e2e8f0;border-radius:10px;
+            box-shadow:0 6px 20px rgba(0,0,0,.10);
+            padding:8px 12px;font-size:12px;color:#374151;font-family:'Inter',sans-serif;
+            pointer-events:none;opacity:0;transition:opacity .12s;
+            max-width:220px;line-height:1.5;
+          "></div>
+
+          <!-- Legend -->
+          <div class="flex flex-wrap gap-3 mt-4 pt-4 border-t border-gray-50">
+            <span class="flex items-center gap-1.5 text-xs text-gray-500"><span class="w-3 h-3 rounded-full bg-emerald-400 inline-block"></span>Ordinuje</span>
+            <span class="flex items-center gap-1.5 text-xs text-gray-500"><span class="w-3 h-3 rounded-full bg-red-400 inline-block"></span>Zavřeno</span>
+            <span class="flex items-center gap-1.5 text-xs text-gray-500"><span class="w-3 h-3 rounded-full bg-violet-400 inline-block"></span>Zástup</span>
+            <span id="avail-custom-legend" class="flex flex-wrap gap-3"></span>
+          </div>
+        </div>
+
+        <!-- Day editor (hidden by default) -->
+        <div id="avail-day-editor" class="hidden bg-white rounded-2xl border border-brand/20 shadow-sm p-6 mb-4">
+          <div class="flex items-center justify-between mb-4">
+            <h3 id="avail-editor-title" class="text-sm font-bold text-gray-800"></h3>
+            <button id="avail-editor-close" class="text-xs text-gray-400 hover:text-gray-600 transition-colors">Zavřít</button>
+          </div>
+
+          <!-- Status choices -->
+          <div id="avail-status-choices" class="flex flex-wrap gap-2 mb-4"></div>
+
+          <!-- Substitute doctor selector -->
+          <div id="avail-sub-row" class="hidden mb-4">
+            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Zastupující lékař</label>
+            <select id="avail-sub-select" class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 font-family-inherit">
+              <option value="">— vyberte lékaře —</option>
+            </select>
+          </div>
+
+          <!-- Note -->
+          <div class="mb-4">
+            <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Poznámka (zobrazí se při najetí myší)</label>
+            <textarea id="avail-editor-note" rows="3"
+              class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm text-gray-700 outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 resize-none font-family-inherit"
+              placeholder="Doplňující informace…"></textarea>
+            <p class="text-xs text-gray-300 mt-1">Lze použít HTML: &lt;strong&gt;tučně&lt;/strong&gt;, &lt;a href=&quot;tel:…&quot;&gt;telefon&lt;/a&gt;</p>
+          </div>
+
+          <div class="flex gap-2">
+            <button id="avail-editor-save" class="bg-brand text-white text-sm font-semibold px-5 py-2 rounded-xl hover:bg-brand-dark transition-colors">Uložit</button>
+            <button id="avail-editor-clear" class="text-sm font-semibold px-4 py-2 rounded-xl border border-gray-200 text-gray-500 hover:bg-gray-50 transition-colors">Vymazat den</button>
+          </div>
+        </div>
+
+        <!-- Two-column panels -->
+        <div class="grid md:grid-cols-2 gap-4">
+
+          <!-- Substitute doctors -->
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="text-sm font-bold text-gray-900">Předdefinovaní zástupci</h3>
+                <p class="text-xs text-gray-400 mt-0.5">Lékaři, kteří ordinují jako zástup</p>
+              </div>
+              <button id="zastupci-add-btn" class="flex items-center gap-1.5 text-xs text-brand hover:text-brand-dark font-semibold border border-brand/30 hover:border-brand/60 px-3 py-2 rounded-xl transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                Přidat
+              </button>
+            </div>
+            <div id="zastupci-list" class="space-y-2 mb-4"></div>
+
+            <!-- Inline doctor form -->
+            <div id="zastupci-form" class="hidden bg-gray-50 rounded-xl border border-gray-100 p-4 space-y-3">
+              <h4 id="zastupci-form-title" class="text-xs font-bold text-gray-600 uppercase tracking-wide">Nový zástupce</h4>
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Jméno lékaře</label>
+                <input type="text" id="zastupci-name" placeholder="MUDr. Jana Nováková">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Telefon</label>
+                <input type="tel" id="zastupci-phone" placeholder="+420 777 000 111">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Ordinační doba</label>
+                <input type="text" id="zastupci-hours" placeholder="Po–Pá 7:30–11:00, 13:00–15:00">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Ordinace / adresa</label>
+                <input type="text" id="zastupci-note" placeholder="Ordinace Litvínov, ul. Masarykova">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Web lékaře (URL)</label>
+                <input type="text" id="zastupci-url" placeholder="https://www.doktor-novak.cz">
+              </div>
+              <div class="flex gap-2 pt-1">
+                <button id="zastupci-form-save" class="bg-brand text-white text-xs font-semibold px-4 py-1.5 rounded-lg hover:bg-brand-dark transition-colors">Uložit</button>
+                <button id="zastupci-form-cancel" class="text-xs text-gray-400 hover:text-gray-600 transition-colors px-2">Zrušit</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Custom statuses -->
+          <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-5">
+            <div class="flex items-center justify-between mb-4">
+              <div>
+                <h3 class="text-sm font-bold text-gray-900">Vlastní stavy</h3>
+                <p class="text-xs text-gray-400 mt-0.5">Přidejte vlastní stavy (školení, konference…)</p>
+              </div>
+              <button id="custom-status-add-btn" class="flex items-center gap-1.5 text-xs text-brand hover:text-brand-dark font-semibold border border-brand/30 hover:border-brand/60 px-3 py-2 rounded-xl transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/></svg>
+                Přidat
+              </button>
+            </div>
+            <div id="custom-status-list" class="space-y-2 mb-4"></div>
+
+            <!-- Inline custom status form -->
+            <div id="custom-status-form" class="hidden bg-gray-50 rounded-xl border border-gray-100 p-4 space-y-3">
+              <h4 id="custom-status-form-title" class="text-xs font-bold text-gray-600 uppercase tracking-wide">Nový stav</h4>
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Název stavu</label>
+                <input type="text" id="cs-name" placeholder="např. Školení">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1">Popis</label>
+                <input type="text" id="cs-desc" placeholder="Krátký popis zobrazený na webu">
+              </div>
+              <div>
+                <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Barva</label>
+                <div id="cs-color-picker" class="flex flex-wrap gap-2"></div>
+                <input type="hidden" id="cs-color-value" value="#f59e0b">
+              </div>
+              <div class="flex gap-2 pt-1">
+                <button id="cs-form-save" class="bg-brand text-white text-xs font-semibold px-4 py-1.5 rounded-lg hover:bg-brand-dark transition-colors">Uložit</button>
+                <button id="cs-form-cancel" class="text-xs text-gray-400 hover:text-gray-600 transition-colors px-2">Zrušit</button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <p id="dostupnost-saved" class="hidden mt-4 text-xs text-green-600 font-medium flex items-center gap-1.5">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+          </svg>
+          Uloženo — změny se projeví na webu po obnovení stránky
+        </p>
+      </div>
+
+      <!-- ─── Časté dotazy (FAQ) ─── -->
+      <div class="sec" id="sec-faq">
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+
+          <!-- Hlavička -->
+          <div class="flex items-start justify-between mb-6 gap-4">
+            <div>
+              <h2 class="text-lg font-bold text-gray-900">Časté dotazy</h2>
+              <p class="text-xs text-gray-400 mt-0.5">Otázky a odpovědi zobrazené na stránce „Důležité info". Vypnuté jsou skryté, ale uložené.</p>
+            </div>
+            <button id="faq-add-btn"
+              class="flex items-center gap-2 bg-brand text-white text-sm font-semibold px-4 py-2 rounded-xl hover:bg-brand-dark transition-colors flex-shrink-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4"/>
+              </svg>
+              Přidat dotaz
+            </button>
+          </div>
+
+          <!-- Formulář nový/editovaný dotaz -->
+          <div id="faq-form" class="hidden mb-6 bg-gray-50 rounded-2xl border border-gray-100 p-5 space-y-4">
+            <div class="flex items-center justify-between mb-1">
+              <h3 id="faq-form-title" class="text-sm font-bold text-gray-700">Nový dotaz</h3>
+              <button id="faq-form-cancel" class="text-xs text-gray-400 hover:text-gray-600 transition-colors">Zrušit</button>
+            </div>
+
+            <!-- Barva -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-2">Barva</label>
+              <div class="flex items-center gap-2 flex-wrap">
+                <div id="faq-color-palette" class="flex items-center gap-2 flex-wrap"></div>
+                <label class="color-swatch relative w-8 h-8 rounded-lg border-2 border-gray-200 overflow-hidden cursor-pointer flex-shrink-0" title="Vlastní barva…" id="faq-color-custom-wrap">
+                  <input type="color" id="faq-color-picker" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer border-0 p-0">
+                  <div id="faq-color-picker-preview" class="w-full h-full" style="background: conic-gradient(red, yellow, lime, cyan, blue, magenta, red)"></div>
+                </label>
+              </div>
+              <input type="hidden" id="faq-color" value="#1B67BF">
+            </div>
+
+            <!-- Otázka -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Otázka</label>
+              <input type="text" id="faq-question" placeholder="Napište otázku…" class="max-w-lg">
+            </div>
+
+            <!-- Odpověď -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-400 uppercase tracking-wide mb-1.5">Odpověď</label>
+              <div class="fmt-toolbar">
+                <button type="button" class="fmt-btn" onclick="fmtExec('faq-answer','bold')" title="Tučně"><b>B</b></button>
+                <button type="button" class="fmt-btn" onclick="fmtExec('faq-answer','underline')" title="Podtržení"><u>U</u></button>
+              </div>
+              <div id="faq-answer" contenteditable="true" class="akt-editable w-full max-w-lg"
+                data-placeholder="Napište odpověď…"></div>
+            </div>
+
+            <div class="flex gap-3 pt-1">
+              <button id="faq-form-save"
+                class="bg-brand text-white text-sm font-semibold px-5 py-2 rounded-xl hover:bg-brand-dark transition-colors">
+                Uložit dotaz
+              </button>
+              <button id="faq-form-cancel2"
+                class="text-sm text-gray-400 hover:text-gray-600 px-4 py-2 transition-colors">
+                Zrušit
+              </button>
+            </div>
+          </div>
+
+          <!-- Seznam dotazů -->
+          <div id="faq-list" class="space-y-3"></div>
+
+          <p id="faq-saved" class="hidden mt-4 text-xs text-green-600 font-medium flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            Uloženo — změny se projeví na webu po obnovení stránky
+          </p>
+
+        </div>
+      </div>
+
+      <!-- ─── Upozornění ─── -->
+      <div class="sec" id="sec-upozorneni">
+        <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
+
+          <div class="flex items-start justify-between mb-6 gap-4">
+            <div>
+              <h2 class="text-lg font-bold text-gray-900">Upozornění na webu</h2>
+              <p class="text-xs text-gray-400 mt-0.5">Banner nebo toast se zobrazí na všech variantách webu v nastaveném období.</p>
+            </div>
+            <button id="upoz-save-btn" class="bg-brand text-white text-sm font-semibold px-5 py-2 rounded-xl hover:bg-brand-dark transition-colors flex-shrink-0">
+              Uložit
+            </button>
+          </div>
+
+          <!-- Aktivní přepínač -->
+          <div class="flex items-center justify-between py-3 border-b border-gray-100 mb-5">
+            <div>
+              <p class="text-sm font-semibold text-gray-800">Aktivní</p>
+              <p class="text-xs text-gray-400 mt-0.5">Zobrazit upozornění na webu (respektuje nastavené datum)</p>
+            </div>
+            <label class="toggle-wrap">
+              <input type="checkbox" id="upoz-active">
+              <span class="toggle-track"></span>
+            </label>
+          </div>
+
+          <div class="space-y-5">
+
+            <!-- Text zprávy -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Text zprávy</label>
+              <div class="fmt-toolbar">
+                <button type="button" class="fmt-btn" onclick="formatField('upoz-text','strong')" title="Tučně"><b>B</b></button>
+              </div>
+              <textarea id="upoz-text" rows="3"
+                class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-800 outline-none resize-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition font-[inherit]"
+                placeholder="Ordinace bude uzavřena 1.–5. května. V naléhavých případech volejte 155."></textarea>
+              <p class="text-xs text-gray-400 mt-1">Podporuje <code>&lt;strong&gt;tučný text&lt;/strong&gt;</code></p>
+            </div>
+
+            <!-- Barva -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Barva</label>
+              <div class="flex gap-2 flex-wrap">
+                <label class="cursor-pointer">
+                  <input type="radio" name="upoz-color" value="amber" class="sr-only" checked>
+                  <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg border-2 border-amber-400 bg-amber-50 text-amber-700 text-xs font-semibold upoz-color-opt transition">
+                    <span class="w-3 h-3 rounded-full bg-amber-400 flex-shrink-0"></span>Žlutá — dovolená
+                  </span>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="upoz-color" value="blue" class="sr-only">
+                  <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg border-2 border-gray-200 text-gray-500 text-xs font-semibold upoz-color-opt transition hover:border-blue-300">
+                    <span class="w-3 h-3 rounded-full bg-blue-500 flex-shrink-0"></span>Modrá — informace
+                  </span>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="upoz-color" value="red" class="sr-only">
+                  <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg border-2 border-gray-200 text-gray-500 text-xs font-semibold upoz-color-opt transition hover:border-red-300">
+                    <span class="w-3 h-3 rounded-full bg-red-500 flex-shrink-0"></span>Červená — urgentní
+                  </span>
+                </label>
+                <label class="cursor-pointer">
+                  <input type="radio" name="upoz-color" value="green" class="sr-only">
+                  <span class="flex items-center gap-2 px-3 py-1.5 rounded-lg border-2 border-gray-200 text-gray-500 text-xs font-semibold upoz-color-opt transition hover:border-green-300">
+                    <span class="w-3 h-3 rounded-full bg-green-500 flex-shrink-0"></span>Zelená — pozitivní
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Ikona -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Ikona</label>
+              <div class="flex gap-2 flex-wrap" id="upoz-icon-group">
+                <button type="button" class="icon-pill selected" data-icon="warning" title="Varování">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
+                </button>
+                <button type="button" class="icon-pill" data-icon="calendar" title="Kalendář">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </button>
+                <button type="button" class="icon-pill" data-icon="info" title="Informace">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </button>
+                <button type="button" class="icon-pill" data-icon="bell" title="Zvonek">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Datum zobrazení -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Zobrazit od – do</label>
+              <div class="flex flex-wrap items-center gap-3">
+                <div class="flex flex-col gap-1">
+                  <span class="text-xs text-gray-400">Od</span>
+                  <input type="date" id="upoz-date-from"
+                    class="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition w-40">
+                </div>
+                <span class="text-gray-300 mt-4">–</span>
+                <div class="flex flex-col gap-1">
+                  <span class="text-xs text-gray-400">Do</span>
+                  <input type="date" id="upoz-date-to"
+                    class="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition w-40">
+                </div>
+                <div class="flex flex-col gap-1 mt-4">
+                  <button type="button" id="upoz-clear-dates" class="text-xs text-gray-400 hover:text-gray-600 underline transition">Bez omezení data</button>
+                </div>
+              </div>
+              <p class="text-xs text-gray-400 mt-1.5">Prázdné pole = zobrazit vždy (pokud je aktivní).</p>
+            </div>
+
+            <!-- Náhled -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-2">Náhled banneru</label>
+              <div id="upoz-preview" class="rounded-xl border px-4 py-3 flex items-center gap-3 transition-all">
+                <span id="upoz-preview-icon" class="flex-shrink-0"></span>
+                <p id="upoz-preview-text" class="text-sm font-medium flex-1"></p>
+              </div>
+            </div>
+
+          </div>
+
+          <p id="upoz-saved" class="hidden mt-5 text-xs text-green-600 font-medium flex items-center gap-1.5">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
+            </svg>
+            Uloženo — upozornění se projeví na webu po obnovení stránky
           </p>
         </div>
       </div>
@@ -603,6 +1020,8 @@
       await safeRender(renderKontakt,    'kontakt');
       await safeRender(renderAktuality,  'aktuality');
       await safeRender(renderPoskytujeme,'poskytujeme');
+      await safeRender(renderFaq,        'faq');
+      initDostupnost();
 
       // Save buttons
       document.querySelectorAll('.save-btn').forEach(btn => {
@@ -1163,6 +1582,211 @@
       document.querySelectorAll('#color-palette .color-swatch').forEach(b => b.classList.remove('active'));
     });
 
+    // ─── FAQ ───
+
+    const FAQ_COLORS = ['#1B67BF','#0d9488','#10B981','#F59E0B','#EF4444','#8B5CF6','#EC4899','#64748b'];
+    let faqEditingIdx = null;
+    let faqDragSrc = null;
+
+    function renderFaqColorPalette(selected) {
+      const palette = document.getElementById('faq-color-palette');
+      palette.innerHTML = FAQ_COLORS.map(hex => `
+        <button type="button" class="color-swatch w-8 h-8 rounded-lg border-2 border-transparent flex-shrink-0 ${selected === hex ? 'active' : ''}"
+          style="background:${hex};color:${hex}" data-hex="${hex}" title="${hex}"></button>
+      `).join('');
+      palette.querySelectorAll('.color-swatch').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.getElementById('faq-color').value = btn.dataset.hex;
+          palette.querySelectorAll('.color-swatch').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const wrap = document.getElementById('faq-color-custom-wrap');
+          wrap.style.borderColor = '';
+          wrap.classList.remove('active');
+        });
+      });
+    }
+
+    async function renderFaq() {
+      const data = await DataService.getFaq();
+      const list = document.getElementById('faq-list');
+      if (!data.length) {
+        list.innerHTML = '<p class="text-sm text-gray-400 text-center py-6">Žádné dotazy. Přidejte první kliknutím na „Přidat dotaz".</p>';
+        return;
+      }
+      list.innerHTML = data.map((item, i) => {
+        const color = item.color || '#1B67BF';
+        return `
+        <div class="faq-item flex items-start gap-3 p-4 rounded-xl border transition-colors"
+          draggable="true" data-idx="${i}"
+          style="${item.active
+            ? `background:${color}12; border-color:${color}40`
+            : 'background:rgba(0,0,0,0.02); border-color:#e5e7eb'}">
+
+          <!-- Drag handle -->
+          <div class="drag-handle flex-shrink-0 text-gray-300 hover:text-gray-500 self-center transition-colors${item.active ? '' : ' opacity-30'}" title="Přetáhnout">
+            ${DRAG_HANDLE_SVG}
+          </div>
+
+          <!-- Barevný indikátor -->
+          <div class="w-1.5 self-stretch rounded-full flex-shrink-0${item.active ? '' : ' opacity-20'}" style="background:${color}"></div>
+
+          <!-- Obsah -->
+          <div class="flex-1 min-w-0">
+            <p class="font-semibold text-sm${item.active ? '' : ' text-gray-400'}" style="${item.active ? `color:${color}` : ''}">${esc(item.question)}</p>
+            ${item.answer ? `<p class="text-xs text-gray-600 mt-1 leading-relaxed">${safeHtml(item.answer)}</p>` : ''}
+          </div>
+
+          <!-- Akce -->
+          <div class="flex items-center gap-3 flex-shrink-0">
+            <label class="toggle-wrap" title="${item.active ? 'Zobrazeno' : 'Skryto'}">
+              <input type="checkbox" class="faq-toggle" data-idx="${i}" ${item.active ? 'checked' : ''}>
+              <span class="toggle-track"></span>
+            </label>
+            <button class="faq-edit w-8 h-8 flex items-center justify-center rounded-lg text-gray-400 hover:text-brand hover:bg-brand/10 transition-colors" data-idx="${i}" title="Upravit">
+              <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/>
+              </svg>
+            </button>
+            <button class="faq-del w-8 h-8 flex items-center justify-center rounded-lg text-gray-300 hover:text-red-400 hover:bg-red-50 transition-colors" data-idx="${i}" title="Smazat">
+              <svg class="w-4 h-4 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/>
+              </svg>
+            </button>
+          </div>
+        </div>`;
+      }).join('');
+
+      // Drag-and-drop řazení
+      list.querySelectorAll('.faq-item').forEach(el => {
+        const idx = parseInt(el.dataset.idx);
+        el.addEventListener('dragstart', e => {
+          faqDragSrc = idx;
+          e.dataTransfer.effectAllowed = 'move';
+          setTimeout(() => el.classList.add('opacity-30'), 0);
+        });
+        el.addEventListener('dragend', () => {
+          el.classList.remove('opacity-30');
+          list.querySelectorAll('.drag-over').forEach(x => x.classList.remove('drag-over'));
+          faqDragSrc = null;
+        });
+        el.addEventListener('dragover', e => {
+          e.preventDefault();
+          if (faqDragSrc === null || faqDragSrc === idx) return;
+          e.dataTransfer.dropEffect = 'move';
+          list.querySelectorAll('.drag-over').forEach(x => x.classList.remove('drag-over'));
+          el.classList.add('drag-over');
+        });
+        el.addEventListener('dragleave', () => el.classList.remove('drag-over'));
+        el.addEventListener('drop', async e => {
+          e.preventDefault();
+          if (faqDragSrc === null || faqDragSrc === idx) return;
+          const d = await DataService.getFaq();
+          const [moved] = d.splice(faqDragSrc, 1);
+          d.splice(idx, 0, moved);
+          await DataService.saveFaq(d);
+          await renderFaq();
+          showSaved('faq-saved');
+        });
+      });
+
+      // Toggle
+      list.querySelectorAll('.faq-toggle').forEach(cb => {
+        cb.addEventListener('change', async () => {
+          const data = await DataService.getFaq();
+          data[parseInt(cb.dataset.idx)].active = cb.checked;
+          await DataService.saveFaq(data);
+          await renderFaq();
+          showSaved('faq-saved');
+        });
+      });
+
+      // Edit
+      list.querySelectorAll('.faq-edit').forEach(btn => {
+        btn.addEventListener('click', () => openFaqForm(parseInt(btn.dataset.idx)));
+      });
+
+      // Delete
+      list.querySelectorAll('.faq-del').forEach(btn => {
+        btn.addEventListener('click', async () => {
+          const data = await DataService.getFaq();
+          if (!confirm('Smazat dotaz „' + data[parseInt(btn.dataset.idx)].question + '"?')) return;
+          data.splice(parseInt(btn.dataset.idx), 1);
+          await DataService.saveFaq(data);
+          await renderFaq();
+          showSaved('faq-saved');
+        });
+      });
+    }
+
+    function closeFaqForm() {
+      document.getElementById('faq-form').classList.add('hidden');
+      faqEditingIdx = null;
+    }
+
+    async function openFaqForm(idx) {
+      faqEditingIdx = idx ?? null;
+      const form = document.getElementById('faq-form');
+      document.getElementById('faq-form-title').textContent = faqEditingIdx !== null ? 'Upravit dotaz' : 'Nový dotaz';
+      form.classList.remove('hidden');
+      form.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+      if (faqEditingIdx !== null) {
+        const data = await DataService.getFaq();
+        const item = data[faqEditingIdx];
+        document.getElementById('faq-question').value = item.question || '';
+        document.getElementById('faq-answer').innerHTML = sanitizeStoredHtml(item.answer || '');
+        document.getElementById('faq-color').value = item.color || '#1B67BF';
+        renderFaqColorPalette(item.color || '#1B67BF');
+      } else {
+        document.getElementById('faq-question').value = '';
+        document.getElementById('faq-answer').innerHTML = '';
+        document.getElementById('faq-color').value = '#1B67BF';
+        renderFaqColorPalette('#1B67BF');
+      }
+    }
+
+    async function saveFaqItem() {
+      const question = document.getElementById('faq-question').value.trim();
+      if (!question) { document.getElementById('faq-question').focus(); return; }
+      const data = await DataService.getFaq();
+      const item = {
+        id: faqEditingIdx !== null ? data[faqEditingIdx].id : Date.now(),
+        active: faqEditingIdx !== null ? data[faqEditingIdx].active : true,
+        color: document.getElementById('faq-color').value || '#1B67BF',
+        question,
+        answer: getEditableHtml('faq-answer'),
+      };
+      if (faqEditingIdx !== null) {
+        data[faqEditingIdx] = item;
+      } else {
+        data.push(item);
+      }
+      await DataService.saveFaq(data);
+      closeFaqForm();
+      await renderFaq();
+      showSaved('faq-saved');
+    }
+
+    // FAQ — event listenery
+    document.getElementById('faq-answer').addEventListener('paste', e => {
+      e.preventDefault();
+      const text = (e.clipboardData || window.clipboardData).getData('text/plain');
+      document.execCommand('insertText', false, text);
+    });
+    document.getElementById('faq-add-btn').addEventListener('click', () => openFaqForm(null));
+    document.getElementById('faq-form-cancel').addEventListener('click', closeFaqForm);
+    document.getElementById('faq-form-cancel2').addEventListener('click', closeFaqForm);
+    document.getElementById('faq-form-save').addEventListener('click', saveFaqItem);
+    document.getElementById('faq-color-picker').addEventListener('input', e => {
+      const hex = e.target.value;
+      document.getElementById('faq-color').value = hex;
+      document.getElementById('faq-color-picker-preview').style.background = hex;
+      const wrap = document.getElementById('faq-color-custom-wrap');
+      wrap.style.borderColor = hex;
+      wrap.classList.add('active');
+      document.querySelectorAll('#faq-color-palette .color-swatch').forEach(b => b.classList.remove('active'));
+    });
+
     // ─── POSKYTUJEME ───
 
     const SEKCE_IKONY = [
@@ -1361,6 +1985,7 @@
       document.getElementById('kontakt-address').value = data.address;
       document.getElementById('kontakt-phone').value   = data.phone;
       document.getElementById('kontakt-email').value   = data.email;
+      document.getElementById('kontakt-nurse').value   = data.nurse || '';
     }
 
     async function saveKontakt() {
@@ -1368,8 +1993,697 @@
         address: document.getElementById('kontakt-address').value.trim(),
         phone:   document.getElementById('kontakt-phone').value.trim(),
         email:   document.getElementById('kontakt-email').value.trim(),
+        nurse:   document.getElementById('kontakt-nurse').value.trim(),
       });
       showSaved('kontakt-saved');
+    }
+
+    // ─── DOSTUPNOST ───
+
+    // Base statuses (cannot be deleted)
+    const BASE_STATUSES = [
+      { id: 'open',     label: 'Ordinuje', color: '#10b981' },
+      { id: 'vacation', label: 'Zavřeno',  color: '#ef4444' },
+      { id: 'sub',      label: 'Zástup',   color: '#8b5cf6' },
+    ];
+
+    const CS_COLOR_PRESETS = [
+      '#f59e0b','#f97316','#0891b2','#0ea5e9','#10b981','#14b8a6',
+      '#84cc16','#ef4444','#ec4899','#8b5cf6','#6366f1','#64748b',
+    ];
+
+    // ── Data helpers ──
+    function getDostupnostData() {
+      try { return JSON.parse(localStorage.getItem('esmedica_dostupnost') || '{}'); } catch { return {}; }
+    }
+    function saveDostupnostData(d) { localStorage.setItem('esmedica_dostupnost', JSON.stringify(d)); }
+
+    function getZastupciData() {
+      try { return JSON.parse(localStorage.getItem('esmedica_zastupci') || '[]'); } catch { return []; }
+    }
+    function saveZastupciData(d) { localStorage.setItem('esmedica_zastupci', JSON.stringify(d)); }
+
+    function getCustomStatusesData() {
+      try { return JSON.parse(localStorage.getItem('esmedica_custom_statuses') || '[]'); } catch { return []; }
+    }
+    function saveCustomStatusesData(d) { localStorage.setItem('esmedica_custom_statuses', JSON.stringify(d)); }
+
+    // ── Calendar state ──
+    var availYear, availMonth, availSelectedDate = null;
+    var editingZastupceIdx = null;
+    var editingCSIdx = null;
+
+    function allStatuses() {
+      return BASE_STATUSES.concat(getCustomStatusesData());
+    }
+
+    function statusById(id) {
+      return allStatuses().find(s => s.id === id) || BASE_STATUSES[0];
+    }
+
+    // ── Calendar render ──
+    function renderAvailCalendar() {
+      var now = new Date();
+      if (availYear === undefined) { availYear = now.getFullYear(); availMonth = now.getMonth(); }
+
+      var monthNames = ['Leden','Únor','Březen','Duben','Květen','Červen',
+                        'Červenec','Srpen','Září','Říjen','Listopad','Prosinec'];
+      document.getElementById('avail-month-label').textContent = monthNames[availMonth] + ' ' + availYear;
+
+      var grid = document.getElementById('avail-days-grid');
+      grid.innerHTML = '';
+
+      var data = getDostupnostData();
+      var firstDay = new Date(availYear, availMonth, 1);
+      // Monday-based: 0=Mon…6=Sun
+      var startDow = (firstDay.getDay() + 6) % 7;
+      var daysInMonth = new Date(availYear, availMonth + 1, 0).getDate();
+      var today = new Date();
+
+      // Blank cells before first day
+      for (var b = 0; b < startDow; b++) {
+        var blank = document.createElement('div');
+        blank.className = 'h-10 rounded-lg';
+        grid.appendChild(blank);
+      }
+
+      for (var d = 1; d <= daysInMonth; d++) {
+        var dateObj = new Date(availYear, availMonth, d);
+        var dow = dateObj.getDay(); // 0=Sun,6=Sat
+        var isWeekend = (dow === 0 || dow === 6);
+        var iso = availYear + '-' + String(availMonth + 1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+        var entry = data[iso];
+        var isToday = (dateObj.toDateString() === today.toDateString());
+        var isSelected = (iso === availSelectedDate);
+
+        var st = entry ? statusById(entry.status) : null;
+
+        var cell = document.createElement('button');
+        cell.type = 'button';
+        cell.dataset.iso = iso;
+        cell.className = [
+          'h-10 w-full flex items-center justify-center rounded-lg text-xs font-semibold transition-all',
+          isToday ? 'ring-2 ring-brand ring-offset-1' : '',
+          isWeekend ? 'opacity-60' : '',
+        ].filter(Boolean).join(' ');
+
+        if (st) {
+          var hex = st.color;
+          var r = parseInt(hex.slice(1,3),16), g = parseInt(hex.slice(3,5),16), b = parseInt(hex.slice(5,7),16);
+          cell.style.background = isSelected
+            ? 'rgba(' + r + ',' + g + ',' + b + ',0.25)'
+            : 'rgba(' + r + ',' + g + ',' + b + ',0.13)';
+          cell.style.color = hex;
+          cell.title = st.label;
+          cell.onmouseover = function() { this.style.background = 'rgba(' + r + ',' + g + ',' + b + ',0.22)'; };
+          cell.onmouseout  = function() { this.style.background = isSelected ? 'rgba(' + r + ',' + g + ',' + b + ',0.25)' : 'rgba(' + r + ',' + g + ',' + b + ',0.13)'; };
+        } else {
+          cell.style.color = isWeekend ? '#94a3b8' : '#374151';
+          cell.style.background = isSelected ? 'rgba(8,145,178,0.1)' : '';
+          cell.onmouseover = function() { if (!isSelected) this.style.background = '#f9fafb'; };
+          cell.onmouseout  = function() { this.style.background = isSelected ? 'rgba(8,145,178,0.1)' : ''; };
+        }
+
+        cell.innerHTML = '<span>' + d + '</span>';
+
+        // Tooltip — zástup (jméno + telefon) nebo popis vlastního statusu
+        var tipHtml = '';
+        if (entry && entry.zastupceId) {
+          var zastupci = getZastupciData();
+          var z = zastupci.find(function(x) { return x.id === entry.zastupceId; });
+          if (z) {
+            var stColor = (st && st.color) || '#8b5cf6';
+            var nameLink = z.url
+              ? '<a href="' + z.url + '" target="_blank" rel="noopener" style="color:' + stColor + ';text-decoration:none">' + esc(z.name) + '</a>'
+              : esc(z.name);
+            tipHtml = '<strong style="color:' + stColor + '">' + nameLink + '</strong>';
+            if (z.phone) tipHtml += '<br><a href="tel:' + z.phone.replace(/\s/g,'') + '" style="color:#111">' + esc(z.phone) + '</a>';
+            if (z.hours) tipHtml += '<br><span style="color:#6b7280">🕐 ' + esc(z.hours) + '</span>';
+          }
+        } else if (st && st.desc) {
+          tipHtml = '<strong style="color:' + st.color + '">' + esc(st.label) + '</strong><br>' + esc(st.desc);
+        }
+        if (tipHtml) {
+          (function(html) {
+            var calTip = document.getElementById('admin-cal-tooltip');
+            cell.addEventListener('mouseenter', function() {
+              calTip.innerHTML = html;
+              calTip.style.opacity = '1';
+              var rect = cell.getBoundingClientRect();
+              calTip.style.left = (rect.left + rect.width / 2) + 'px';
+              calTip.style.top  = (rect.top - 8) + 'px';
+              requestAnimationFrame(function() {
+                calTip.style.left = (rect.left + rect.width / 2 - calTip.offsetWidth / 2) + 'px';
+                calTip.style.top  = (rect.top - calTip.offsetHeight - 8) + 'px';
+              });
+            });
+            cell.addEventListener('mouseleave', function() { calTip.style.opacity = '0'; });
+          }(tipHtml));
+        }
+
+        cell.addEventListener('click', function(iso, entry) {
+          return function() { openDayEditor(iso, entry); };
+        }(iso, entry));
+
+        grid.appendChild(cell);
+      }
+
+      // Update custom legend
+      var customStatuses = getCustomStatusesData();
+      var legendEl = document.getElementById('avail-custom-legend');
+      legendEl.innerHTML = customStatuses.map(function(cs) {
+        return '<span class="flex items-center gap-1.5 text-xs text-gray-500"><span style="width:12px;height:12px;border-radius:50%;background:' + esc(cs.color) + ';display:inline-block"></span>' + esc(cs.label) + '</span>';
+      }).join('');
+    }
+
+    // ── Day editor ──
+    function openDayEditor(iso, entry) {
+      availSelectedDate = iso;
+      renderAvailCalendar();
+
+      var editor = document.getElementById('avail-day-editor');
+      editor.classList.remove('hidden');
+
+      // Format date nicely
+      var parts = iso.split('-');
+      var d = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+      var dayNames = ['neděle','pondělí','úterý','středa','čtvrtek','pátek','sobota'];
+      document.getElementById('avail-editor-title').textContent = dayNames[d.getDay()] + ' ' + d.getDate() + '. ' + (d.getMonth() + 1) + '. ' + d.getFullYear();
+
+      // Build status choices
+      var choicesEl = document.getElementById('avail-status-choices');
+      choicesEl.innerHTML = '';
+      var currentStatus = entry ? (entry.status || 'open') : 'open';
+
+      allStatuses().forEach(function(st) {
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.dataset.statusId = st.id;
+        btn.className = 'flex items-center gap-2 px-3 py-2 rounded-xl border-2 text-xs font-semibold transition-all ' +
+          (st.id === currentStatus
+            ? 'border-current text-white'
+            : 'border-gray-200 text-gray-600 hover:border-gray-300 bg-white');
+        if (st.id === currentStatus) {
+          btn.style.background = st.color;
+          btn.style.borderColor = st.color;
+          btn.style.color = '#fff';
+        }
+        btn.innerHTML = '<span style="width:8px;height:8px;border-radius:50%;background:' + (st.id === currentStatus ? '#fff' : st.color) + ';display:inline-block;flex-shrink:0"></span>' + esc(st.label);
+
+        btn.addEventListener('click', function(stId, stColor) {
+          return function() {
+            choicesEl.querySelectorAll('button').forEach(function(b) {
+              b.style.background = '';
+              b.style.borderColor = '';
+              b.style.color = '';
+              b.classList.remove('border-current');
+              b.classList.add('border-gray-200','text-gray-600','bg-white');
+              // Reset dot color
+              var dot = b.querySelector('span');
+              if (dot) dot.style.background = b._stColor || '#999';
+            });
+            this.style.background = stColor;
+            this.style.borderColor = stColor;
+            this.style.color = '#fff';
+            this.classList.remove('border-gray-200','text-gray-600','bg-white');
+            var dot = this.querySelector('span');
+            if (dot) dot.style.background = '#fff';
+
+            // Show/hide substitute selector
+            var subRow = document.getElementById('avail-sub-row');
+            if (stId === 'sub') {
+              subRow.classList.remove('hidden');
+              refreshSubSelect(entry ? entry.zastupceId : null);
+            } else {
+              subRow.classList.add('hidden');
+            }
+          };
+        }(st.id, st.color));
+        btn._stColor = st.color;
+        choicesEl.appendChild(btn);
+      });
+
+      // Show/hide sub select
+      var subRow = document.getElementById('avail-sub-row');
+      if (currentStatus === 'sub') {
+        subRow.classList.remove('hidden');
+        refreshSubSelect(entry ? entry.zastupceId : null);
+      } else {
+        subRow.classList.add('hidden');
+      }
+
+      // Note
+      document.getElementById('avail-editor-note').value = entry ? (entry.note || '') : '';
+
+      // Scroll editor into view
+      editor.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    function refreshSubSelect(selectedId) {
+      var zastupci = getZastupciData();
+      var sel = document.getElementById('avail-sub-select');
+      sel.innerHTML = '<option value="">— vyberte lékaře —</option>';
+      zastupci.forEach(function(z) {
+        var opt = document.createElement('option');
+        opt.value = z.id;
+        opt.textContent = z.name + (z.phone ? ' — ' + z.phone : '');
+        if (selectedId && z.id === selectedId) opt.selected = true;
+        sel.appendChild(opt);
+      });
+    }
+
+    function getSelectedStatus() {
+      var choicesEl = document.getElementById('avail-status-choices');
+      var active = choicesEl.querySelector('button[style*="background"]');
+      if (!active) active = choicesEl.querySelector('button');
+      return active ? active.dataset.statusId : 'open';
+    }
+
+    function buildZastupceNote(z, extraNote) {
+      var note = '<strong>' + z.name + '</strong>';
+      if (z.phone) note += '<br><a href="tel:' + z.phone.replace(/\s/g,'') + '">' + z.phone + '</a>';
+      if (z.hours) note += '<br>🕐 ' + z.hours;
+      if (z.note)  note += '<br>' + z.note;
+      if (extraNote) note += '<br>' + extraNote;
+      return note;
+    }
+
+    function autoFillNoteFromDoctor() {
+      var zastupceId = document.getElementById('avail-sub-select').value;
+      if (!zastupceId) return;
+      var z = getZastupciData().find(function(x) { return x.id === zastupceId; });
+      if (z) document.getElementById('avail-editor-note').value = buildZastupceNote(z, '');
+    }
+
+    function saveDayEditor() {
+      if (!availSelectedDate) return;
+      var status = getSelectedStatus();
+      var extraNote = document.getElementById('avail-editor-note').value.trim();
+      var zastupceId = null;
+      var note = extraNote;
+
+      if (status === 'sub') {
+        zastupceId = document.getElementById('avail-sub-select').value || null;
+        if (zastupceId) {
+          var z = getZastupciData().find(function(x) { return x.id === zastupceId; });
+          // Always rebuild from doctor data, append any custom extra note
+          if (z) note = buildZastupceNote(z, '');
+        }
+      }
+
+      var data = getDostupnostData();
+      data[availSelectedDate] = { status: status, note: note };
+      if (zastupceId) data[availSelectedDate].zastupceId = zastupceId;
+      saveDostupnostData(data);
+      renderAvailCalendar();
+      showSaved('dostupnost-saved');
+    }
+
+    function clearDayEditor() {
+      if (!availSelectedDate) return;
+      var data = getDostupnostData();
+      delete data[availSelectedDate];
+      saveDostupnostData(data);
+      availSelectedDate = null;
+      document.getElementById('avail-day-editor').classList.add('hidden');
+      renderAvailCalendar();
+      showSaved('dostupnost-saved');
+    }
+
+    // ── Substitute doctors CRUD ──
+    function renderZastupci() {
+      var zastupci = getZastupciData();
+      var listEl = document.getElementById('zastupci-list');
+      if (zastupci.length === 0) {
+        listEl.innerHTML = '<p class="text-xs text-gray-300 py-2">Žádní zástupci.</p>';
+        return;
+      }
+      listEl.innerHTML = '';
+      zastupci.forEach(function(z, i) {
+        var row = document.createElement('div');
+        row.className = 'flex items-start gap-3 p-3 rounded-xl border border-gray-100 hover:bg-gray-50 transition-colors';
+        row.innerHTML = [
+          '<div class="w-8 h-8 rounded-full bg-violet-100 flex items-center justify-center flex-shrink-0 text-violet-600 font-bold text-xs">' + esc(z.name.charAt(0)) + '</div>',
+          '<div class="flex-1 min-w-0">',
+          '  <div class="text-sm font-semibold text-gray-800">' + esc(z.name) + '</div>',
+          z.phone ? '<div class="text-xs text-gray-400">' + esc(z.phone) + '</div>' : '',
+          z.hours ? '<div class="text-xs text-gray-400">' + esc(z.hours) + '</div>' : '',
+          z.note  ? '<div class="text-xs text-gray-400 truncate">' + esc(z.note) + '</div>' : '',
+          '</div>',
+          '<div class="flex gap-1 flex-shrink-0">',
+          '  <button class="z-edit-btn w-7 h-7 flex items-center justify-center rounded-lg text-gray-300 hover:text-brand hover:bg-brand/5 transition-colors" data-idx="' + i + '" title="Upravit">',
+          '    <svg class="w-3.5 h-3.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>',
+          '  </button>',
+          '  <button class="z-del-btn w-7 h-7 flex items-center justify-center rounded-lg text-gray-300 hover:text-red-400 hover:bg-red-50 transition-colors" data-idx="' + i + '" title="Smazat">',
+          '    <svg class="w-3.5 h-3.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>',
+          '  </button>',
+          '</div>',
+        ].join('');
+
+        row.querySelector('.z-edit-btn').addEventListener('click', function(idx) {
+          return function() { openZastupceForm(idx); };
+        }(i));
+        row.querySelector('.z-del-btn').addEventListener('click', function(idx) {
+          return function() {
+            if (!confirm('Smazat „' + zastupci[idx].name + '"?')) return;
+            var d = getZastupciData();
+            d.splice(idx, 1);
+            saveZastupciData(d);
+            renderZastupci();
+          };
+        }(i));
+
+        listEl.appendChild(row);
+      });
+    }
+
+    function openZastupceForm(idx) {
+      editingZastupceIdx = (idx !== undefined) ? idx : null;
+      var form = document.getElementById('zastupci-form');
+      form.classList.remove('hidden');
+      document.getElementById('zastupci-form-title').textContent = (editingZastupceIdx !== null) ? 'Upravit zástupce' : 'Nový zástupce';
+
+      if (editingZastupceIdx !== null) {
+        var z = getZastupciData()[editingZastupceIdx];
+        document.getElementById('zastupci-name').value  = z.name  || '';
+        document.getElementById('zastupci-phone').value = z.phone || '';
+        document.getElementById('zastupci-hours').value = z.hours || '';
+        document.getElementById('zastupci-note').value  = z.note  || '';
+        document.getElementById('zastupci-url').value   = z.url   || '';
+      } else {
+        document.getElementById('zastupci-name').value  = '';
+        document.getElementById('zastupci-phone').value = '';
+        document.getElementById('zastupci-hours').value = '';
+        document.getElementById('zastupci-note').value  = '';
+        document.getElementById('zastupci-url').value   = '';
+      }
+      document.getElementById('zastupci-name').focus();
+    }
+
+    function saveZastupceForm() {
+      var name  = document.getElementById('zastupci-name').value.trim();
+      if (!name) { document.getElementById('zastupci-name').focus(); return; }
+      var phone = document.getElementById('zastupci-phone').value.trim();
+      var hours = document.getElementById('zastupci-hours').value.trim();
+      var note  = document.getElementById('zastupci-note').value.trim();
+      var url   = document.getElementById('zastupci-url').value.trim();
+
+      var d = getZastupciData();
+      if (editingZastupceIdx !== null) {
+        d[editingZastupceIdx].name  = name;
+        d[editingZastupceIdx].phone = phone;
+        d[editingZastupceIdx].hours = hours;
+        d[editingZastupceIdx].note  = note;
+        d[editingZastupceIdx].url   = url;
+      } else {
+        d.push({ id: 'z_' + Date.now(), name: name, phone: phone, hours: hours, note: note, url: url });
+      }
+      saveZastupciData(d);
+      document.getElementById('zastupci-form').classList.add('hidden');
+      editingZastupceIdx = null;
+      renderZastupci();
+    }
+
+    // ── Custom statuses CRUD ──
+    function renderCustomStatuses() {
+      var statuses = getCustomStatusesData();
+      var listEl = document.getElementById('custom-status-list');
+      if (statuses.length === 0) {
+        listEl.innerHTML = '<p class="text-xs text-gray-300 py-2">Žádné vlastní stavy.</p>';
+        return;
+      }
+      listEl.innerHTML = '';
+      statuses.forEach(function(cs, i) {
+        var row = document.createElement('div');
+        row.className = 'flex items-center gap-3 p-3 rounded-xl border border-gray-100 hover:bg-gray-50 transition-colors';
+        row.innerHTML = [
+          '<span style="width:14px;height:14px;border-radius:50%;background:' + esc(cs.color) + ';display:inline-block;flex-shrink:0"></span>',
+          '<div class="flex-1 min-w-0">',
+          '  <div class="text-sm font-semibold text-gray-800">' + esc(cs.label) + '</div>',
+          cs.desc ? '<div class="text-xs text-gray-400 truncate">' + esc(cs.desc) + '</div>' : '',
+          '</div>',
+          '<div class="flex gap-1 flex-shrink-0">',
+          '  <button class="cs-edit-btn w-7 h-7 flex items-center justify-center rounded-lg text-gray-300 hover:text-brand hover:bg-brand/5 transition-colors" data-idx="' + i + '" title="Upravit">',
+          '    <svg class="w-3.5 h-3.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>',
+          '  </button>',
+          '  <button class="cs-del-btn w-7 h-7 flex items-center justify-center rounded-lg text-gray-300 hover:text-red-400 hover:bg-red-50 transition-colors" data-idx="' + i + '" title="Smazat">',
+          '    <svg class="w-3.5 h-3.5 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>',
+          '  </button>',
+          '</div>',
+        ].join('');
+
+        row.querySelector('.cs-edit-btn').addEventListener('click', function(idx) {
+          return function() { openCSForm(idx); };
+        }(i));
+        row.querySelector('.cs-del-btn').addEventListener('click', function(idx) {
+          return function() {
+            if (!confirm('Smazat stav „' + statuses[idx].label + '"?')) return;
+            var d = getCustomStatusesData();
+            d.splice(idx, 1);
+            saveCustomStatusesData(d);
+            renderCustomStatuses();
+            renderAvailCalendar();
+          };
+        }(i));
+
+        listEl.appendChild(row);
+      });
+    }
+
+    function buildCSColorPicker(selectedColor) {
+      var picker = document.getElementById('cs-color-picker');
+      picker.innerHTML = '';
+      CS_COLOR_PRESETS.forEach(function(hex) {
+        var sw = document.createElement('button');
+        sw.type = 'button';
+        sw.title = hex;
+        sw.style.cssText = 'width:24px;height:24px;border-radius:50%;background:' + hex + ';border:2px solid ' + (hex === selectedColor ? '#1e293b' : 'transparent') + ';transition:border-color 0.1s,transform 0.1s;cursor:pointer;flex-shrink:0';
+        sw.addEventListener('click', function(h) {
+          return function() {
+            document.getElementById('cs-color-value').value = h;
+            picker.querySelectorAll('button').forEach(function(b) { b.style.borderColor = 'transparent'; b.style.transform = ''; });
+            this.style.borderColor = '#1e293b';
+            this.style.transform = 'scale(1.15)';
+          };
+        }(hex));
+        if (hex === selectedColor) { sw.style.transform = 'scale(1.15)'; }
+        picker.appendChild(sw);
+      });
+    }
+
+    function openCSForm(idx) {
+      editingCSIdx = (idx !== undefined) ? idx : null;
+      var form = document.getElementById('custom-status-form');
+      form.classList.remove('hidden');
+      document.getElementById('custom-status-form-title').textContent = (editingCSIdx !== null) ? 'Upravit stav' : 'Nový stav';
+
+      var color = '#f59e0b';
+      if (editingCSIdx !== null) {
+        var cs = getCustomStatusesData()[editingCSIdx];
+        document.getElementById('cs-name').value  = cs.label || '';
+        document.getElementById('cs-desc').value  = cs.desc  || '';
+        color = cs.color || '#f59e0b';
+      } else {
+        document.getElementById('cs-name').value = '';
+        document.getElementById('cs-desc').value = '';
+      }
+      document.getElementById('cs-color-value').value = color;
+      buildCSColorPicker(color);
+      document.getElementById('cs-name').focus();
+    }
+
+    function saveCSForm() {
+      var name  = document.getElementById('cs-name').value.trim();
+      if (!name) { document.getElementById('cs-name').focus(); return; }
+      var desc  = document.getElementById('cs-desc').value.trim();
+      var color = document.getElementById('cs-color-value').value || '#f59e0b';
+
+      var d = getCustomStatusesData();
+      if (editingCSIdx !== null) {
+        d[editingCSIdx].label = name;
+        d[editingCSIdx].desc  = desc;
+        d[editingCSIdx].color = color;
+      } else {
+        d.push({ id: 'cs_' + Date.now(), label: name, desc: desc, color: color });
+      }
+      saveCustomStatusesData(d);
+      document.getElementById('custom-status-form').classList.add('hidden');
+      editingCSIdx = null;
+      renderCustomStatuses();
+      renderAvailCalendar();
+    }
+
+    // ── Init Dostupnost ──
+    function initDostupnost() {
+      renderAvailCalendar();
+      renderZastupci();
+      renderCustomStatuses();
+
+      document.getElementById('avail-prev-btn').addEventListener('click', function() {
+        availMonth--;
+        if (availMonth < 0) { availMonth = 11; availYear--; }
+        availSelectedDate = null;
+        document.getElementById('avail-day-editor').classList.add('hidden');
+        renderAvailCalendar();
+      });
+      document.getElementById('avail-next-btn').addEventListener('click', function() {
+        availMonth++;
+        if (availMonth > 11) { availMonth = 0; availYear++; }
+        availSelectedDate = null;
+        document.getElementById('avail-day-editor').classList.add('hidden');
+        renderAvailCalendar();
+      });
+
+      document.getElementById('avail-sub-select').addEventListener('change', autoFillNoteFromDoctor);
+
+      document.getElementById('avail-editor-close').addEventListener('click', function() {
+        document.getElementById('avail-day-editor').classList.add('hidden');
+        availSelectedDate = null;
+        renderAvailCalendar();
+      });
+      document.getElementById('avail-editor-save').addEventListener('click', saveDayEditor);
+      document.getElementById('avail-editor-clear').addEventListener('click', clearDayEditor);
+
+      // Substitute doctors
+      document.getElementById('zastupci-add-btn').addEventListener('click', function() { openZastupceForm(); });
+      document.getElementById('zastupci-form-save').addEventListener('click', saveZastupceForm);
+      document.getElementById('zastupci-form-cancel').addEventListener('click', function() {
+        document.getElementById('zastupci-form').classList.add('hidden');
+        editingZastupceIdx = null;
+      });
+
+      // Custom statuses
+      document.getElementById('custom-status-add-btn').addEventListener('click', function() { openCSForm(); });
+      document.getElementById('cs-form-save').addEventListener('click', saveCSForm);
+      document.getElementById('cs-form-cancel').addEventListener('click', function() {
+        document.getElementById('custom-status-form').classList.add('hidden');
+        editingCSIdx = null;
+      });
+
+      // ─── Upozornění ───
+      initUpozorneni();
+    }
+
+    // ── Upozornění helpers ──────────────────────────────
+    var UPOZ_ICONS = {
+      warning:  '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>',
+      calendar: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>',
+      info:     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>',
+      bell:     '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>'
+    };
+    var UPOZ_COLORS = {
+      amber: { bg: '#fffbeb', border: '#fde68a', text: '#92400e', icon: '#d97706' },
+      blue:  { bg: '#eff6ff', border: '#bfdbfe', text: '#1e40af', icon: '#2563eb' },
+      red:   { bg: '#fef2f2', border: '#fecaca', text: '#991b1b', icon: '#dc2626' },
+      green: { bg: '#f0fdf4', border: '#bbf7d0', text: '#14532d', icon: '#16a34a' }
+    };
+    var upozSelectedIcon = 'warning';
+
+    function initUpozorneni() {
+      // Load saved data
+      var raw = localStorage.getItem('esmedica_upozorneni');
+      var data = raw ? JSON.parse(raw) : { active: false, text: '', color: 'amber', icon: 'warning', dateFrom: '', dateTo: '' };
+
+      document.getElementById('upoz-active').checked = !!data.active;
+      document.getElementById('upoz-text').value = data.text || '';
+      document.getElementById('upoz-date-from').value = data.dateFrom || '';
+      document.getElementById('upoz-date-to').value = data.dateTo || '';
+
+      // Color
+      var col = data.color || 'amber';
+      var radios = document.querySelectorAll('input[name="upoz-color"]');
+      radios.forEach(function(r) { if (r.value === col) r.checked = true; });
+      updateColorOptStyles();
+
+      // Icon
+      upozSelectedIcon = data.icon || 'warning';
+      document.querySelectorAll('#upoz-icon-group .icon-pill').forEach(function(b) {
+        b.classList.toggle('selected', b.dataset.icon === upozSelectedIcon);
+      });
+
+      updatePreview();
+
+      // Icon picker
+      document.querySelectorAll('#upoz-icon-group .icon-pill').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          upozSelectedIcon = btn.dataset.icon;
+          document.querySelectorAll('#upoz-icon-group .icon-pill').forEach(function(b) {
+            b.classList.toggle('selected', b === btn);
+          });
+          updatePreview();
+        });
+      });
+
+      // Color change
+      radios.forEach(function(r) {
+        r.addEventListener('change', function() {
+          updateColorOptStyles();
+          updatePreview();
+        });
+      });
+
+      // Text change
+      document.getElementById('upoz-text').addEventListener('input', updatePreview);
+
+      // Clear dates
+      document.getElementById('upoz-clear-dates').addEventListener('click', function() {
+        document.getElementById('upoz-date-from').value = '';
+        document.getElementById('upoz-date-to').value = '';
+      });
+
+      // Save
+      document.getElementById('upoz-save-btn').addEventListener('click', saveUpozorneni);
+    }
+
+    function getUpozColor() {
+      var r = document.querySelector('input[name="upoz-color"]:checked');
+      return r ? r.value : 'amber';
+    }
+
+    function updateColorOptStyles() {
+      var selected = getUpozColor();
+      document.querySelectorAll('input[name="upoz-color"]').forEach(function(r) {
+        var span = r.nextElementSibling;
+        var c = UPOZ_COLORS[r.value];
+        if (r.value === selected) {
+          span.style.borderColor = c.border;
+          span.style.background  = c.bg;
+          span.style.color       = c.text;
+        } else {
+          span.style.borderColor = '#e5e7eb';
+          span.style.background  = '';
+          span.style.color       = '#6b7280';
+        }
+      });
+    }
+
+    function updatePreview() {
+      var color  = getUpozColor();
+      var c      = UPOZ_COLORS[color];
+      var text   = document.getElementById('upoz-text').value || 'Zde se zobrazí text upozornění…';
+      var prev   = document.getElementById('upoz-preview');
+      var prevIcon = document.getElementById('upoz-preview-icon');
+      var prevText = document.getElementById('upoz-preview-text');
+
+      prev.style.background   = c.bg;
+      prev.style.borderColor  = c.border;
+      prevText.style.color    = c.text;
+      prevIcon.style.color    = c.icon;
+      prevIcon.innerHTML      = UPOZ_ICONS[upozSelectedIcon] || '';
+      prevText.innerHTML      = text;
+    }
+
+    function saveUpozorneni() {
+      var data = {
+        active:   document.getElementById('upoz-active').checked,
+        text:     document.getElementById('upoz-text').value.trim(),
+        color:    getUpozColor(),
+        icon:     upozSelectedIcon,
+        dateFrom: document.getElementById('upoz-date-from').value,
+        dateTo:   document.getElementById('upoz-date-to').value
+      };
+      localStorage.setItem('esmedica_upozorneni', JSON.stringify(data));
+      showSaved('upoz-saved');
     }
   </script>
 </body>
