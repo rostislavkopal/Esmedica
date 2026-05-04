@@ -487,6 +487,7 @@ html.dark #floating-panel { background-color: #1e293b !important; border-color: 
       };
       const TYPE_COLORS_FE = { info:'#0891b2', warning:'#f59e0b', danger:'#ef4444', success:'#10b981' };
       function feHexToRgb(hex) { const h=hex.replace('#',''); return [parseInt(h.slice(0,2),16),parseInt(h.slice(2,4),16),parseInt(h.slice(4,6),16)]; }
+      function esc(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
       const aktData = await DataService.getAktuality();
       const aktActive = aktData.filter(a => a.active);
       const aktCol = document.getElementById('aktuality-col');
@@ -506,8 +507,8 @@ html.dark #floating-panel { background-color: #1e293b !important; border-color: 
               <svg class="w-4 h-4" style="color:rgba(${r},${g},${b},0.85)" fill="none" stroke="currentColor" viewBox="0 0 24 24">${svg}</svg>
             </div>
             <div>
-              <p class="font-semibold text-sm" style="color:rgba(${r},${g},${b},1)">${item.title}</p>
-              ${item.text ? `<p class="text-gray-800 text-xs mt-0.5 leading-relaxed">${item.text}</p>` : ''}
+              <p class="font-semibold text-sm" style="color:rgba(${r},${g},${b},1)">${esc(item.title)}</p>
+              ${item.text ? `<p class="text-gray-800 text-xs mt-0.5 leading-relaxed">${esc(item.text)}</p>` : ''}
             </div>
           </div>`;
         }).join('');

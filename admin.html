@@ -116,7 +116,7 @@
       <h1 class="text-xl font-bold text-gray-900 text-center mb-1">Správa webu</h1>
       <p class="text-sm text-gray-400 text-center mb-6">ESMEDICA Litvínov</p>
       <div class="space-y-3">
-        <input type="password" id="pw-input" placeholder="Heslo" autocomplete="current-password" value="esmedica2024">
+        <input type="password" id="pw-input" placeholder="Heslo" autocomplete="current-password">
         <p id="pw-err" class="hidden text-xs text-red-500 text-center">Nesprávné heslo. Zkuste to znovu.</p>
         <button id="login-btn"
           class="w-full bg-brand text-white font-semibold rounded-xl px-4 py-2.5 text-sm hover:bg-brand-dark transition-colors">
@@ -902,8 +902,7 @@
 
   <script src="./js/dataService.js"></script>
   <script>
-    // ⚠️ Změňte heslo před sdílením souboru!
-    const ADMIN_PASSWORD = 'esmedica2024';
+    const ADMIN_PASSWORD = '__ADMIN_PASSWORD__';
 
     // ─── Helpers ───
     function esc(s) {

@@ -1356,7 +1356,8 @@
         banner.style.background  = c.bg;
         banner.style.borderColor = c.border;
         document.getElementById('ann-text').style.color = c.text;
-        document.getElementById('ann-text').innerHTML   = (d.title ? '<strong>' + d.title + '</strong> — ' : '') + d.text;
+        var escFn = function(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); };
+        document.getElementById('ann-text').innerHTML   = (d.title ? '<strong>' + escFn(d.title) + '</strong> — ' : '') + escFn(d.text);
         document.getElementById('ann-icon').style.color = c.icon;
         document.getElementById('ann-icon').innerHTML   = ICONS[d.icon] || ICONS.warning;
         banner.style.display = '';
@@ -2191,9 +2192,11 @@
       tooltip.id = 'avail-tooltip';
       document.body.appendChild(tooltip);
 
+      function escHtml(str) { return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+
       function showTooltip(el, entry) {
         tooltip.innerHTML = (entry && entry.note)
-          ? entry.note
+          ? escHtml(entry.note)
           : 'Bližší informace nejsou k dispozici.';
         tooltip.classList.add('visible');
         var rect = el.getBoundingClientRect();
@@ -2209,7 +2212,7 @@
       function openModal(dateStr, entry) {
         var d = new Date(dateStr + 'T00:00:00');
         modalDate.textContent = DAY_NAMES[d.getDay()] + ' ' + d.getDate() + '. ' + MONTHS[d.getMonth()] + ' ' + d.getFullYear();
-        modalBody.innerHTML = entry.note || 'Bližší informace nejsou k dispozici. Kontaktujte ordinaci telefonicky.';
+        modalBody.innerHTML = entry.note ? escHtml(entry.note) : 'Bližší informace nejsou k dispozici. Kontaktujte ordinaci telefonicky.';
         overlay.classList.add('open');
         document.getElementById('avail-modal').focus();
       }
