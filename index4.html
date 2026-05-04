@@ -1522,7 +1522,7 @@
           <a href="#hours" role="listitem">Ordinační hodiny</a>
           <a href="#quick-info" role="listitem">Služby</a>
           <a href="cenik.html" role="listitem">Ceník</a>
-          <a href="faq.html" role="listitem">Důležité info</a>
+          <a href="#info" role="listitem">Důležité info</a>
           <a href="#contact" role="listitem">Kontakty</a>
           <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener" class="nav-cta" role="listitem">
             Objednat se
@@ -1545,7 +1545,7 @@
       <a href="#hours">Ordinační hodiny</a>
       <a href="#quick-info">Služby</a>
       <a href="cenik.html">Ceník</a>
-      <a href="faq.html">Důležité info</a>
+      <a href="#info">Důležité info</a>
       <a href="#contact">Kontakty</a>
       <a href="https://my.medevio.cz/esmedica/" target="_blank" rel="noopener" class="mob-cta">Objednat se online</a>
     </div>
@@ -2554,7 +2554,7 @@
         iconEl.style.color      = tc.iconColor;
         iconEl.innerHTML        = ICONS[d.icon] || ICONS.warning;
         document.getElementById('ann-toast-title').style.color = tc.titleColor;
-        document.getElementById('ann-toast-title').textContent = LABELS[d.color] || 'Upozornění';
+        document.getElementById('ann-toast-title').textContent = d.title || LABELS[d.color] || 'Upozornění';
         document.getElementById('ann-toast-msg').innerHTML     = d.text;
         setTimeout(function() { toast.classList.add('ann-visible'); }, 1000);
       } catch(e) {}

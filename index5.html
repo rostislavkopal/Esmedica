@@ -1293,13 +1293,14 @@
       align-items: center;
       gap: 10px;
     }
-    #announcement-banner .ann-icon { flex-shrink: 0; color: #d97706; line-height: 0; }
+    #announcement-banner .ann-icon { flex-shrink: 0; display: flex; align-items: center; align-self: center; line-height: 0; }
     #announcement-banner .ann-text {
       flex: 1;
       font-size: 13px;
       font-weight: 500;
       color: #92400e;
       text-align: center;
+      margin: 0;
     }
     #announcement-banner .ann-close-btn {
       flex-shrink: 0;
@@ -1355,7 +1356,7 @@
         banner.style.background  = c.bg;
         banner.style.borderColor = c.border;
         document.getElementById('ann-text').style.color = c.text;
-        document.getElementById('ann-text').innerHTML   = d.text;
+        document.getElementById('ann-text').innerHTML   = (d.title ? '<strong>' + d.title + '</strong> — ' : '') + d.text;
         document.getElementById('ann-icon').style.color = c.icon;
         document.getElementById('ann-icon').innerHTML   = ICONS[d.icon] || ICONS.warning;
         banner.style.display = '';

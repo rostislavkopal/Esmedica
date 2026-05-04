@@ -135,7 +135,7 @@ html.dark #floating-panel { background-color: #1e293b !important; border-color: 
   <!-- Announcement banner (driven by admin → localStorage esmedica_upozorneni) -->
   <div id="announcement-banner" style="display:none;position:relative;z-index:50;border-bottom-width:1px;border-bottom-style:solid;">
     <div style="max-width:64rem;margin:0 auto;padding:10px 16px;display:flex;align-items:center;gap:10px;">
-      <span id="ann-icon" style="flex-shrink:0;line-height:0;"></span>
+      <span id="ann-icon" style="flex-shrink:0;display:flex;align-items:center;align-self:center;line-height:0;"></span>
       <p id="ann-text" style="flex:1;font-size:13px;font-weight:500;text-align:center;margin:0;"></p>
       <button onclick="dismissBanner()" aria-label="Zavřít upozornění"
         id="ann-close" style="flex-shrink:0;background:none;border:none;cursor:pointer;padding:4px;border-radius:50%;line-height:0;transition:background .15s;">
@@ -170,7 +170,7 @@ html.dark #floating-panel { background-color: #1e293b !important; border-color: 
         banner.style.background    = c.bg;
         banner.style.borderColor   = c.border;
         document.getElementById('ann-text').style.color  = c.text;
-        document.getElementById('ann-text').innerHTML    = d.text;
+        document.getElementById('ann-text').innerHTML    = (d.title ? '<strong>' + d.title + '</strong> — ' : '') + d.text;
         document.getElementById('ann-icon').style.color  = c.icon;
         document.getElementById('ann-icon').innerHTML    = ICONS[d.icon] || ICONS.warning;
         document.getElementById('ann-close').style.color = c.icon;

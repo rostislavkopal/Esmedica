@@ -65,6 +65,7 @@ const DataService = (() => {
       address: 'Studentská 758, 436 01 Litvínov',
       phone:   '+420 770 696 990',
       email:   'esmedica.litvinov@gmail.com',
+      nurse:   '',
     },
 
     aktuality: [
@@ -74,6 +75,15 @@ const DataService = (() => {
       { id: 2, active: true, type: 'danger', icon: 'ban',
         title: 'Z kapacitních důvodů nové pacienty neregistrujeme.',
         text:  'Děkujeme za pochopení.' },
+    ],
+
+    faq: [
+      { id: 1, active: true, color: '#1B67BF',
+        question: 'Jak se objednat k lékaři?',
+        answer:   'Objednat se lze přes aplikaci Medevio, telefonicky nebo osobně na recepci.' },
+      { id: 2, active: true, color: '#10B981',
+        question: 'Přijímáte nové pacienty?',
+        answer:   'Z kapacitních důvodů momentálně nové pacienty neregistrujeme.' },
     ],
 
     poskytujeme: [
@@ -173,5 +183,8 @@ const DataService = (() => {
 
     async getPoskytujeme()    { return (await _load('poskytujeme'))  || DEFAULTS.poskytujeme; },
     async savePoskytujeme(data){ await _save('poskytujeme', data); },
+
+    async getFaq()            { return (await _load('faq'))          || DEFAULTS.faq; },
+    async saveFaq(data)       { await _save('faq', data); },
   };
 })();

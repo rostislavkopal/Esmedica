@@ -788,16 +788,21 @@
 
           <div class="space-y-5">
 
+            <!-- Nadpis zprávy -->
+            <div>
+              <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5" for="upoz-title">Nadpis <span class="text-gray-400 font-normal normal-case">(volitelný)</span></label>
+              <input type="text" id="upoz-title" placeholder="např. Dovolená" class="w-full">
+            </div>
+
             <!-- Text zprávy -->
             <div>
               <label class="block text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1.5">Text zprávy</label>
               <div class="fmt-toolbar">
-                <button type="button" class="fmt-btn" onclick="formatField('upoz-text','strong')" title="Tučně"><b>B</b></button>
+                <button type="button" class="fmt-btn" onclick="fmtExec('upoz-text','bold')" title="Tučně"><b>B</b></button>
               </div>
-              <textarea id="upoz-text" rows="3"
-                class="w-full border border-gray-200 rounded-xl px-3 py-2.5 text-sm text-gray-800 outline-none resize-none focus:border-brand focus:ring-2 focus:ring-brand/10 transition font-[inherit]"
-                placeholder="Ordinace bude uzavřena 1.–5. května. V naléhavých případech volejte 155."></textarea>
-              <p class="text-xs text-gray-400 mt-1">Podporuje <code>&lt;strong&gt;tučný text&lt;/strong&gt;</code></p>
+              <div id="upoz-text" contenteditable="true"
+                class="akt-editable" style="min-height:5rem;"
+                data-placeholder="Ordinace bude uzavřena 1.–5. května. V naléhavých případech volejte 155."></div>
             </div>
 
             <!-- Barva -->
@@ -2585,7 +2590,8 @@
       var data = raw ? JSON.parse(raw) : { active: false, text: '', color: 'amber', icon: 'warning', dateFrom: '', dateTo: '' };
 
       document.getElementById('upoz-active').checked = !!data.active;
-      document.getElementById('upoz-text').value = data.text || '';
+      document.getElementById('upoz-title').value    = data.title || '';
+      document.getElementById('upoz-text').innerHTML  = data.text || '';
       document.getElementById('upoz-date-from').value = data.dateFrom || '';
       document.getElementById('upoz-date-to').value = data.dateTo || '';
 
@@ -2622,7 +2628,8 @@
         });
       });
 
-      // Text change
+      // Title + text change
+      document.getElementById('upoz-title').addEventListener('input', updatePreview);
       document.getElementById('upoz-text').addEventListener('input', updatePreview);
 
       // Clear dates
@@ -2660,7 +2667,9 @@
     function updatePreview() {
       var color  = getUpozColor();
       var c      = UPOZ_COLORS[color];
-      var text   = document.getElementById('upoz-text').value || 'Zde se zobrazí text upozornění…';
+      var title  = document.getElementById('upoz-title').value.trim();
+      var body   = document.getElementById('upoz-text').innerHTML.trim() || 'Zde se zobrazí text upozornění…';
+      var text   = title ? '<strong>' + title + '</strong> — ' + body : body;
       var prev   = document.getElementById('upoz-preview');
       var prevIcon = document.getElementById('upoz-preview-icon');
       var prevText = document.getElementById('upoz-preview-text');
@@ -2676,7 +2685,8 @@
     function saveUpozorneni() {
       var data = {
         active:   document.getElementById('upoz-active').checked,
-        text:     document.getElementById('upoz-text').value.trim(),
+        title:    document.getElementById('upoz-title').value.trim(),
+        text:     document.getElementById('upoz-text').innerHTML.trim(),
         color:    getUpozColor(),
         icon:     upozSelectedIcon,
         dateFrom: document.getElementById('upoz-date-from').value,

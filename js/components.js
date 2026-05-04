@@ -13,7 +13,7 @@
   <div class="max-w-5xl mx-auto px-4 sm:px-6 flex items-center h-16 gap-1">
 
     <a href="./index.html" class="flex items-center flex-shrink-0 mr-2" id="nav-home-logo">
-      <img src="./Logo/Gemini_Generated_Image_nzqnpnnzqnpnnzqn.png" alt="ESMEDICA" class="h-10 sm:h-12 w-auto">
+      <img src="./assets/images/logo-esmedica.png" alt="ESMEDICA" class="h-10 sm:h-12 w-auto">
     </a>
 
     <div class="hidden sm:flex items-center gap-1 text-sm font-medium ml-auto">
@@ -29,18 +29,6 @@
       </a>
     </div>
 
-    <button id="nav-dark-toggle"
-      class="ml-auto sm:ml-2 p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors flex-shrink-0"
-      aria-label="Přepnout tmavý režim">
-      <svg id="nav-icon-moon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-      </svg>
-      <svg id="nav-icon-sun" class="w-5 h-5" style="display:none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z"/>
-      </svg>
-    </button>
 
     <button id="nav-menu-btn"
       class="sm:hidden p-2 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors flex-shrink-0"
@@ -112,14 +100,8 @@
   }
 
   // ─── Dark mode toggle ─────────────────────────────────────────────────────
-  const sunIcon    = document.getElementById('nav-icon-sun');
-  const moonIcon   = document.getElementById('nav-icon-moon');
-  const darkToggle = document.getElementById('nav-dark-toggle');
-
   function syncDarkIcons() {
     const isDark = document.documentElement.classList.contains('dark');
-    if (sunIcon)  sunIcon.style.display  = isDark ? '' : 'none';
-    if (moonIcon) moonIcon.style.display = isDark ? 'none' : '';
     const panelSun  = document.getElementById('panel-icon-sun');
     const panelMoon = document.getElementById('panel-icon-moon');
     if (panelSun)  panelSun.style.display  = isDark ? '' : 'none';
@@ -146,8 +128,6 @@
 
   syncDarkIcons();
   applyNavDark();
-
-  if (darkToggle) darkToggle.addEventListener('click', toggleDark);
 
   const panelToggle = document.getElementById('panel-dark-toggle');
   if (panelToggle) panelToggle.addEventListener('click', toggleDark);
