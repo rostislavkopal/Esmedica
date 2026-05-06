@@ -1652,11 +1652,11 @@
               </tbody>
             </table>
 
-            <div class="hours-note">
+            <div class="hours-note" id="blood-draw-row">
               <svg viewBox="0 0 24 24" fill="#EF4444" stroke="none" style="width:16px;height:16px;flex-shrink:0">
                 <path d="M12 2C12 2 4.5 10.5 4.5 15.5a7.5 7.5 0 0015 0C19.5 10.5 12 2 12 2z"/>
               </svg>
-              <p><strong>Odběry krve:</strong> Po, St, Čt, Pá · 07:00 – 08:00 · nutno objednat předem</p>
+              <p><strong>Odběry krve:</strong> <span id="blood-draw-text">Po, St, Čt, Pá · 07:00 – 08:00 · nutno objednat předem</span></p>
             </div>
           </div>
 
@@ -1725,11 +1725,11 @@
               </div>
             </div>
 
-            <div class="hours-note">
+            <div class="hours-note" id="blood-draw-row-mobile">
               <svg viewBox="0 0 24 24" fill="#EF4444" stroke="none" style="width:16px;height:16px;flex-shrink:0">
                 <path d="M12 2C12 2 4.5 10.5 4.5 15.5a7.5 7.5 0 0015 0C19.5 10.5 12 2 12 2z"/>
               </svg>
-              <p><strong>Odběry krve:</strong> Po, St, Čt, Pá · 07:00 – 08:00</p>
+              <p><strong>Odběry krve:</strong> <span id="blood-draw-text-mobile">Po, St, Čt, Pá · 07:00 – 08:00 · nutno objednat předem</span></p>
             </div>
           </div>
 
@@ -2304,32 +2304,9 @@
         return suffix;
       }
 
-      // ── Demo data: jeden od každého druhu ──────────
-      // Načtení skutečných dat z localStorage
+      // Načtení dat z localStorage
       var saved = {};
       try { saved = JSON.parse(localStorage.getItem('esmedica_dostupnost') || '{}'); } catch(e) {}
-
-      // Pokud v localStorage nic není, vložíme ukázková data
-      if (!Object.keys(saved).length) {
-        var today0 = new Date(); today0.setHours(0,0,0,0);
-        var mon0tmp = getMondayOf(today0);
-
-        function offsetDay(mon, days) {
-          var d = new Date(mon); d.setDate(mon.getDate() + days); return isoDate(d);
-        }
-
-        // Tento týden Út: dovolená
-        saved[offsetDay(mon0tmp, 1)] = { status: 'vacation' };
-        // Příští týden St: zástup (s info)
-        saved[offsetDay(mon0tmp, 9)] = {
-          status: 'sub',
-          note: 'Zastupuje <strong>MUDr. Jana Nováková</strong>.<br>Tel: <a href="tel:+420416111222">416 111 222</a><br>Ordinace probíhá ve stejných prostorách v obvyklých hodinách.'
-        };
-        // +2 týdny Čt: dovolená
-        saved[offsetDay(mon0tmp, 17)] = { status: 'vacation' };
-        // +3 týdny Po: ordinuje (explicitně, pro demonstraci)
-        saved[offsetDay(mon0tmp, 21)] = { status: 'open' };
-      }
 
       // ── Modal logika ────────────────────────────────
       var overlay = document.getElementById('avail-modal-overlay');
@@ -2491,6 +2468,23 @@
           subtitle.textContent = 'Aktuální a příští týden';
         }
       });
+
+      // ── Odběry krve z localStorage ──────────────────
+      try {
+        if (window.DataService && window.DataService.getBloodDraw) {
+          window.DataService.getBloodDraw().then(function(bd) {
+            var esc = function(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); };
+            ['blood-draw-row', 'blood-draw-row-mobile'].forEach(function(rowId) {
+              var row = document.getElementById(rowId);
+              var suffix = rowId === 'blood-draw-row' ? '' : '-mobile';
+              var txt = document.getElementById('blood-draw-text' + suffix);
+              if (!row || !txt) return;
+              if (!bd) { row.style.display = 'none'; }
+              else { txt.textContent = bd; }
+            });
+          });
+        }
+      } catch(e) {}
 
       // ── Ticker pojišťoven z localStorage ────────────
       try {

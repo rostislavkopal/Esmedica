@@ -23,6 +23,8 @@ const DataService = (() => {
       { day: 'Pátek',   morning: '07:00 – 12:00', afternoon: ''               },
     ],
 
+    bloodDraw: 'Po, St, Čt, Pá · 07:00 – 08:00 · nutno objednat předem',
+
     cenik: [
       { id: 'posudky', name: 'Posudky a lékařská vyšetření', items: [
         { name: 'Posudek pro pracovní účely',                   price: '900 Kč'       },
@@ -166,8 +168,11 @@ const DataService = (() => {
       return localStorage.getItem(PREFIX + key) !== null;
     },
 
-    async getHours()          { return (await _load('hours'))       || DEFAULTS.hours; },
-    async saveHours(data)     { await _save('hours', data); },
+    async getHours()            { return (await _load('hours'))       || DEFAULTS.hours; },
+    async saveHours(data)       { await _save('hours', data); },
+
+    async getBloodDraw()        { const v = await _load('blooddraw'); return v !== null ? v : DEFAULTS.bloodDraw; },
+    async saveBloodDraw(text)   { await _save('blooddraw', text); },
 
     async getCenik()          { return _migrateCenik(await _load('cenik')) || DEFAULTS.cenik; },
     async saveCenik(data)     { await _save('cenik', data); },

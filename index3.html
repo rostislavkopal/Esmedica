@@ -332,11 +332,11 @@ html.dark #floating-panel { background-color: #1e293b !important; border-color: 
           </div><!-- /hours-rows -->
         </div>
 
-        <div class="mt-4 pt-4 border-t border-gray-100 flex items-center gap-2 text-sm">
+        <div id="blood-draw-row" class="mt-4 pt-4 border-t border-gray-100 flex items-center gap-2 text-sm">
           <svg class="w-3.5 h-3.5 text-rose-400 flex-shrink-0" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2C12 2 5 10.5 5 15a7 7 0 0014 0C19 10.5 12 2 12 2z"/>
           </svg>
-          <span class="text-gray-500 text-xs">
+          <span id="blood-draw-text" class="text-gray-500 text-xs">
             <strong class="text-gray-700">Odběry krve:</strong> Po, St, Čt, Pá —
             <span class="text-xs font-medium text-brand bg-brand/8 border border-brand/25 rounded-lg px-3 py-1.5 w-fit ml-0.5">07:00 – 08:00</span>
           </span>
@@ -552,6 +552,15 @@ html.dark #floating-panel { background-color: #1e293b !important; border-color: 
           ${timeCell(row.morning)}
           ${timeCell(row.afternoon)}
         </div>`).join('');
+
+      // Odběry krve
+      const bloodDraw = await DataService.getBloodDraw();
+      const bdRow = document.getElementById('blood-draw-row');
+      const bdText = document.getElementById('blood-draw-text');
+      if (bdRow && bdText) {
+        if (!bloodDraw) { bdRow.style.display = 'none'; }
+        else { bdText.innerHTML = '<strong class="text-gray-700">Odběry krve:</strong> ' + bloodDraw.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+      }
 
       const kontakt = await DataService.getKontakt();
       const hdrAddr = document.getElementById('hdr-address');
